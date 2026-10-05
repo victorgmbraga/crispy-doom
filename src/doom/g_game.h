@@ -77,6 +77,8 @@ void G_Ticker (void);
 boolean G_Responder (event_t*	ev);
 void G_FastResponder (void); // [crispy]
 void G_PrepTiccmd (void); // [crispy]
+// [crysis] Clear held and queued input at menu/focus/restart boundaries.
+void G_ClearCrysisInput(void);
 
 void G_ScreenShot (void);
 

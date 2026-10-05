@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-10-05T13:49:20.8310109-03:00",
+  "method": "headless-finite-playdemo",
+  "executable_sha256": "c21b894fdf2a1e0de2db757d9d2710ae901f285ddc39d017c7ba0f3606576047",
+  "iwad_sha256": "a8772e088847032510d97ba2312406a6998f21cbab44d4ff10696faa9c0ecd4b",
+  "demo_sha256": "7200bae8be45a224666fd7173a0c0e41aabde372b3182ca49975e1dc7b2cf5ce",
+  "demo_commands": 175,
+  "limitations": [
+    "Comandos de tic simulados; entrada teclado/mouse nao verificada.",
+    "SDL dummy e -nosound: imagem e audio perceptiveis nao verificados.",
+    "Menu, nova partida e restart interativos nao verificados.",
+    "Demos continuam permitidas apenas nesta Fase 0; atualizar teste antes da Fase 1."
+  ],
+  "results": [
+    {
+      "case": "baseline",
+      "passed": true,
+      "completed": true,
+      "timed_out": false,
+      "exit_code": 0,
+      "elapsed_seconds": 6.887,
+      "activation_count": 0,
+      "expected_activation_count": 0,
+      "timed_gametics": null,
+      "executable": "C:\\Users\\victor.braga\\crysis-crispy-doom\\build-baseline\\src\\crispy-doom.exe",
+      "arguments": [
+        "-iwad",
+        "C:\\Users\\victor.braga\\crysis-crispy-doom\\content\\iwad\\freedoom2.wad",
+        "-config",
+        "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\baseline-smoke\\baseline\\default.cfg",
+        "-extraconfig",
+        "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\baseline-smoke\\baseline\\crispy-doom.cfg",
+        "-savedir",
+        "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\baseline-smoke\\baseline",
+        "-nosound",
+        "-nogui",
+        "-window",
+        "-playdemo",
+        "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\baseline-smoke\\fase0-smoke.lmp"
+      ],
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\baseline-smoke\\baseline\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\baseline-smoke\\baseline\\stderr.log"
+    }
+  ]
+}

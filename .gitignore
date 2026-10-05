@@ -60,7 +60,14 @@ GTAGS
 
 # VSCode settings
 
-/.vscode/
+/.vscode/*
+!/.vscode/launch.json
+!/.vscode/tasks.json
+!/.vscode/extensions.json
+
+# Portable Crysis build tools and libraries are obtained by setup scripts.
+/.tools/
+/.deps/
 
 # clangd settings
 /.cache/clangd

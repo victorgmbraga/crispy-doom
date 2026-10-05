@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-10-05T13:50:45.2887872-03:00",
+  "method": "gdb-read-only-final-demo-snapshot",
+  "executable_sha256": "c21b894fdf2a1e0de2db757d9d2710ae901f285ddc39d017c7ba0f3606576047",
+  "demo_sha256": "7200bae8be45a224666fd7173a0c0e41aabde372b3182ca49975e1dc7b2cf5ce",
+  "identical_within_run": true,
+  "limitations": [
+    "Snapshot de uma demo controlada; nao substitui playtest interativo.",
+    "Nao testa menu/restart/transicao de mapa nem entrada teclado/mouse."
+  ],
+  "results": [
+    {
+      "case": "baseline",
+      "passed": true,
+      "completed": true,
+      "exit_code": 0,
+      "snapshot": "SNAPSHOT map=1 gametic=175 leveltime=170 x=8718787 y=-12575414 z=-2097152 angle=1342177280 health=100 mobjhealth=100 bullets=46 rng=34 paused=0",
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\baseline-snapshot\\baseline\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\baseline-snapshot\\baseline\\stderr.log"
+    }
+  ]
+}

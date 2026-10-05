@@ -29,6 +29,8 @@
 
 #include "doomstat.h"
 #include "a11y.h" // [crispy] A11Y
+#include "cr_game.h" // [crysis] Isolated command state.
+#include "cr_player.h"
 
 #include "s_sound.h" // [NS] Jump sound etc.
 
@@ -282,6 +284,12 @@ void P_PlayerThink (player_t* player)
 {
     ticcmd_t*		cmd;
     weapontype_t	newweapon;
+
+    // [crysis] Consume edges once per active simulation tic, including death.
+    if (CR_IsActive())
+    {
+        CR_PlayerThink(player);
+    }
 	
     // [AM] Assume we can interpolate at the beginning
     //      of the tic.

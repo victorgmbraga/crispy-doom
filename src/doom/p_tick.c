@@ -23,6 +23,7 @@
 #include "s_musinfo.h" // [crispy] T_MAPMusic()
 
 #include "doomstat.h"
+#include "cr_game.h" // [crysis] Coordinate only active simulation tics.
 
 
 int	leveltime;
@@ -146,6 +147,12 @@ void P_Ticker (void)
     }
     
 		
+    // [crysis] Pause and menu guards above also freeze future Crysis timers.
+    if (CR_IsActive())
+    {
+        CR_Ticker();
+    }
+
     for (i=0 ; i<MAXPLAYERS ; i++)
 	if (playeringame[i])
 	    P_PlayerThink (&players[i]);

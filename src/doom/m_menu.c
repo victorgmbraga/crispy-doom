@@ -28,6 +28,7 @@
 #include "dstrings.h"
 
 #include "d_main.h"
+#include "cr_game.h" // [crysis] unsupported save/load paths
 #include "deh_main.h"
 
 #include "i_input.h"
@@ -829,11 +830,31 @@ menu_t  SaveDef =
 // M_ReadSaveStrings
 //  read the strings from the savegame files
 //
+// [crysis] Shared modal for menu entries, shortcuts and save callbacks.
+static boolean M_CrysisSaveLoadBlocked(void)
+{
+    if (!CR_RejectUnsupported("save/load"))
+    {
+        return false;
+    }
+
+    M_StartMessage("CRYSIS: SAVE/LOAD\nINDISPONIVEL NESTA FASE.\n\n"
+                   "PRESSIONE UMA TECLA.", NULL, false);
+    messageToPrint = 2; // Restore the preceding menu when dismissed.
+    return true;
+}
+
 void M_ReadSaveStrings(void)
 {
     FILE   *handle;
     int     i;
     char    name[256];
+
+    // [crysis] Do not read vanilla saves while parallel state is unversioned.
+    if (CR_IsActive())
+    {
+        return;
+    }
 
     for (i = 0;i < load_end;i++)
     {
@@ -946,6 +967,11 @@ void M_LoadSelect(int choice)
 {
     char    name[256];
 	
+    if (M_CrysisSaveLoadBlocked()) // [crysis]
+    {
+        return;
+    }
+
     M_StringCopy(name, P_SaveGameFile(choice), sizeof(name));
 
     // [crispy] save the last game you loaded
@@ -963,6 +989,11 @@ void M_LoadSelect(int choice)
 //
 void M_LoadGame (int choice)
 {
+    if (M_CrysisSaveLoadBlocked()) // [crysis]
+    {
+        return;
+    }
+
     // [crispy] allow loading game while multiplayer demo playback
     if (netgame && !demoplayback)
     {
@@ -1004,6 +1035,11 @@ void M_DrawSave(void)
 //
 void M_DoSave(int slot)
 {
+    if (M_CrysisSaveLoadBlocked()) // [crysis]
+    {
+        return;
+    }
+
     G_SaveGame (slot,savegamestrings[slot]);
     M_ClearMenus ();
 
@@ -1072,6 +1108,11 @@ void M_SaveSelect(int choice)
 {
     int x, y;
 
+    if (M_CrysisSaveLoadBlocked()) // [crysis]
+    {
+        return;
+    }
+
     // we are going to be intercepting all chars
     saveStringEnter = 1;
 
@@ -1104,6 +1145,11 @@ void M_SaveSelect(int choice)
 //
 void M_SaveGame (int choice)
 {
+    if (M_CrysisSaveLoadBlocked()) // [crysis]
+    {
+        return;
+    }
+
     if (!usergame)
     {
 	M_StartMessage(DEH_String(SAVEDEAD),NULL,false);
@@ -1134,6 +1180,11 @@ void M_QuickSaveResponse(int key)
 
 void M_QuickSave(void)
 {
+    if (M_CrysisSaveLoadBlocked()) // [crysis]
+    {
+        return;
+    }
+
     if (!usergame)
     {
 	S_StartSoundOptional(NULL, sfx_mnuerr, sfx_oof); // [NS] Optional menu sounds.
@@ -1171,6 +1222,11 @@ void M_QuickLoadResponse(int key)
 
 void M_QuickLoad(void)
 {
+    if (M_CrysisSaveLoadBlocked()) // [crysis]
+    {
+        return;
+    }
+
     // [crispy] allow quickloading game while multiplayer demo playback
     if (netgame && !demoplayback)
     {
@@ -3550,6 +3606,11 @@ static void M_ForceLoadGameResponse(int key)
 
 void M_ForceLoadGame()
 {
+	if (M_CrysisSaveLoadBlocked()) // [crysis]
+	{
+		return;
+	}
+
 	savegwarning =
 	savemaplumpinfo ?
 	M_StringJoin("This savegame requires the file\n",
@@ -3589,6 +3650,11 @@ static void M_ConfirmDeleteGameResponse (int key)
 
 void M_ConfirmDeleteGame ()
 {
+	if (M_CrysisSaveLoadBlocked()) // [crysis]
+	{
+		return;
+	}
+
 	savegwarning =
 	M_StringJoin("delete savegame\n\n",
 	             crstr[CR_GOLD], savegamestrings[itemOn], crstr[CR_NONE], " ?\n\n",

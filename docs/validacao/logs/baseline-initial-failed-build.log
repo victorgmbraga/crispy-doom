@@ -1,0 +1,237 @@
+[  0%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_conditional.c.obj
+[  0%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_checkbox.c.obj
+[  0%] Building C object src/doom/CMakeFiles/doom.dir/deh_bexpars.c.obj
+[  0%] Building C object src/doom/CMakeFiles/doom.dir/am_map.c.obj
+[  3%] Building C object src/doom/CMakeFiles/doom.dir/deh_bexincl.c.obj
+[  3%] Building C object src/doom/CMakeFiles/doom.dir/deh_ammo.c.obj
+[  6%] Building C object opl/CMakeFiles/opl.dir/opl.c.obj
+[  6%] Building C object src/doom/CMakeFiles/doom.dir/deh_bexptr.c.obj
+[  6%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_dropdown.c.obj
+[  6%] Building C object opl/CMakeFiles/opl.dir/opl_sdl.c.obj
+[ 10%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_desktop.c.obj
+[ 10%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_fileselect.c.obj
+[ 10%] Building C object pcsound/CMakeFiles/pcsound.dir/pcsound.c.obj
+[ 10%] Building C object opl/CMakeFiles/opl.dir/opl_linux.c.obj
+[ 10%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_inputbox.c.obj
+[ 10%] Building C object src/doom/CMakeFiles/doom.dir/deh_cheat.c.obj
+[ 10%] Building C object src/doom/CMakeFiles/doom.dir/deh_bexstr.c.obj
+[ 10%] Building C object opl/CMakeFiles/opl.dir/opl_queue.c.obj
+[ 13%] Building C object pcsound/CMakeFiles/pcsound.dir/pcsound_sdl.c.obj
+[ 13%] Building C object opl/CMakeFiles/opl.dir/opl_win32.c.obj
+[ 13%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_button.c.obj
+[ 13%] Building C object pcsound/CMakeFiles/pcsound.dir/pcsound_win32.c.obj
+[ 17%] Building C object src/doom/CMakeFiles/doom.dir/deh_frame.c.obj
+[ 17%] Building C object opl/CMakeFiles/opl.dir/opl_obsd.c.obj
+[ 20%] Building C object pcsound/CMakeFiles/pcsound.dir/pcsound_linux.c.obj
+[ 20%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_gui.c.obj
+[ 20%] Building C object opl/CMakeFiles/opl.dir/ioperm_sys.c.obj
+[ 20%] Building C object opl/CMakeFiles/opl.dir/opl_timer.c.obj
+[ 20%] Building C object src/doom/CMakeFiles/doom.dir/deh_doom.c.obj
+[ 20%] Building C object pcsound/CMakeFiles/pcsound.dir/pcsound_bsd.c.obj
+[ 20%] Building C object opl/CMakeFiles/opl.dir/opl3.c.obj
+[ 20%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_io.c.obj
+[ 20%] Building C object src/doom/CMakeFiles/doom.dir/deh_misc.c.obj
+[ 24%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_label.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/deh_ptr.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/deh_sound.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/deh_weapon.c.obj
+[ 24%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_radiobutton.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/deh_thing.c.obj
+[ 27%] Building C object src/doom/CMakeFiles/doom.dir/d_items.c.obj
+[ 27%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_spinctrl.c.obj
+[ 27%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_separator.c.obj
+[ 27%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_sdl.c.obj
+[ 31%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_strut.c.obj
+[ 31%] Building C object src/doom/CMakeFiles/doom.dir/d_net.c.obj
+[ 31%] Building C object src/doom/CMakeFiles/doom.dir/d_main.c.obj
+[ 31%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_scrollpane.c.obj
+[ 31%] Building C object src/doom/CMakeFiles/doom.dir/d_pwad.c.obj
+[ 31%] Linking C static library libpcsound.a
+[ 31%] Building C object src/doom/CMakeFiles/doom.dir/doomdef.c.obj
+[ 31%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_table.c.obj
+[ 31%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_widget.c.obj
+[ 31%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_utf8.c.obj
+[ 31%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_window_action.c.obj
+[ 31%] Building C object textscreen/CMakeFiles/textscreen.dir/txt_window.c.obj
+[ 31%] Linking C static library libopl.a
+[ 31%] Building C object src/doom/CMakeFiles/doom.dir/dstrings.c.obj
+[ 31%] Building C object src/doom/CMakeFiles/doom.dir/doomstat.c.obj
+[ 31%] Building C object src/doom/CMakeFiles/doom.dir/f_wipe.c.obj
+[ 34%] Building C object src/doom/CMakeFiles/doom.dir/f_finale.c.obj
+[ 34%] Building C object src/doom/CMakeFiles/doom.dir/g_game.c.obj
+[ 34%] Building C object src/doom/CMakeFiles/doom.dir/hu_stuff.c.obj
+[ 34%] Building C object src/doom/CMakeFiles/doom.dir/info.c.obj
+[ 34%] Building C object src/doom/CMakeFiles/doom.dir/hu_lib.c.obj
+[ 34%] Building C object src/doom/CMakeFiles/doom.dir/m_menu.c.obj
+[ 37%] Building C object src/doom/CMakeFiles/doom.dir/m_crispy.c.obj
+[ 37%] Building C object src/doom/CMakeFiles/doom.dir/m_random.c.obj
+[ 37%] Built target pcsound
+[ 37%] Built target opl
+[ 37%] Building C object src/doom/CMakeFiles/doom.dir/p_blockmap.c.obj
+[ 37%] Building C object src/doom/CMakeFiles/doom.dir/p_ceilng.c.obj
+[ 37%] Building C object src/doom/CMakeFiles/doom.dir/p_bexptr.c.obj
+[ 41%] Building C object src/doom/CMakeFiles/doom.dir/p_enemy.c.obj
+[ 41%] Building C object src/doom/CMakeFiles/doom.dir/p_doors.c.obj
+[ 41%] Building C object src/doom/CMakeFiles/doom.dir/p_extnodes.c.obj
+[ 41%] Building C object src/doom/CMakeFiles/doom.dir/p_inter.c.obj
+[ 41%] Building C object src/doom/CMakeFiles/doom.dir/p_extsaveg.c.obj
+[ 41%] Building C object src/doom/CMakeFiles/doom.dir/p_floor.c.obj
+[ 41%] Building C object src/doom/CMakeFiles/doom.dir/p_lights.c.obj
+[ 44%] Building C object src/doom/CMakeFiles/doom.dir/p_map.c.obj
+[ 48%] Linking C static library libtextscreen.a
+[ 48%] Building C object src/doom/CMakeFiles/doom.dir/p_plats.c.obj
+[ 48%] Building C object src/doom/CMakeFiles/doom.dir/p_maputl.c.obj
+[ 48%] Building C object src/doom/CMakeFiles/doom.dir/p_mobj.c.obj
+[ 51%] Building C object src/doom/CMakeFiles/doom.dir/p_setup.c.obj
+[ 51%] Building C object src/doom/CMakeFiles/doom.dir/p_pspr.c.obj
+[ 51%] Building C object src/doom/CMakeFiles/doom.dir/p_saveg.c.obj
+[ 51%] Building C object src/doom/CMakeFiles/doom.dir/p_sight.c.obj
+[ 51%] Building C object src/doom/CMakeFiles/doom.dir/p_spec.c.obj
+[ 51%] Building C object src/doom/CMakeFiles/doom.dir/p_switch.c.obj
+[ 51%] Building C object src/doom/CMakeFiles/doom.dir/p_telept.c.obj
+[ 51%] Building C object src/doom/CMakeFiles/doom.dir/p_tick.c.obj
+[ 51%] Building C object src/doom/CMakeFiles/doom.dir/r_bsp.c.obj
+[ 51%] Building C object src/doom/CMakeFiles/doom.dir/p_user.c.obj
+[ 55%] Building C object src/doom/CMakeFiles/doom.dir/r_bmaps.c.obj
+[ 55%] Built target textscreen
+[ 55%] Building C object src/doom/CMakeFiles/doom.dir/r_data.c.obj
+[ 55%] Building C object src/doom/CMakeFiles/doom.dir/r_draw.c.obj
+[ 55%] Building C object src/doom/CMakeFiles/doom.dir/r_main.c.obj
+[ 58%] Building C object src/doom/CMakeFiles/doom.dir/r_plane.c.obj
+[ 58%] Building C object src/doom/CMakeFiles/doom.dir/r_segs.c.obj
+[ 58%] Building C object src/doom/CMakeFiles/doom.dir/r_sky.c.obj
+[ 58%] Building C object src/doom/CMakeFiles/doom.dir/r_swirl.c.obj
+C:\Users\victor.braga\crysis-crispy-doom\src\doom\r_plane.c: In function 'R_DrawPlanes':
+C:\Users\victor.braga\crysis-crispy-doom\src\doom\r_plane.c:434:53: warning: unknown conversion type character 't' in format [-Wformat=]
+  434 |         I_Error ("R_DrawPlanes: drawsegs overflow (%td)",
+      |                                                     ^
+C:\Users\victor.braga\crysis-crispy-doom\src\doom\r_plane.c:434:18: warning: too many arguments for format [-Wformat-extra-args]
+  434 |         I_Error ("R_DrawPlanes: drawsegs overflow (%td)",
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\victor.braga\crysis-crispy-doom\src\doom\r_plane.c:438:53: warning: unknown conversion type character 't' in format [-Wformat=]
+  438 |         I_Error ("R_DrawPlanes: visplane overflow (%td)",
+      |                                                     ^
+C:\Users\victor.braga\crysis-crispy-doom\src\doom\r_plane.c:438:18: warning: too many arguments for format [-Wformat-extra-args]
+  438 |         I_Error ("R_DrawPlanes: visplane overflow (%td)",
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\victor.braga\crysis-crispy-doom\src\doom\r_plane.c:442:52: warning: unknown conversion type character 't' in format [-Wformat=]
+  442 |         I_Error ("R_DrawPlanes: opening overflow (%td)",
+      |                                                    ^
+C:\Users\victor.braga\crysis-crispy-doom\src\doom\r_plane.c:442:18: warning: too many arguments for format [-Wformat-extra-args]
+  442 |         I_Error ("R_DrawPlanes: opening overflow (%td)",
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[ 58%] Building C object src/doom/CMakeFiles/doom.dir/r_things.c.obj
+[ 58%] Building C object src/doom/CMakeFiles/doom.dir/s_musinfo.c.obj
+[ 58%] Building C object src/doom/CMakeFiles/doom.dir/s_sound.c.obj
+[ 62%] Building C object src/doom/CMakeFiles/doom.dir/sounds.c.obj
+[ 62%] Building C object src/doom/CMakeFiles/doom.dir/statdump.c.obj
+[ 62%] Building C object src/doom/CMakeFiles/doom.dir/st_lib.c.obj
+[ 62%] Building C object src/doom/CMakeFiles/doom.dir/v_snow.c.obj
+[ 62%] Building C object src/doom/CMakeFiles/doom.dir/st_stuff.c.obj
+[ 62%] Building C object src/doom/CMakeFiles/doom.dir/wi_stuff.c.obj
+[ 62%] Linking C static library libdoom.a
+[ 62%] Built target doom
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/crispy.c.obj
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/i_system.c.obj
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/d_event.c.obj
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/a11y.c.obj
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/m_misc.c.obj
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/m_argv.c.obj
+[ 65%] Building C object src/CMakeFiles/crispy-doom.dir/aes_prng.c.obj
+[ 65%] Building C object src/CMakeFiles/crispy-doom.dir/i_main.c.obj
+[ 65%] Building C object src/CMakeFiles/crispy-doom.dir/d_iwad.c.obj
+[ 65%] Building C object src/CMakeFiles/crispy-doom.dir/deh_str.c.obj
+[ 65%] Building C object src/CMakeFiles/crispy-doom.dir/d_loop.c.obj
+[ 68%] Building C object src/CMakeFiles/crispy-doom.dir/gusconf.c.obj
+[ 68%] Building C object src/CMakeFiles/crispy-doom.dir/d_mode.c.obj
+C:\Users\victor.braga\crysis-crispy-doom\src\m_misc.c: In function 'M_StringDuplicate':
+C:\Users\victor.braga\crysis-crispy-doom\src\m_misc.c:706:54: warning: unknown conversion type character 'z' in format [-Wformat=]
+  706 |         I_Error("Failed to duplicate string (length %zu)\n",
+      |                                                      ^
+C:\Users\victor.braga\crysis-crispy-doom\src\m_misc.c:706:17: warning: too many arguments for format [-Wformat-extra-args]
+  706 |         I_Error("Failed to duplicate string (length %zu)\n",
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\victor.braga\crysis-crispy-doom\src\i_system.c: In function 'I_Realloc':
+C:\Users\victor.braga\crysis-crispy-doom\src\i_system.c:369:57: warning: unknown conversion type character 'z' in format [-Wformat=]
+  369 |         I_Error ("I_Realloc: failed on reallocation of %zu bytes", size);
+      |                                                         ^
+C:\Users\victor.braga\crysis-crispy-doom\src\i_system.c:369:18: warning: too many arguments for format [-Wformat-extra-args]
+  369 |         I_Error ("I_Realloc: failed on reallocation of %zu bytes", size);
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[ 68%] Building C object src/CMakeFiles/crispy-doom.dir/i_endoom.c.obj
+[ 68%] Building C object src/CMakeFiles/crispy-doom.dir/i_flmusic.c.obj
+[ 68%] Building C object src/CMakeFiles/crispy-doom.dir/i_glob.c.obj
+[ 68%] Building C object src/CMakeFiles/crispy-doom.dir/i_cdmus.c.obj
+[ 68%] Building C object src/CMakeFiles/crispy-doom.dir/i_input.c.obj
+[ 68%] Building C object src/CMakeFiles/crispy-doom.dir/i_oplmusic.c.obj
+[ 68%] Building C object src/CMakeFiles/crispy-doom.dir/i_joystick.c.obj
+[ 68%] Building C object src/CMakeFiles/crispy-doom.dir/i_sdlmusic.c.obj
+[ 68%] Building C object src/CMakeFiles/crispy-doom.dir/i_sound.c.obj
+[ 72%] Building C object src/CMakeFiles/crispy-doom.dir/i_musicpack.c.obj
+[ 72%] Building C object src/CMakeFiles/crispy-doom.dir/i_sdlsound.c.obj
+[ 72%] Building C object src/CMakeFiles/crispy-doom.dir/i_pcsound.c.obj
+[ 75%] Building C object src/CMakeFiles/crispy-doom.dir/i_timer.c.obj
+[ 75%] Building C object src/CMakeFiles/crispy-doom.dir/i_videohr.c.obj
+[ 75%] Building C object src/CMakeFiles/crispy-doom.dir/midifallback.c.obj
+[ 79%] Building C object src/CMakeFiles/crispy-doom.dir/midifile.c.obj
+[ 79%] Building C object src/CMakeFiles/crispy-doom.dir/m_bbox.c.obj
+[ 79%] Building C object src/CMakeFiles/crispy-doom.dir/i_video.c.obj
+[ 79%] Building C object src/CMakeFiles/crispy-doom.dir/i_winmusic.c.obj
+[ 79%] Building C object src/CMakeFiles/crispy-doom.dir/i_truecolor.c.obj
+[ 79%] Building C object src/CMakeFiles/crispy-doom.dir/m_cheat.c.obj
+[ 79%] Building C object src/CMakeFiles/crispy-doom.dir/mus2mid.c.obj
+[ 79%] Building C object src/CMakeFiles/crispy-doom.dir/m_controls.c.obj
+[ 79%] Building C object src/CMakeFiles/crispy-doom.dir/m_config.c.obj
+[ 79%] Building C object src/CMakeFiles/crispy-doom.dir/m_fixed.c.obj
+[ 82%] Building C object src/CMakeFiles/crispy-doom.dir/net_client.c.obj
+[ 82%] Building C object src/CMakeFiles/crispy-doom.dir/net_dedicated.c.obj
+[ 82%] Building C object src/CMakeFiles/crispy-doom.dir/net_loop.c.obj
+[ 82%] Building C object src/CMakeFiles/crispy-doom.dir/net_petname.c.obj
+[ 82%] Building C object src/CMakeFiles/crispy-doom.dir/net_common.c.obj
+[ 82%] Building C object src/CMakeFiles/crispy-doom.dir/net_gui.c.obj
+[ 86%] Building C object src/CMakeFiles/crispy-doom.dir/memio.c.obj
+[ 86%] Building C object src/CMakeFiles/crispy-doom.dir/net_packet.c.obj
+[ 86%] Building C object src/CMakeFiles/crispy-doom.dir/net_structrw.c.obj
+[ 86%] Building C object src/CMakeFiles/crispy-doom.dir/tables.c.obj
+[ 86%] Building C object src/CMakeFiles/crispy-doom.dir/net_io.c.obj
+[ 86%] Building C object src/CMakeFiles/crispy-doom.dir/net_sdl.c.obj
+[ 89%] Building C object src/CMakeFiles/crispy-doom.dir/p_rejectpad.c.obj
+[ 89%] Building C object src/CMakeFiles/crispy-doom.dir/net_server.c.obj
+[ 89%] Building C object src/CMakeFiles/crispy-doom.dir/net_query.c.obj
+[ 89%] Building C object src/CMakeFiles/crispy-doom.dir/v_diskicon.c.obj
+C:\Users\victor.braga\crysis-crispy-doom\src\i_video.c: In function 'I_SetGammaTable':
+C:\Users\victor.braga\crysis-crispy-doom\src\i_video.c:989:52: error: implicit declaration of function 'pow' [-Wimplicit-function-declaration]
+  989 |                         gamma2table[i][j] = (byte)(pow(j / 255.0, 1.0 / gammalevels[i]) * 255.0 + 0.5);
+      |                                                    ^~~
+C:\Users\victor.braga\crysis-crispy-doom\src\i_video.c:52:1: note: include '<math.h>' or provide a declaration of 'pow'
+   51 | #include "z_zone.h"
+  +++ |+#include <math.h>
+   52 | 
+C:\Users\victor.braga\crysis-crispy-doom\src\i_video.c:989:52: warning: incompatible implicit declaration of built-in function 'pow' [-Wbuiltin-declaration-mismatch]
+  989 |                         gamma2table[i][j] = (byte)(pow(j / 255.0, 1.0 / gammalevels[i]) * 255.0 + 0.5);
+      |                                                    ^~~
+C:\Users\victor.braga\crysis-crispy-doom\src\i_video.c:989:52: note: include '<math.h>' or provide a declaration of 'pow'
+[ 89%] Building C object src/CMakeFiles/crispy-doom.dir/sha1.c.obj
+make[3]: *** [src\CMakeFiles\crispy-doom.dir\build.make:484: src/CMakeFiles/crispy-doom.dir/i_video.c.obj] Error 1
+make[3]: *** Waiting for unfinished jobs....
+[ 93%] Building C object src/CMakeFiles/crispy-doom.dir/w_main.c.obj
+[ 93%] Building C object src/CMakeFiles/crispy-doom.dir/w_checksum.c.obj
+[ 93%] Building C object src/CMakeFiles/crispy-doom.dir/v_video.c.obj
+[ 93%] Building C object src/CMakeFiles/crispy-doom.dir/v_trans.c.obj
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c: In function 'V_DrawScaledBlock':
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c:820:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  820 |     const int rx = x << crispy->hires;
+      |     ^~~~~
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c:848:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  848 |     const int dw = dx1 - dx0;
+      |     ^~~~~
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c:856:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  856 |     const int xoff = dx0 - rx;
+      |     ^~~~~
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c: In function 'V_DrawFullscreenRawOrPatch':
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c:962:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  962 |     int size = W_LumpLength(index);
+      |     ^~~
+make[2]: *** [CMakeFiles\Makefile2:440: src/CMakeFiles/crispy-doom.dir/all] Error 2
+make[1]: *** [CMakeFiles\Makefile2:447: src/CMakeFiles/crispy-doom.dir/rule] Error 2
+make: *** [Makefile:175: crispy-doom] Error 2

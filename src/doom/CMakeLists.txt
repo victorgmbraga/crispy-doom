@@ -1,5 +1,9 @@
 add_library(doom STATIC
             am_map.c        am_map.h
+            cr_game.c       cr_game.h
+            cr_input.c      cr_input.h
+            cr_player.c     cr_player.h
+                            cr_defs.h
             deh_ammo.c
             deh_bexincl.c
             deh_bexpars.c   deh_bexpars.h

@@ -1,0 +1,26 @@
+﻿{
+    "method":  "isolated GDB save/load and native demo record/playback",
+    "limitations":  "GDB supplies gameactions/commands; SDL dummy; no keyboard/audio/visual playtest.",
+    "executable_sha256":  "85da6c1e416a6425bc682a576eb72346b281c8e85430a10d5d2cec6fc02f9b71",
+    "results":  [
+                    {
+                        "case":  "save-load",
+                        "passed":  true,
+                        "exit_code":  0,
+                        "save_files":  1
+                    },
+                    {
+                        "case":  "record",
+                        "passed":  true,
+                        "exit_code":  0,
+                        "demo":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1-storage\\run-20261005-151937-409\\vanilla-record.lmp"
+                    },
+                    {
+                        "case":  "play-recorded",
+                        "passed":  true,
+                        "exit_code":  0,
+                        "recorded_snapshot":  "STORAGE_SNAPSHOT map=1 gametic=69 leveltime=69 x=2027677 y=-12577744 z=-1048576 angle=469762048 health=100 bullets=48 rng=200",
+                        "played_snapshot":  "STORAGE_SNAPSHOT map=1 gametic=69 leveltime=69 x=2027677 y=-12577744 z=-1048576 angle=469762048 health=100 bullets=48 rng=200"
+                    }
+                ]
+}

@@ -24,6 +24,9 @@
 #include "doomdef.h" 
 #include "doomkeys.h"
 #include "doomstat.h"
+#include "cr_game.h" // [crysis] New-game and completion lifecycle.
+#include "cr_input.h"
+#include "cr_player.h"
 
 #include "deh_main.h"
 #include "deh_misc.h"
@@ -252,6 +255,38 @@ static char     savedescription[32];
  
 static ticcmd_t basecmd; // [crispy]
 
+// [crysis] Discard commands built before a focus/reset boundary.
+static int cr_last_built_tic = -1;
+static int cr_discard_through_tic = -1;
+
+static boolean CR_MouseButtonDown(int button)
+{
+    return !CR_InputMouseReserved(button) && mousebuttons[button];
+}
+
+void G_ClearCrysisInput(void)
+{
+    if (!CR_IsActive())
+        return;
+
+    CR_ClearInput();
+    I_ClearMouseState();
+    CR_PlayerClearCommands();
+    cr_discard_through_tic = cr_last_built_tic;
+    memset(gamekeydown, 0, sizeof(gamekeydown));
+    memset(mousearray, 0, sizeof(mousearray));
+    memset(joyarray, 0, sizeof(joyarray));
+    mousex = mousey = joyxmove = joyymove = joystrafemove = joylook = 0;
+    turnheld = lookheld = 0;
+    dclicktime = dclicktime2 = dclicks = dclicks2 = 0;
+    dclickstate = dclickstate2 = false;
+    next_weapon = 0;
+    sendpause = false;
+    memset(&basecmd, 0, sizeof(basecmd));
+    memset(&carry, 0, sizeof(carry));
+    memset(&prevcarry, 0, sizeof(prevcarry));
+}
+
 #define	BODYQUESIZE	32
 
 mobj_t*		bodyque[BODYQUESIZE]; 
@@ -456,7 +491,7 @@ void G_BuildTiccmd (ticcmd_t* cmd, int maketic)
     cmd->consistancy = 
 	consistancy[consoleplayer][maketic%BACKUPTICS]; 
  
-    strafe = gamekeydown[key_strafe] || mousebuttons[mousebstrafe] 
+    strafe = gamekeydown[key_strafe] || CR_MouseButtonDown(mousebstrafe)
 	|| joybuttons[joybstrafe]; 
 
     // fraggle: support the old "joyb_speed = 31" hack which
@@ -467,6 +502,13 @@ void G_BuildTiccmd (ticcmd_t* cmd, int maketic)
     speed = (key_speed >= NUMKEYS
          || joybspeed >= MAX_JOY_BUTTONS);
     speed ^= speedkeydown();
+
+    // [crysis] A single walking base; sprint is transported separately.
+    if (CR_IsActive())
+    {
+        cr_last_built_tic = maketic;
+        speed = 0;
+    }
  
     forward = side = look = 0;
     
@@ -476,8 +518,8 @@ void G_BuildTiccmd (ticcmd_t* cmd, int maketic)
 	|| joyxmove > 0  
 	|| gamekeydown[key_right]
 	|| gamekeydown[key_left]
-	|| mousebuttons[mousebturnright]
-	|| mousebuttons[mousebturnleft])
+	|| CR_MouseButtonDown(mousebturnright)
+	|| CR_MouseButtonDown(mousebturnleft))
 	turnheld += ticdup; 
     else 
 	turnheld = 0; 
@@ -506,7 +548,7 @@ void G_BuildTiccmd (ticcmd_t* cmd, int maketic)
     }
 
     // [crispy] add quick 180° reverse
-    if (gamekeydown[key_reverse] || mousebuttons[mousebreverse])
+    if (gamekeydown[key_reverse] || CR_MouseButtonDown(mousebreverse))
     {
         angle += ANG180 >> FRACBITS;
         gamekeydown[key_reverse] = false;
@@ -514,7 +556,7 @@ void G_BuildTiccmd (ticcmd_t* cmd, int maketic)
     }
 
     // [crispy] toggle "always run"
-    if (gamekeydown[key_toggleautorun])
+    if (!CR_IsActive() && gamekeydown[key_toggleautorun])
     {
         static int joybspeed_old = 2;
 
@@ -576,12 +618,12 @@ void G_BuildTiccmd (ticcmd_t* cmd, int maketic)
     { 
         if (!cmd->angleturn)
         {
-            if (gamekeydown[key_right] || mousebuttons[mousebturnright])
+            if (gamekeydown[key_right] || CR_MouseButtonDown(mousebturnright))
             {
                 // fprintf(stderr, "strafe right\n");
                 side += sidemove[speed];
             }
-            if (gamekeydown[key_left] || mousebuttons[mousebturnleft])
+            if (gamekeydown[key_left] || CR_MouseButtonDown(mousebturnleft))
             {
                 //	fprintf(stderr, "strafe left\n");
                 side -= sidemove[speed];
@@ -603,9 +645,9 @@ void G_BuildTiccmd (ticcmd_t* cmd, int maketic)
     } 
     else 
     { 
-	if (gamekeydown[key_right] || mousebuttons[mousebturnright])
+	if (gamekeydown[key_right] || CR_MouseButtonDown(mousebturnright))
 	    angle -= angleturn[tspeed];
-	if (gamekeydown[key_left] || mousebuttons[mousebturnleft])
+	if (gamekeydown[key_left] || CR_MouseButtonDown(mousebturnleft))
 	    angle += angleturn[tspeed];
         if (use_analog && joyxmove)
         {
@@ -651,14 +693,14 @@ void G_BuildTiccmd (ticcmd_t* cmd, int maketic)
 
     if (gamekeydown[key_strafeleft] || gamekeydown[key_alt_strafeleft] // [crispy] add key_alt_*
      || joybuttons[joybstrafeleft]
-     || mousebuttons[mousebstrafeleft])
+     || CR_MouseButtonDown(mousebstrafeleft))
     {
         side -= sidemove[speed];
     }
 
     if (gamekeydown[key_straferight] || gamekeydown[key_alt_straferight] // [crispy] add key_alt_*
      || joybuttons[joybstraferight]
-     || mousebuttons[mousebstraferight])
+     || CR_MouseButtonDown(mousebstraferight))
     {
         side += sidemove[speed]; 
     }
@@ -781,11 +823,11 @@ void G_BuildTiccmd (ticcmd_t* cmd, int maketic)
     next_weapon = 0;
 
     // mouse
-    if (mousebuttons[mousebforward]) 
+    if (CR_MouseButtonDown(mousebforward))
     {
 	forward += forwardmove[speed];
     }
-    if (mousebuttons[mousebbackward])
+    if (CR_MouseButtonDown(mousebbackward))
     {
         forward -= forwardmove[speed];
     }
@@ -793,9 +835,9 @@ void G_BuildTiccmd (ticcmd_t* cmd, int maketic)
     if (dclick_use)
     {
         // forward double click
-        if (mousebuttons[mousebforward] != dclickstate && dclicktime > 1 ) 
+        if (CR_MouseButtonDown(mousebforward) != dclickstate && dclicktime > 1 )
         { 
-            dclickstate = mousebuttons[mousebforward]; 
+            dclickstate = CR_MouseButtonDown(mousebforward);
             if (dclickstate) 
                 dclicks++; 
             if (dclicks == 2) 
@@ -818,7 +860,7 @@ void G_BuildTiccmd (ticcmd_t* cmd, int maketic)
         
         // strafe double click
         bstrafe =
-            mousebuttons[mousebstrafe] 
+            CR_MouseButtonDown(mousebstrafe)
             || joybuttons[joybstrafe]; 
         if (bstrafe != dclickstate2 && dclicktime2 > 1 ) 
         { 
@@ -940,10 +982,14 @@ void G_BuildTiccmd (ticcmd_t* cmd, int maketic)
 	}
     } 
  
-    if (sendsave) 
-    { 
-	sendsave = false; 
-	cmd->buttons = BT_SPECIAL | BTS_SAVEGAME | (savegameslot<<BTS_SAVESHIFT); 
+    if (sendsave)
+    {
+	sendsave = false;
+        // [crysis] Also reject a queued save special before command creation.
+        if (!CR_RejectUnsupported("save/load"))
+        {
+	    cmd->buttons = BT_SPECIAL | BTS_SAVEGAME | (savegameslot<<BTS_SAVESHIFT);
+        }
     } 
 
     if (crispy->fliplevels)
@@ -978,15 +1024,27 @@ void G_BuildTiccmd (ticcmd_t* cmd, int maketic)
                             cmd->angleturn - desired_angleturn :
                             desired_angleturn - cmd->angleturn;
     }
-} 
+
+    // [crysis] Retain jump/look in their original fields.
+    if (CR_IsActive())
+    {
+        CR_BuildTiccmd(cmd);
+    }
+}
  
 
 //
 // G_DoLoadLevel 
 //
-void G_DoLoadLevel (void) 
-{ 
-    int             i; 
+void G_DoLoadLevel (void)
+{
+    int             i;
+
+    // [crysis] Restart must not reuse held or already queued actions.
+    if (CR_IsActive())
+    {
+        G_ClearCrysisInput();
+    }
 
     // [crispy] NRFTL / The Master Levels
     if (crispy->havenerve || crispy->havemaster)
@@ -1208,7 +1266,8 @@ static void SetMouseButtons(unsigned int buttons_mask)
 
         // Detect button press:
 
-        if (!mousebuttons[i] && button_on)
+        // [crysis] Dedicated bindings must not cycle vanilla weapons.
+        if (!CR_InputMouseReserved(i) && !mousebuttons[i] && button_on)
         {
             if (i == mousebprevweapon)
             {
@@ -1228,8 +1287,17 @@ static void SetMouseButtons(unsigned int buttons_mask)
 // G_Responder  
 // Get info needed to make ticcmd_ts for the players.
 // 
-boolean G_Responder (event_t* ev) 
-{ 
+boolean G_Responder (event_t* ev)
+{
+    // [crysis] Generic video focus events introduce no dependency in SDL.
+    if (CR_IsActive() && ev->type == ev_focus)
+    {
+        if (!ev->data1)
+        {
+            G_ClearCrysisInput();
+        }
+        return false;
+    }
     // [crispy] demo pause (from prboom-plus)
     if (gameaction == ga_nothing && 
         (demoplayback || gamestate == GS_DEMOSCREEN))
@@ -1393,7 +1461,7 @@ void G_FastResponder (void)
 void G_PrepTiccmd (void)
 {
     const boolean strafe = gamekeydown[key_strafe] ||
-        mousebuttons[mousebstrafe] || joybuttons[joybstrafe];
+        CR_MouseButtonDown(mousebstrafe) || joybuttons[joybstrafe];
 
     if (mousex && !strafe)
     {
@@ -1516,6 +1584,15 @@ void G_Ticker (void)
 
 	    memcpy(cmd, &netcmds[i], sizeof(ticcmd_t));
 
+            // [crysis] A focus/restart boundary invalidates already built input.
+            if (CR_IsActive() && gametic / ticdup <= cr_discard_through_tic)
+            {
+                cmd->buttons2 = 0;
+                cmd->buttons &= ~(BT_ATTACK | BT_USE | BT_CHANGE);
+                cmd->forwardmove = cmd->sidemove = 0;
+                cmd->angleturn = cmd->lookdir = cmd->lookfly = cmd->arti = 0;
+            }
+
 	    if (demoplayback) 
 		G_ReadDemoTiccmd (cmd); 
 	    // [crispy] do not record tics while still playing back in demo continue mode
@@ -1587,7 +1664,11 @@ void G_Ticker (void)
 			S_ResumeSound (); 
 		    break; 
 					 
-		  case BTS_SAVEGAME: 
+		  case BTS_SAVEGAME:
+
+                    // [crysis] Reject externally queued special commands too.
+                    if (CR_RejectUnsupported("save/load"))
+                        break;
 		    // [crispy] never override savegames by demo playback
 		    if (demoplayback)
 			break;
@@ -1718,8 +1799,14 @@ void G_PlayerReborn (int player)
     itemcount = players[player].itemcount; 
     secretcount = players[player].secretcount; 
 	 
-    p = &players[player]; 
-    memset (p, 0, sizeof(*p)); 
+    p = &players[player];
+    memset (p, 0, sizeof(*p));
+
+    // [crysis] Respawn resets the parallel state as well as player_t.
+    if (CR_IsActive())
+    {
+        CR_PlayerReset(p);
+    }
  
     memcpy (players[player].frags, frags, sizeof(players[player].frags)); 
     players[player].killcount = killcount; 
@@ -1900,7 +1987,7 @@ void G_DoReborn (int playernum)
 	// [crispy] if the player dies and the game has been loaded or saved
 	// in the mean time, reload that savegame instead of restarting the level
 	// when "Run" is pressed upon resurrection
-	if (crispy->singleplayer && *savename && speedkeydown())
+	if (!CR_IsActive() && crispy->singleplayer && *savename && speedkeydown())
 	gameaction = ga_loadgame;
 	else
 	{
@@ -2107,9 +2194,15 @@ static void G_WriteLevelStat(void)
     fclose(fstream);
 }
  
-void G_DoCompleted (void) 
+void G_DoCompleted (void)
 { 
     int             i; 
+
+    // [crysis] Stop level-specific coordination before intermission.
+    if (CR_IsActive())
+    {
+        CR_LevelEnd();
+    }
 
     // [crispy] Write level statistics upon exit
     if (M_ParmExists("-levelstat"))
@@ -2458,15 +2551,24 @@ void G_DoWorldDone (void)
 //
 
 
-void G_LoadGame (char* name) 
-{ 
+void G_LoadGame (char* name)
+{
+    // [crysis] No read of a save lacking the parallel state.
+    if (CR_RejectUnsupported("save/load"))
+        return;
     M_StringCopy(savename, name, sizeof(savename));
     gameaction = ga_loadgame; 
 } 
 
 int savedleveltime = 0; // [crispy] moved here for level time logging
-void G_DoLoadGame (void) 
-{ 
+void G_DoLoadGame (void)
+{
+    // [crysis] Guard direct/deferred actions before opening any file.
+    if (CR_RejectUnsupported("save/load"))
+    {
+        gameaction = ga_nothing;
+        return;
+    }
 	 
     // [crispy] loaded game must always be single player.
     // Needed for ability to use a further game loading, as well as
@@ -2572,6 +2674,9 @@ G_SaveGame
 ( int	slot,
   char*	description )
 {
+    // [crysis]
+    if (CR_RejectUnsupported("save/load"))
+        return;
     savegameslot = slot;
     M_StringCopy(savedescription, description, sizeof(savedescription));
     sendsave = true;
@@ -2582,6 +2687,14 @@ void G_DoSaveGame (void)
     char *savegame_file;
     char *temp_savegame_file;
     char *recovery_savegame_file;
+
+    // [crysis] Do not create temporary or final save files.
+    if (CR_RejectUnsupported("save/load"))
+    {
+        gameaction = ga_nothing;
+        sendsave = false;
+        return;
+    }
 
     recovery_savegame_file = NULL;
     temp_savegame_file = P_TempSaveGameFile();
@@ -2741,6 +2854,12 @@ G_InitNew
     int             i;
     // [crispy] make sure "fast" parameters are really only applied once
     static boolean fast_applied;
+
+    // [crysis] Shared initialization covers menu, CLI and deferred starts.
+    if (CR_IsActive())
+    {
+        CR_NewGame();
+    }
 
     if (paused)
     {
@@ -3115,6 +3234,10 @@ void G_RecordDemo (const char *name)
     static unsigned int j = 0;
     FILE *fp = NULL;
 
+    // [crysis] All recording entry points must stay outside vanilla formats.
+    if (CR_RejectUnsupported("demos"))
+        return;
+
     // [crispy] the name originally chosen for the demo, i.e. without "-00000"
     if (!orig_demoname)
     {
@@ -3169,9 +3292,13 @@ int G_VanillaVersionCode(void)
     }
 }
 
-void G_BeginRecording (void) 
-{ 
-    int             i; 
+void G_BeginRecording (void)
+{
+    int             i;
+
+    // [crysis]
+    if (CR_RejectUnsupported("demos"))
+        return;
 
     demo_p = demobuffer;
 
@@ -3219,7 +3346,10 @@ void G_BeginRecording (void)
 
  
 void G_DeferedPlayDemo(const char *name)
-{ 
+{
+    // [crysis]
+    if (CR_RejectUnsupported("demos"))
+        return;
     defdemoname = name; 
     gameaction = ga_playdemo; 
 
@@ -3280,6 +3410,13 @@ void G_DoPlayDemo (void)
     int demoversion;
     boolean olddemo = false;
     int lumplength; // [crispy]
+
+    // [crysis] Block even an action assigned without the public entry point.
+    if (CR_RejectUnsupported("demos"))
+    {
+        gameaction = ga_nothing;
+        return;
+    }
 
     // [crispy] in demo continue mode free the obsolete demo buffer
     // of size 'maxsize' previously allocated in G_RecordDemo()
@@ -3426,8 +3563,11 @@ void G_DoPlayDemo (void)
 //
 // G_TimeDemo 
 //
-void G_TimeDemo (char* name) 
+void G_TimeDemo (char* name)
 {
+    // [crysis]
+    if (CR_RejectUnsupported("demos"))
+        return;
     //!
     // @category video
     // @vanilla

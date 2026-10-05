@@ -1,0 +1,28 @@
+CMake Deprecation Warning at CMakeLists.txt:3 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- The C compiler identification is GNU 16.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Users/victor.braga/crysis-crispy-doom/.tools/w64devkit/bin/gcc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Could NOT find SampleRate (missing: SAMPLERATE_INCLUDE_DIR SAMPLERATE_LIBRARY) 
+-- Could NOT find ZLIB (missing: ZLIB_LIBRARY ZLIB_INCLUDE_DIR) 
+-- Could NOT find PNG (missing: PNG_LIBRARY PNG_PNG_INCLUDE_DIR) 
+-- Could NOT find FluidSynth (missing: FluidSynth_LIBRARIES FluidSynth_INCLUDE_DIRS) (Required is at least version "2.2.0")
+-- Looking for strcasecmp
+-- Looking for strcasecmp - found
+-- Looking for strncasecmp
+-- Looking for strncasecmp - found
+-- Looking for dirent.h
+-- Looking for dirent.h - found
+-- Configuring done (22.7s)
+-- Generating done (1.6s)
+-- Build files have been written to: C:/Users/victor.braga/crysis-crispy-doom/build

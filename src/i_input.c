@@ -83,6 +83,15 @@ static boolean text_input_enabled = true;
 // Bit mask of mouse button state.
 static unsigned int mouse_button_state = 0;
 
+// A release outside the focused window may never reach this process.
+// Callers choose the reset policy; vanilla does not call this function.
+void I_ClearMouseState(void)
+{
+    mouse_button_state = 0;
+    memset(&fastmouse, 0, sizeof(fastmouse));
+    newfastmouse = false;
+}
+
 // Disallow mouse and joystick movement to cause forward/backward
 // motion.  Specified with the '-novert' command line parameter.
 // This is an int to allow saving to config file

@@ -1,0 +1,383 @@
+{
+  "generated_at": "2026-10-05T15:14:59.6304000-03:00",
+  "mode": "All",
+  "executable_sha256": "85da6c1e416a6425bc682a576eb72346b281c8e85430a10d5d2cec6fc02f9b71",
+  "limitations": [
+    "Harness usa modulos reais e stubs nas fronteiras; nao valida SDL/teclado fisico.",
+    "GDB injeta ticcmds e gameactions; nao substitui playtest de menus e foco de janela.",
+    "SDL dummy e -nosound; imagem e audio perceptiveis nao verificados.",
+    "Regressao vanilla usa uma demo controlada, nao uma suite completa de save/netgame."
+  ],
+  "results": [
+    {
+      "case": "logic-compile",
+      "passed": true,
+      "completed": true,
+      "exit_code": 0,
+      "details": "Real cr_input.c/cr_player.c with engine boundary stubs; warnings are errors.",
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\logic-compile\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\logic-compile\\stderr.log"
+    },
+    {
+      "case": "logic",
+      "passed": true,
+      "completed": true,
+      "exit_code": 0,
+      "details": {
+        "ticcmd_size": 20,
+        "assertions": 221
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\logic\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\logic\\stderr.log"
+    },
+    {
+      "case": "cli-playdemo",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-playdemo",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-playdemo\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-playdemo\\stderr.log"
+    },
+    {
+      "case": "cli-timedemo",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-timedemo",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-timedemo\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-timedemo\\stderr.log"
+    },
+    {
+      "case": "cli-record",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-record",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-record\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-record\\stderr.log"
+    },
+    {
+      "case": "cli-recordfrom",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-recordfrom",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-recordfrom\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-recordfrom\\stderr.log"
+    },
+    {
+      "case": "cli-recordfromto",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-recordfromto",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-recordfromto\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-recordfromto\\stderr.log"
+    },
+    {
+      "case": "cli-loadgame",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-loadgame",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-loadgame\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-loadgame\\stderr.log"
+    },
+    {
+      "case": "cli-connect",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-connect",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-connect\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-connect\\stderr.log"
+    },
+    {
+      "case": "cli-server",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-server",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-server\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-server\\stderr.log"
+    },
+    {
+      "case": "cli-privateserver",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-privateserver",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-privateserver\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-privateserver\\stderr.log"
+    },
+    {
+      "case": "cli-autojoin",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-autojoin",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-autojoin\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-autojoin\\stderr.log"
+    },
+    {
+      "case": "cli-dedicated",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-dedicated",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-dedicated\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-dedicated\\stderr.log"
+    },
+    {
+      "case": "cli-search",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-search",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-search\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-search\\stderr.log"
+    },
+    {
+      "case": "cli-query",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-query",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-query\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-query\\stderr.log"
+    },
+    {
+      "case": "cli-localsearch",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-localsearch",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-localsearch\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-localsearch\\stderr.log"
+    },
+    {
+      "case": "cli-solo-net",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-solo-net",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-solo-net\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-solo-net\\stderr.log"
+    },
+    {
+      "case": "cli-netdemo",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-netdemo",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-netdemo\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-netdemo\\stderr.log"
+    },
+    {
+      "case": "cli-drone",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-drone",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-drone\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-drone\\stderr.log"
+    },
+    {
+      "case": "cli-left",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-left",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-left\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-left\\stderr.log"
+    },
+    {
+      "case": "cli-right",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-right",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-right\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-right\\stderr.log"
+    },
+    {
+      "case": "cli-deathmatch",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-deathmatch",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-deathmatch\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-deathmatch\\stderr.log"
+    },
+    {
+      "case": "cli-altdeath",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-altdeath",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-altdeath\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-altdeath\\stderr.log"
+    },
+    {
+      "case": "cli-dm3",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-dm3",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-dm3\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-dm3\\stderr.log"
+    },
+    {
+      "case": "cli-net",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-net",
+        "iwad_supplied": false
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-net\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-net\\stderr.log"
+    },
+    {
+      "case": "cli-record-without-value",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-record",
+        "malformed_option": true
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-record-without-value\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-record-without-value\\stderr.log"
+    },
+    {
+      "case": "cli-response-demo",
+      "passed": true,
+      "completed": true,
+      "exit_code": -1,
+      "details": {
+        "rejected_option": "-playdemo",
+        "response_file": true
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-response-demo\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\cli-response-demo\\stderr.log"
+    },
+    {
+      "case": "engine-input-menus",
+      "passed": true,
+      "completed": true,
+      "exit_code": 0,
+      "details": "F1_INPUT polls=40 producer=1 producer_no_autorun=1 focus_clear=1 menu_clear=1 menu_blocks=4 save_entry=0 action=0",
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\engine-input-menus\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\engine-input-menus\\stderr.log"
+    },
+    {
+      "case": "engine-state-lifecycle",
+      "passed": true,
+      "completed": true,
+      "exit_code": 0,
+      "details": {
+        "save_files": 0,
+        "expected_traces": [
+          "F1_ENGINE first down=255 pressed=255 released=0 sprint=1 ads=1 crouch=1",
+          "F1_ENGINE held down=255 pressed=0 released=0",
+          "F1_ENGINE release down=0 pressed=0 released=255",
+          "F1_ENGINE repress down=255 pressed=255 released=0",
+          "F1_LIFECYCLE map=2 ticks=150 newgames=2 levels=4 resets=3 menu_frozen=1 pause_frozen=1 active=0 demo=0 recording=0 action=0"
+        ],
+        "debug_input_transitions": 4
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\engine-state-lifecycle\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\engine-state-lifecycle\\stderr.log"
+    },
+    {
+      "case": "title",
+      "passed": true,
+      "completed": true,
+      "exit_code": 0,
+      "details": "F1_TITLE ticks=20 pages=20 demo_attempts=0 state=3 active=0 menu_opened=1",
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\title\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\title\\stderr.log"
+    },
+    {
+      "case": "vanilla-snapshot",
+      "passed": true,
+      "completed": true,
+      "exit_code": 0,
+      "details": {
+        "baseline_snapshot": "SNAPSHOT map=1 gametic=175 leveltime=170 x=8718787 y=-12575414 z=-2097152 angle=1342177280 health=100 mobjhealth=100 bullets=46 rng=34 paused=0",
+        "actual_snapshot": "SNAPSHOT map=1 gametic=175 leveltime=170 x=8718787 y=-12575414 z=-2097152 angle=1342177280 health=100 mobjhealth=100 bullets=46 rng=34 paused=0"
+      },
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\vanilla-snapshot\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase1\\vanilla-snapshot\\stderr.log"
+    }
+  ]
+}

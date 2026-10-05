@@ -65,7 +65,11 @@ typedef enum
 
     // Quit event. Triggered when the user clicks the "close" button
     // to terminate the application.
-    ev_quit
+    ev_quit,
+
+    // Window focus notification (data1: 1 gained, 0 lost).
+    // Games that do not need it ignore this event in their responders.
+    ev_focus
 } evtype_t;
 
 // Event structure.

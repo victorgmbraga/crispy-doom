@@ -1,0 +1,46 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Crysis: obter IWAD livre",
+      "type": "process",
+      "command": "powershell",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/setup-iwad.ps1"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "Crysis: compilar",
+      "type": "process",
+      "command": "powershell",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/setup-build.ps1", "-Build"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": ["$gcc"],
+      "group": {"kind": "build", "isDefault": true}
+    },
+    {
+      "label": "Crysis: preparar execucao",
+      "type": "process",
+      "command": "powershell",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/prepare-run.ps1"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "Crysis: preparar e compilar",
+      "dependsOn": ["Crysis: obter IWAD livre", "Crysis: compilar", "Crysis: preparar execucao"],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+    {
+      "label": "Crysis: validar F1",
+      "type": "process",
+      "command": "powershell",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/test-f1.ps1"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "dependsOn": ["Crysis: obter IWAD livre", "Crysis: compilar"],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    }
+  ]
+}

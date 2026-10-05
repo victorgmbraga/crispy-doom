@@ -30,6 +30,7 @@
 #include "deh_main.h"
 #include "doomdef.h"
 #include "doomstat.h"
+#include "cr_game.h" // [crysis] Mode activation and lifecycle.
 
 #include "dstrings.h"
 #include "sounds.h"
@@ -50,6 +51,8 @@
 #include "m_argv.h"
 #include "m_config.h"
 #include "m_controls.h"
+#include "cr_input.h" // [crysis] configurable Crysis controls
+#include "cr_player.h" // [crysis] consumed input state
 #include "m_misc.h"
 #include "m_menu.h"
 #include "p_saveg.h"
@@ -140,6 +143,7 @@ void D_CheckNetGame(void);
 void D_ProcessEvents (void)
 {
     event_t*	ev;
+    boolean menu_was_active;
 	
     // IF STORE DEMO, DO NOT ACCEPT INPUT
     if (storedemo)
@@ -147,8 +151,33 @@ void D_ProcessEvents (void)
 	
     while ((ev = D_PopEvent()) != NULL)
     {
+        // [crysis] Joysticks keep polling in the background upstream.
+        if (CR_IsActive() && !CR_InputHasFocus()
+         && (ev->type == ev_keydown || ev->type == ev_mouse
+             || ev->type == ev_joystick))
+        {
+            continue;
+        }
+        // [crysis] Releases/focus always arrive; menus own accepted presses.
+        menu_was_active = menuactive;
+	if (CR_IsActive() && (ev->type == ev_keyup || ev->type == ev_focus))
+	{
+	    CR_InputEvent(ev);
+	}
+
 	if (M_Responder (ev))
+	{
+	    // [crysis] Menus must not leave held gameplay commands behind.
+	    if (CR_IsActive() && (menu_was_active || menuactive))
+	    {
+		G_ClearCrysisInput();
+	    }
 	    continue;               // menu ate the event
+	}
+        if (CR_IsActive() && ev->type != ev_keyup && ev->type != ev_focus)
+        {
+            CR_InputEvent(ev);
+        }
 	G_Responder (ev);
     }
 }
@@ -401,6 +430,7 @@ void D_BindVariables(void)
     I_BindSoundVariables();
 
     M_BindBaseControls();
+    CR_BindInputVariables(); // [crysis]
     M_BindWeaponControls();
     M_BindMapControls();
     M_BindMenuControls();
@@ -674,6 +704,12 @@ void D_AdvanceDemo (void)
 //
 void D_DoAdvanceDemo (void)
 {
+    // [crysis] Demo completion also leaves the previous level.
+    if (CR_IsActive())
+    {
+        CR_LevelEnd();
+    }
+
     players[consoleplayer].playerstate = PST_LIVE;  // not reborn
     advancedemo = false;
     usergame = false;               // no save / end game here
@@ -681,6 +717,27 @@ void D_DoAdvanceDemo (void)
     gameaction = ga_nothing;
     // [crispy] update the "singleplayer" variable
     CheckCrispySingleplayer(!demorecording && !demoplayback && !netgame);
+
+    // [crysis] Title pages remain usable without reading any demo lumps.
+    if (CR_IsActive())
+    {
+        demosequence = (demosequence + 1) % 2;
+        pagetic = TICRATE * 11;
+        gamestate = GS_DEMOSCREEN;
+        pagename = DEH_String(demosequence == 0 ? "TITLEPIC" : "CREDIT");
+
+        if (demosequence == 0)
+        {
+            S_StartMusic(gamemode == commercial ? mus_dm2ttl : mus_intro);
+        }
+
+        if (gamevariant == bfgedition && demosequence == 0
+            && W_CheckNumForName("titlepic") < 0)
+        {
+            pagename = DEH_String("DMENUPIC");
+        }
+        return;
+    }
 
 
     // The Ultimate Doom executable changed the demo sequence to add
@@ -770,6 +827,12 @@ void D_DoAdvanceDemo (void)
 //
 void D_StartTitle (void)
 {
+    // [crysis] End Game can return to the title without loading a map.
+    if (CR_IsActive())
+    {
+        CR_LevelEnd();
+    }
+
     gameaction = ga_nothing;
     automapactive = false; // [crispy] clear overlaid automap remainings
     demosequence = -1;
@@ -1446,6 +1509,36 @@ static const char *const loadparms[] = {"-file", "-merge", NULL};
 //
 // D_DoomMain
 //
+// [crysis] Reject incompatible startup paths before save/demo IO or networking.
+static void D_CheckCrysisStartupOptions(void)
+{
+    static const char *const unsupported[] =
+    {
+        "-loadgame", "-record", "-recordfrom", "-recordfromto",
+        "-playdemo", "-timedemo", "-netdemo",
+        "-connect", "-server", "-privateserver", "-dedicated",
+        "-solo-net", "-autojoin", "-drone", "-left", "-right", "-net",
+        "-search", "-query", "-localsearch",
+        "-deathmatch", "-altdeath", "-dm3"
+    };
+    unsigned int i;
+
+    if (!CR_IsActive())
+    {
+        return;
+    }
+
+    for (i = 0; i < arrlen(unsupported); ++i)
+    {
+        if (M_ParmExists(unsupported[i]))
+        {
+            I_Error("[CRYSIS] %s indisponivel no modo Crysis.\n"
+                    "Demos, rede e save/load aguardam suporte versionado.",
+                    unsupported[i]);
+        }
+    }
+}
+
 void D_DoomMain (void)
 {
     int p;
@@ -1460,6 +1553,10 @@ void D_DoomMain (void)
     // print banner
 
     I_PrintBanner(PACKAGE_STRING);
+
+    // [crysis] i_main has already expanded response-file arguments.
+    CR_Init();
+    D_CheckCrysisStartupOptions();
 
     DEH_printf("Z_Init: Init zone memory allocation daemon. \n");
     Z_Init ();
@@ -2168,11 +2265,15 @@ void D_DoomMain (void)
         DEH_AddStringReplacement(PHUSTR_1, "level 33: betray");
     }
 
-    printf ("NET_Init: Init network subsystem.\n");
-    NET_Init ();
+    // [crysis] Keep the local tic loop without initializing network transports.
+    if (!CR_IsActive())
+    {
+        printf ("NET_Init: Init network subsystem.\n");
+        NET_Init ();
 
-    // Initial netgame startup. Connect to server etc.
-    D_ConnectNetGame();
+        // Initial netgame startup. Connect to server etc.
+        D_ConnectNetGame();
+    }
 
     // get skill / episode / map from parms
 

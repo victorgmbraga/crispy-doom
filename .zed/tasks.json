@@ -1,0 +1,90 @@
+[
+  {
+    "label": "Crysis: preparar e executar (MAP01)",
+    "command": "powershell.exe",
+    "env": {"PSModulePath": ""},
+    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "$ZED_WORKTREE_ROOT/scripts/run-game.ps1", "-Mode", "Crysis", "-Build"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "shell": {"program": "powershell.exe"},
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "save": "all"
+  },
+  {
+    "label": "Vanilla: preparar e executar (MAP01)",
+    "command": "powershell.exe",
+    "env": {"PSModulePath": ""},
+    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "$ZED_WORKTREE_ROOT/scripts/run-game.ps1", "-Mode", "Vanilla", "-Build"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "shell": {"program": "powershell.exe"},
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "save": "all"
+  },
+  {
+    "label": "Crysis: executar sem recompilar (MAP01)",
+    "command": "powershell.exe",
+    "env": {"PSModulePath": ""},
+    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "$ZED_WORKTREE_ROOT/scripts/run-game.ps1", "-Mode", "Crysis"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "shell": {"program": "powershell.exe"},
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "Vanilla: executar sem recompilar (MAP01)",
+    "command": "powershell.exe",
+    "env": {"PSModulePath": ""},
+    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "$ZED_WORKTREE_ROOT/scripts/run-game.ps1", "-Mode", "Vanilla"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "shell": {"program": "powershell.exe"},
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "Crysis: compilar",
+    "command": "powershell.exe",
+    "env": {"PSModulePath": ""},
+    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "$ZED_WORKTREE_ROOT/scripts/setup-build.ps1", "-Build", "-LogPrefix", "zed"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "shell": {"program": "powershell.exe"},
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "save": "all"
+  },
+  {
+    "label": "Crysis: validar F1",
+    "command": "powershell.exe",
+    "env": {"PSModulePath": ""},
+    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "$ZED_WORKTREE_ROOT/scripts/test-f1.ps1", "-LogDirectory", "$ZED_WORKTREE_ROOT/build/zed-f1"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "shell": {"program": "powershell.exe"},
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "Crysis: diagnosticar controles F1 (MAP01)",
+    "command": "powershell.exe",
+    "env": {"PSModulePath": ""},
+    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "$ZED_WORKTREE_ROOT/scripts/run-game.ps1", "-Mode", "Crysis", "-Build", "-DebugInput"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "shell": {"program": "powershell.exe"},
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "save": "all"
+  }
+]

@@ -1,0 +1,133 @@
+[  0%] Building C object src/doom/CMakeFiles/doom.dir/am_map.c.obj
+[ 13%] Built target textscreen
+[ 17%] Built target opl
+[ 20%] Built target pcsound
+[ 20%] Building C object src/doom/CMakeFiles/doom.dir/cr_game.c.obj
+[ 20%] Building C object src/doom/CMakeFiles/doom.dir/cr_input.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/cr_player.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/deh_cheat.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/d_main.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/d_net.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/f_finale.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/g_game.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/hu_stuff.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/m_crispy.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/m_menu.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/p_blockmap.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/p_doors.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/p_enemy.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/p_extnodes.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/p_inter.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/p_map.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/p_maputl.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/p_mobj.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/p_plats.c.obj
+[ 24%] Building C object src/doom/CMakeFiles/doom.dir/p_pspr.c.obj
+[ 27%] Building C object src/doom/CMakeFiles/doom.dir/p_saveg.c.obj
+[ 27%] Building C object src/doom/CMakeFiles/doom.dir/p_setup.c.obj
+[ 27%] Building C object src/doom/CMakeFiles/doom.dir/p_sight.c.obj
+[ 27%] Building C object src/doom/CMakeFiles/doom.dir/p_spec.c.obj
+[ 27%] Building C object src/doom/CMakeFiles/doom.dir/p_switch.c.obj
+[ 31%] Building C object src/doom/CMakeFiles/doom.dir/p_tick.c.obj
+[ 31%] Building C object src/doom/CMakeFiles/doom.dir/p_user.c.obj
+[ 31%] Building C object src/doom/CMakeFiles/doom.dir/r_bsp.c.obj
+[ 31%] Building C object src/doom/CMakeFiles/doom.dir/r_data.c.obj
+[ 31%] Building C object src/doom/CMakeFiles/doom.dir/r_draw.c.obj
+[ 31%] Building C object src/doom/CMakeFiles/doom.dir/r_main.c.obj
+[ 34%] Building C object src/doom/CMakeFiles/doom.dir/r_plane.c.obj
+C:\Users\victor.braga\crysis-crispy-doom\src\doom\r_plane.c: In function 'R_DrawPlanes':
+C:\Users\victor.braga\crysis-crispy-doom\src\doom\r_plane.c:434:53: warning: unknown conversion type character 't' in format [-Wformat=]
+  434 |         I_Error ("R_DrawPlanes: drawsegs overflow (%td)",
+      |                                                     ^
+C:\Users\victor.braga\crysis-crispy-doom\src\doom\r_plane.c:434:18: warning: too many arguments for format [-Wformat-extra-args]
+  434 |         I_Error ("R_DrawPlanes: drawsegs overflow (%td)",
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\victor.braga\crysis-crispy-doom\src\doom\r_plane.c:438:53: warning: unknown conversion type character 't' in format [-Wformat=]
+  438 |         I_Error ("R_DrawPlanes: visplane overflow (%td)",
+      |                                                     ^
+C:\Users\victor.braga\crysis-crispy-doom\src\doom\r_plane.c:438:18: warning: too many arguments for format [-Wformat-extra-args]
+  438 |         I_Error ("R_DrawPlanes: visplane overflow (%td)",
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\victor.braga\crysis-crispy-doom\src\doom\r_plane.c:442:52: warning: unknown conversion type character 't' in format [-Wformat=]
+  442 |         I_Error ("R_DrawPlanes: opening overflow (%td)",
+      |                                                    ^
+C:\Users\victor.braga\crysis-crispy-doom\src\doom\r_plane.c:442:18: warning: too many arguments for format [-Wformat-extra-args]
+  442 |         I_Error ("R_DrawPlanes: opening overflow (%td)",
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[ 34%] Building C object src/doom/CMakeFiles/doom.dir/r_segs.c.obj
+[ 34%] Building C object src/doom/CMakeFiles/doom.dir/r_swirl.c.obj
+[ 34%] Building C object src/doom/CMakeFiles/doom.dir/r_things.c.obj
+[ 34%] Building C object src/doom/CMakeFiles/doom.dir/s_musinfo.c.obj
+[ 37%] Building C object src/doom/CMakeFiles/doom.dir/s_sound.c.obj
+[ 37%] Building C object src/doom/CMakeFiles/doom.dir/st_lib.c.obj
+[ 37%] Building C object src/doom/CMakeFiles/doom.dir/st_stuff.c.obj
+[ 37%] Building C object src/doom/CMakeFiles/doom.dir/v_snow.c.obj
+[ 37%] Building C object src/doom/CMakeFiles/doom.dir/wi_stuff.c.obj
+[ 41%] Linking C static library libdoom.a
+[ 62%] Built target doom
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/i_main.c.obj
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/i_system.c.obj
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/m_misc.c.obj
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/m_argv.c.obj
+C:\Users\victor.braga\crysis-crispy-doom\src\i_system.c: In function 'I_Realloc':
+C:\Users\victor.braga\crysis-crispy-doom\src\i_system.c:369:57: warning: unknown conversion type character 'z' in format [-Wformat=]
+  369 |         I_Error ("I_Realloc: failed on reallocation of %zu bytes", size);
+      |                                                         ^
+C:\Users\victor.braga\crysis-crispy-doom\src\i_system.c:369:18: warning: too many arguments for format [-Wformat-extra-args]
+  369 |         I_Error ("I_Realloc: failed on reallocation of %zu bytes", size);
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/d_event.c.obj
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/d_iwad.c.obj
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/d_loop.c.obj
+C:\Users\victor.braga\crysis-crispy-doom\src\m_misc.c: In function 'M_StringDuplicate':
+C:\Users\victor.braga\crysis-crispy-doom\src\m_misc.c:706:54: warning: unknown conversion type character 'z' in format [-Wformat=]
+  706 |         I_Error("Failed to duplicate string (length %zu)\n",
+      |                                                      ^
+C:\Users\victor.braga\crysis-crispy-doom\src\m_misc.c:706:17: warning: too many arguments for format [-Wformat-extra-args]
+  706 |         I_Error("Failed to duplicate string (length %zu)\n",
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/i_input.c.obj
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/i_joystick.c.obj
+[ 65%] Building C object src/CMakeFiles/crispy-doom.dir/i_musicpack.c.obj
+[ 65%] Building C object src/CMakeFiles/crispy-doom.dir/i_sdlmusic.c.obj
+[ 65%] Building C object src/CMakeFiles/crispy-doom.dir/i_sdlsound.c.obj
+[ 65%] Building C object src/CMakeFiles/crispy-doom.dir/i_video.c.obj
+[ 65%] Building C object src/CMakeFiles/crispy-doom.dir/i_winmusic.c.obj
+[ 68%] Building C object src/CMakeFiles/crispy-doom.dir/midifile.c.obj
+[ 68%] Building C object src/CMakeFiles/crispy-doom.dir/m_config.c.obj
+[ 68%] Building C object src/CMakeFiles/crispy-doom.dir/m_fixed.c.obj
+[ 72%] Building C object src/CMakeFiles/crispy-doom.dir/net_client.c.obj
+[ 72%] Building C object src/CMakeFiles/crispy-doom.dir/net_common.c.obj
+[ 72%] Building C object src/CMakeFiles/crispy-doom.dir/net_dedicated.c.obj
+[ 72%] Building C object src/CMakeFiles/crispy-doom.dir/net_gui.c.obj
+[ 72%] Building C object src/CMakeFiles/crispy-doom.dir/net_io.c.obj
+[ 72%] Building C object src/CMakeFiles/crispy-doom.dir/net_loop.c.obj
+[ 72%] Building C object src/CMakeFiles/crispy-doom.dir/net_query.c.obj
+[ 72%] Building C object src/CMakeFiles/crispy-doom.dir/net_sdl.c.obj
+[ 72%] Building C object src/CMakeFiles/crispy-doom.dir/net_server.c.obj
+[ 72%] Building C object src/CMakeFiles/crispy-doom.dir/net_structrw.c.obj
+[ 72%] Building C object src/CMakeFiles/crispy-doom.dir/v_video.c.obj
+[ 75%] Building C object src/CMakeFiles/crispy-doom.dir/w_checksum.c.obj
+[ 75%] Building C object src/CMakeFiles/crispy-doom.dir/w_main.c.obj
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c: In function 'V_DrawScaledBlock':
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c:820:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  820 |     const int rx = x << crispy->hires;
+      |     ^~~~~
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c:848:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  848 |     const int dw = dx1 - dx0;
+      |     ^~~~~
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c:856:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  856 |     const int xoff = dx0 - rx;
+      |     ^~~~~
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c: In function 'V_DrawFullscreenRawOrPatch':
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c:962:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  962 |     int size = W_LumpLength(index);
+      |     ^~~
+[ 75%] Building C object src/CMakeFiles/crispy-doom.dir/w_wad.c.obj
+[ 79%] Building C object src/CMakeFiles/crispy-doom.dir/w_file_win32.c.obj
+[ 79%] Building C object src/CMakeFiles/crispy-doom.dir/w_merge.c.obj
+[ 79%] Building C object src/CMakeFiles/crispy-doom.dir/z_zone.c.obj
+[ 79%] Building C object src/CMakeFiles/crispy-doom.dir/deh_main.c.obj
+[ 79%] Building C object src/CMakeFiles/crispy-doom.dir/deh_mapping.c.obj
+[ 79%] Linking C executable crispy-doom.exe
+[100%] Built target crispy-doom

@@ -366,6 +366,7 @@ static void AdjustWindowSize(void)
 static void HandleWindowEvent(SDL_WindowEvent *event)
 {
     int i;
+    event_t focus_event;
 
     switch (event->event)
     {
@@ -403,10 +404,17 @@ static void HandleWindowEvent(SDL_WindowEvent *event)
 
         case SDL_WINDOWEVENT_FOCUS_GAINED:
             window_focused = true;
+            memset(&focus_event, 0, sizeof(focus_event));
+            focus_event.type = ev_focus;
+            focus_event.data1 = 1;
+            D_PostEvent(&focus_event);
             break;
 
         case SDL_WINDOWEVENT_FOCUS_LOST:
             window_focused = false;
+            memset(&focus_event, 0, sizeof(focus_event));
+            focus_event.type = ev_focus;
+            D_PostEvent(&focus_event);
             break;
 
         // We want to save the user's preferred monitor to use for running the

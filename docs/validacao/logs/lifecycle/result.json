@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-10-05T13:57:58.1457727-03:00",
+  "method": "gdb-injected-existing-lifecycle-actions",
+  "executable_sha256": "f486b90831b74f5622ebd2280c57c635f027f41dbdf7a1284d10dd5d9eaf3edb",
+  "limitations": [
+    "Aciona estados e gameaction pelo debugger; nao prova input de teclado/menu.",
+    "SDL dummy e -nosound; imagem/audio perceptiveis nao verificados.",
+    "GDB redireciona o PC para I_Quit no tic 150; encerramento nao foi solicitado pelo teclado."
+  ],
+  "results": [
+    {
+      "case": "vanilla",
+      "passed": true,
+      "completed": true,
+      "debugger_exit_code": 0,
+      "trace": "LIFECYCLE_FINAL map=2 ticks=150 newgames=2 levels=4 crnew=0 crstart=0 crclean=0 crticks=0 menu_frozen=1 pause_frozen=1 level_active=0",
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\lifecycle\\vanilla\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\lifecycle\\vanilla\\stderr.log"
+    },
+    {
+      "case": "crysis",
+      "passed": true,
+      "completed": true,
+      "debugger_exit_code": 0,
+      "trace": "LIFECYCLE_FINAL map=2 ticks=150 newgames=2 levels=4 crnew=2 crstart=4 crclean=4 crticks=124 menu_frozen=1 pause_frozen=1 level_active=0",
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\lifecycle\\crysis\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\lifecycle\\crysis\\stderr.log"
+    }
+  ]
+}

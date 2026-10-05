@@ -1,0 +1,8 @@
+I_InitSound: SDL audio driver is none
+S_ChangeMusic: D_RUNNIN (freedoom2.wad)
+P_SetupLevel: MAP01 (freedoom2.wad) Normal -nomonsters 0:00:00/0:00:00 Doom (BSP)
+P_SetupLevel: MAP01 (freedoom2.wad) Normal -nomonsters 0:00:00/0:00:00 Doom (BSP)
+P_SetupLevel: MAP01 (freedoom2.wad) Normal -nomonsters 0:00:00/0:00:00 Doom (BSP)
+S_ChangeMusic: D_DM2INT (freedoom2.wad)
+S_ChangeMusic: D_STALKS (freedoom2.wad)
+P_SetupLevel: MAP02 (freedoom2.wad) Normal -nomonsters 0:00:00/0:00:00 Doom (BSP)

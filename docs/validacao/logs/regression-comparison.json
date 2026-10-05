@@ -1,0 +1,12 @@
+{
+  "baseline_snapshot": "SNAPSHOT map=1 gametic=175 leveltime=170 x=8718787 y=-12575414 z=-2097152 angle=1342177280 health=100 mobjhealth=100 bullets=46 rng=34 paused=0",
+  "all_snapshots_match_baseline": true,
+  "baseline_warning_count": 14,
+  "fork_warning_count": 14,
+  "warnings_identical": true,
+  "comparison_cases": [
+    "vanilla",
+    "crysis",
+    "crysis-repeated"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Crysis: Fase 1 (Freedoom MAP01)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/src/crispy-doom.exe",
+      "args": [
+        "-crysis", "-crdebug", "-iwad", "${workspaceFolder}/content/iwad/freedoom2.wad",
+        "-warp", "1", "-window",
+        "-config", "${workspaceFolder}/build/run/default.cfg",
+        "-extraconfig", "${workspaceFolder}/build/run/crispy-doom.cfg",
+        "-savedir", "${workspaceFolder}/build/run"
+      ],
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "MIMode": "gdb",
+      "miDebuggerPath": "${workspaceFolder}/.tools/w64devkit/bin/gdb.exe",
+      "preLaunchTask": "Crysis: preparar e compilar"
+    },
+    {
+      "name": "Vanilla: Freedoom MAP01",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/src/crispy-doom.exe",
+      "args": [
+        "-iwad", "${workspaceFolder}/content/iwad/freedoom2.wad",
+        "-warp", "1", "-window",
+        "-config", "${workspaceFolder}/build/run/default.cfg",
+        "-extraconfig", "${workspaceFolder}/build/run/crispy-doom.cfg",
+        "-savedir", "${workspaceFolder}/build/run"
+      ],
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "MIMode": "gdb",
+      "miDebuggerPath": "${workspaceFolder}/.tools/w64devkit/bin/gdb.exe",
+      "preLaunchTask": "Crysis: preparar e compilar"
+    }
+  ]
+}

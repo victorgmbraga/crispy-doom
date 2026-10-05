@@ -1,0 +1,54 @@
+Breakpoint 1 at 0x140032e70: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\g_game.c, line 2746.
+Breakpoint 2 at 0x140051940: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\p_setup.c, line 1069.
+Breakpoint 3 at 0x14006d110: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\cr_game.c, line 52.
+Breakpoint 4 at 0x14006d130: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\cr_game.c, line 64.
+Breakpoint 5 at 0x14006d080: CR_LevelEnd. (2 locations)
+Breakpoint 6 at 0x14006d150: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\cr_game.c, line 88.
+Breakpoint 7 at 0x14007d050
+Breakpoint 8 at 0x1400348c0: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\g_game.c, line 1440.
+[New Thread 39532.0x9d68]
+[New Thread 39532.0x25c4]
+[New Thread 39532.0x71c0]
+[New Thread 39532.0x4b60]
+[New Thread 39532.0x87c]
+[Thread 39532.0x87c exited with code 0]
+LIFECYCLE_FINAL map=2 ticks=150 newgames=2 levels=4 crnew=2 crstart=4 crclean=4 crticks=124 menu_frozen=1 pause_frozen=1 level_active=0
+[Thread 39532.0x4b60 exited with code 0]
+                           Crispy Doom 7.1.0
+[CRYSIS] mode enabled
+Z_Init: Init zone memory allocation daemon. 
+zone memory: 000000000264c040, 64 MiB allocated for zone
+V_Init: allocate screens.
+M_LoadDefaults: Load system defaults.
+	default file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/lifecycle/crysis/default.cfg
+saving config in C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/lifecycle/crysis/default.cfg
+        extra configuration file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/lifecycle/crysis/crispy-doom.cfg
+W_Init: Init WADfiles.
+ adding C:/Users/victor.braga/crysis-crispy-doom/content/iwad/freedoom2.wad
+  loaded 0 DEHACKED lumps from PWAD files.
+Save directory changed to C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/lifecycle/crysis\.
+===========================================================================
+                           Freedoom: Phase 2
+===========================================================================
+ Crispy Doom is free software, covered by the GNU General Public
+ License.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. You are welcome to change and distribute
+ copies under certain conditions. See the source for more information.
+===========================================================================
+I_Init: Setting up machine state.
+NET_Init: Init network subsystem.
+M_Init: Init miscellaneous info.
+R_Init: Init DOOM refresh daemon - ................................................
+P_Init: Init Playloop state.
+S_Init: Setting up sound.
+D_CheckNetGame: Checking network game status.
+startskill 2  deathmatch: 0  startmap: 1  startepisode: 1
+player 1 of 1 (1 nodes)
+Emulating the behavior of the 'Doom 1.9' executable.
+HU_Init: Setting up heads up display.
+ST_Init: Init status bar.
+CreateUpscaledTexture: Limited texture size to 0x0 (max 16000000 pixels, max texture size 0x0)
+[Thread 39532.0x25c4 exited with code 0]
+[Thread 39532.0x71c0 exited with code 0]
+[Thread 39532.0x9d68 exited with code 0]
+[Inferior 1 (process 39532) exited normally]

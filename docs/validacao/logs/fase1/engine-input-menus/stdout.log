@@ -1,0 +1,53 @@
+Breakpoint 1 at 0x14006de30: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\cr_game.c, line 43.
+Breakpoint 2 at 0x14006e470: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\cr_input.c, line 224.
+Breakpoint 3 at 0x140028e50: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\d_main.c, line 144.
+[New Thread 35480.0x21f4]
+[New Thread 35480.0x93fc]
+[New Thread 35480.0x5948]
+[New Thread 35480.0x83c8]
+F1_PRODUCER forward=25 side=0 angle=-64 jump=128 look=4 use=0 autorun=20
+F1_INPUT polls=40 producer=1 producer_no_autorun=1 focus_clear=1 menu_clear=1 menu_blocks=4 save_entry=0 action=0
+[Thread 35480.0x83c8 exited with code 0]
+                           Crispy Doom 7.1.0
+[CRYSIS] mode enabled
+Z_Init: Init zone memory allocation daemon. 
+zone memory: 000000000275b040, 64 MiB allocated for zone
+V_Init: allocate screens.
+M_LoadDefaults: Load system defaults.
+	default file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase1/engine-input-menus/default.cfg
+saving config in C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase1/engine-input-menus/default.cfg
+        extra configuration file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase1/engine-input-menus/crispy-doom.cfg
+W_Init: Init WADfiles.
+ adding C:/Users/victor.braga/crysis-crispy-doom/content/iwad/freedoom2.wad
+  loaded 0 DEHACKED lumps from PWAD files.
+Save directory changed to C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase1/engine-input-menus\.
+===========================================================================
+                           Freedoom: Phase 2
+===========================================================================
+ Crispy Doom is free software, covered by the GNU General Public
+ License.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. You are welcome to change and distribute
+ copies under certain conditions. See the source for more information.
+===========================================================================
+I_Init: Setting up machine state.
+M_Init: Init miscellaneous info.
+R_Init: Init DOOM refresh daemon - ................................................
+P_Init: Init Playloop state.
+S_Init: Setting up sound.
+D_CheckNetGame: Checking network game status.
+startskill 2  deathmatch: 0  startmap: 1  startepisode: 1
+player 1 of 1 (1 nodes)
+Emulating the behavior of the 'Doom 1.9' executable.
+HU_Init: Setting up heads up display.
+ST_Init: Init status bar.
+CreateUpscaledTexture: Limited texture size to 0x0 (max 16000000 pixels, max texture size 0x0)
+[CRYSIS] input player=0 tic=0 down=07 pressed=07 released=00 sprint=1 ads=1
+[CRYSIS] input player=0 tic=13 down=0b pressed=0b released=00 sprint=1 ads=1
+CRYSIS: save/load indisponivel nesta fase.
+CRYSIS: save/load indisponivel nesta fase.
+CRYSIS: save/load indisponivel nesta fase.
+CRYSIS: save/load indisponivel nesta fase.
+[Thread 35480.0x93fc exited with code 0]
+[Thread 35480.0x5948 exited with code 0]
+[Thread 35480.0x21f4 exited with code 0]
+[Inferior 1 (process 35480) exited normally]

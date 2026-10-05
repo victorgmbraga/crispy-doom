@@ -2659,6 +2659,26 @@ static default_t extra_defaults_list[] =
     //
 
     CONFIG_VARIABLE_INT(crispy_widescreen),
+
+    // [crysis] Keyboard values use the same DOS scancode translation as
+    // existing controls (0 disables a key). Mouse buttons are zero-based;
+    // -1 disables a mouse binding. Bindings remain saved in vanilla too.
+    CONFIG_VARIABLE_KEY(key_cr_sprint),
+    CONFIG_VARIABLE_KEY(key_cr_ads),
+    CONFIG_VARIABLE_KEY(key_cr_reload),
+    CONFIG_VARIABLE_KEY(key_cr_interact),
+    CONFIG_VARIABLE_KEY(key_cr_suit),
+    CONFIG_VARIABLE_KEY(key_cr_firemode),
+    CONFIG_VARIABLE_KEY(key_cr_attachment),
+    CONFIG_VARIABLE_KEY(key_cr_crouch),
+    CONFIG_VARIABLE_INT(mouseb_cr_sprint),
+    CONFIG_VARIABLE_INT(mouseb_cr_ads),
+    CONFIG_VARIABLE_INT(mouseb_cr_reload),
+    CONFIG_VARIABLE_INT(mouseb_cr_interact),
+    CONFIG_VARIABLE_INT(mouseb_cr_suit),
+    CONFIG_VARIABLE_INT(mouseb_cr_firemode),
+    CONFIG_VARIABLE_INT(mouseb_cr_attachment),
+    CONFIG_VARIABLE_INT(mouseb_cr_crouch),
 };
 
 static default_collection_t extra_defaults =

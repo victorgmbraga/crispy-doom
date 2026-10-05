@@ -1,0 +1,16 @@
+CMake Deprecation Warning at CMakeLists.txt:3 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- Could NOT find SampleRate (missing: SAMPLERATE_INCLUDE_DIR SAMPLERATE_LIBRARY) 
+-- Could NOT find ZLIB (missing: ZLIB_LIBRARY ZLIB_INCLUDE_DIR) 
+-- Could NOT find PNG (missing: PNG_LIBRARY PNG_PNG_INCLUDE_DIR) 
+-- Could NOT find FluidSynth (missing: FluidSynth_LIBRARIES FluidSynth_INCLUDE_DIRS) (Required is at least version "2.2.0")
+-- Configuring done (11.9s)
+-- Generating done (1.8s)
+-- Build files have been written to: C:/Users/victor.braga/crysis-crispy-doom/build

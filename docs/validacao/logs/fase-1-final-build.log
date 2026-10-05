@@ -1,0 +1,31 @@
+[  0%] Building C object src/doom/CMakeFiles/doom.dir/cr_game.c.obj
+[ 13%] Built target textscreen
+[ 17%] Built target opl
+[ 20%] Built target pcsound
+[ 20%] Building C object src/doom/CMakeFiles/doom.dir/d_main.c.obj
+[ 20%] Building C object src/doom/CMakeFiles/doom.dir/g_game.c.obj
+[ 20%] Building C object src/doom/CMakeFiles/doom.dir/cr_input.c.obj
+[ 20%] Building C object src/doom/CMakeFiles/doom.dir/m_crispy.c.obj
+[ 20%] Building C object src/doom/CMakeFiles/doom.dir/hu_stuff.c.obj
+[ 20%] Building C object src/doom/CMakeFiles/doom.dir/m_menu.c.obj
+[ 24%] Linking C static library libdoom.a
+[ 62%] Built target doom
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/i_input.c.obj
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/i_video.c.obj
+[ 62%] Building C object src/CMakeFiles/crispy-doom.dir/v_video.c.obj
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c: In function 'V_DrawScaledBlock':
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c:820:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  820 |     const int rx = x << crispy->hires;
+      |     ^~~~~
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c:848:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  848 |     const int dw = dx1 - dx0;
+      |     ^~~~~
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c:856:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  856 |     const int xoff = dx0 - rx;
+      |     ^~~~~
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c: In function 'V_DrawFullscreenRawOrPatch':
+C:\Users\victor.braga\crysis-crispy-doom\src\v_video.c:962:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  962 |     int size = W_LumpLength(index);
+      |     ^~~
+[ 62%] Linking C executable crispy-doom.exe
+[100%] Built target crispy-doom

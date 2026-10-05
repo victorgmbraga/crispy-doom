@@ -43,6 +43,7 @@
 #include "s_musinfo.h" // [crispy] S_ParseMusInfo()
 
 #include "doomstat.h"
+#include "cr_game.h" // [crysis] Level lifetime follows zone allocations.
 
 #include "p_extnodes.h" // [crispy] support extended node formats
 
@@ -1102,6 +1103,12 @@ P_SetupLevel
     }
     musinfo.from_savegame = false;
 
+    // [crysis] Invalidate level state before any actor memory is released.
+    if (CR_IsActive())
+    {
+        CR_LevelEnd();
+    }
+
     Z_FreeTags (PU_LEVEL, PU_PURGELEVEL-1);
 
     // UNUSED W_Profile ();
@@ -1243,6 +1250,12 @@ P_SetupLevel
 	R_PrecacheLevel ();
 
     //printf ("free memory: 0x%x\n", Z_FreeMemory());
+
+    // [crysis] Geometry, actors, specials and precache are now available.
+    if (CR_IsActive())
+    {
+        CR_LevelStart();
+    }
 
 }
 

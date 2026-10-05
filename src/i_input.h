@@ -43,6 +43,8 @@ void I_BindStrifeInputVariables(void); // [crispy]
 void I_BindInputVariables(void);
 void I_ReadMouse(void);
 void I_ReadMouseUncapped(void); // [crispy]
+// Discard cached buttons and pending uncapped motion at an input boundary.
+void I_ClearMouseState(void);
 
 // I_StartTextInput begins text input, activating the on-screen keyboard
 // (if one is used). The caller indicates that any entered text will be

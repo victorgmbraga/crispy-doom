@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-10-05T13:56:21.3530327-03:00",
+  "method": "gdb-read-only-final-demo-snapshot",
+  "executable_sha256": "f486b90831b74f5622ebd2280c57c635f027f41dbdf7a1284d10dd5d9eaf3edb",
+  "demo_sha256": "7200bae8be45a224666fd7173a0c0e41aabde372b3182ca49975e1dc7b2cf5ce",
+  "identical_within_run": true,
+  "limitations": [
+    "Snapshot de uma demo controlada; nao substitui playtest interativo.",
+    "Nao testa menu/restart/transicao de mapa nem entrada teclado/mouse."
+  ],
+  "results": [
+    {
+      "case": "vanilla",
+      "passed": true,
+      "completed": true,
+      "exit_code": 0,
+      "snapshot": "SNAPSHOT map=1 gametic=175 leveltime=170 x=8718787 y=-12575414 z=-2097152 angle=1342177280 health=100 mobjhealth=100 bullets=46 rng=34 paused=0",
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\snapshot\\vanilla\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\snapshot\\vanilla\\stderr.log"
+    },
+    {
+      "case": "crysis",
+      "passed": true,
+      "completed": true,
+      "exit_code": 0,
+      "snapshot": "SNAPSHOT map=1 gametic=175 leveltime=170 x=8718787 y=-12575414 z=-2097152 angle=1342177280 health=100 mobjhealth=100 bullets=46 rng=34 paused=0",
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\snapshot\\crysis\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\snapshot\\crysis\\stderr.log"
+    },
+    {
+      "case": "crysis-repeated",
+      "passed": true,
+      "completed": true,
+      "exit_code": 0,
+      "snapshot": "SNAPSHOT map=1 gametic=175 leveltime=170 x=8718787 y=-12575414 z=-2097152 angle=1342177280 health=100 mobjhealth=100 bullets=46 rng=34 paused=0",
+      "stdout": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\snapshot\\crysis-repeated\\stdout.log",
+      "stderr": "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\snapshot\\crysis-repeated\\stderr.log"
+    }
+  ]
+}
