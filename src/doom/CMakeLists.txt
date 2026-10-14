@@ -8,6 +8,7 @@ add_library(doom STATIC
             cr_nanosuit.c   cr_nanosuit.h
             cr_objective.c  cr_objective.h
             cr_player.c     cr_player.h
+            cr_render.c     cr_render.h
             cr_sound.c      cr_sound.h
             cr_weapon.c     cr_weapon.h
                             cr_defs.h

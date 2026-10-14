@@ -32,6 +32,7 @@
 #include "cr_game.h"
 #include "cr_nanosuit.h"
 #include "cr_player.h"
+#include "cr_render.h"
 #include "cr_sound.h"
 #include "cr_weapon.h"
 #include "crispy.h"
@@ -920,6 +921,9 @@ void CR_WeaponTick(player_t *player)
     {
         return;
     }
+
+    // [crysis] ADS/scope may change the projection this tic.
+    CR_RenderUpdate(player);
 
     weapon = &state->weapon;
     id = CR_WeaponIdForPlayer(player);

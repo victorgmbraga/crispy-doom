@@ -32,6 +32,7 @@
 #include "cr_nanosuit.h"
 #include "cr_objective.h"
 #include "cr_player.h"
+#include "cr_render.h"
 #include "cr_weapon.h"
 #include "crispy.h"
 #include "r_main.h"
@@ -177,6 +178,30 @@ void CR_HUDOverlayDraw(void)
         snprintf(buffer, sizeof(buffer), "OBJECTIVE: %s", objective->title);
         width = CR_HUDTextWidth(buffer);
         CR_HUDText(ORIGWIDTH - 8 - width, 4, buffer, cr[CR_GOLD]);
+    }
+
+    // Scope overlay: black frame around a clear center after the world render.
+    if (CR_RenderScopeActive(player))
+    {
+        const int shift = crispy->hires;
+        int size = 150 << shift;
+        int cx = SCREENWIDTH / 2;
+        int cy = viewheight / 2;
+        int half;
+
+        if (size > viewheight)
+        {
+            size = viewheight;
+        }
+
+        half = size / 2;
+
+        V_DrawFilledBox(0, 0, SCREENWIDTH, cy - half, 0);
+        V_DrawFilledBox(0, cy + half, SCREENWIDTH,
+                        SCREENHEIGHT - (cy + half), 0);
+        V_DrawFilledBox(0, cy - half, cx - half, size, 0);
+        V_DrawFilledBox(cx + half, cy - half, SCREENWIDTH - (cx + half),
+                        size, 0);
     }
 
     if (!CR_WeaponOverlayActive(player))

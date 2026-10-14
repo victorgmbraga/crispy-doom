@@ -40,6 +40,9 @@
 #include "st_stuff.h" // [crispy] ST_refreshBackground()
 #include "a11y.h" // [crispy] A11Y
 
+#include "cr_game.h" // [crysis]
+#include "cr_render.h"
+
 
 
 
@@ -602,6 +605,13 @@ void R_InitTextureMapping (void)
     int			x;
     int			t;
     fixed_t		focallength;
+    int			fieldofview = FIELDOFVIEW;
+
+    // [crysis] ADS/scope adjust the projection field of view.
+    if (CR_IsActive())
+    {
+	fieldofview = CR_RenderFOV();
+    }
     
     // Use tangent table to generate viewangletox:
     //  viewangletox will give the next greatest x
@@ -610,7 +620,7 @@ void R_InitTextureMapping (void)
     // Calc focallength
     //  so FIELDOFVIEW angles covers SCREENWIDTH.
     focallength = FixedDiv (centerxfrac_nonwide,
-			    finetangent[FINEANGLES/4+FIELDOFVIEW/2] );
+			    finetangent[FINEANGLES/4+fieldofview/2] );
 	
     for (i=0 ; i<FINEANGLES/2 ; i++)
     {
