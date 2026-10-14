@@ -104,9 +104,15 @@ void CR_LevelStart(void)
     CR_PlayerClearCommands();
     for (i = 0; i < MAXPLAYERS; ++i)
     {
-        if (playeringame[i] && !cr_players[i].initialized)
+        if (playeringame[i])
         {
-            CR_PlayerReset(&players[i]);
+            if (!cr_players[i].initialized)
+            {
+                CR_PlayerReset(&players[i]);
+            }
+
+            // Timers tied to leveltime never survive a level transition.
+            CR_PlayerLevelStart(&players[i]);
         }
     }
     cr_level_started = true;

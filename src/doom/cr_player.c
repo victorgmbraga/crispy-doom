@@ -86,6 +86,54 @@ void CR_PlayerNoteDamage(player_t *player)
     state->health_regen_accumulator = 0;
 }
 
+void CR_PlayerLevelStart(player_t *player)
+{
+    cr_player_state_t *state;
+
+    if (!CR_IsActive())
+    {
+        return;
+    }
+
+    state = CR_PlayerState(player);
+
+    if (state == NULL)
+    {
+        return;
+    }
+
+    state->last_damage_tic = 0;
+    state->health_regen_accumulator = 0;
+}
+
+// Player is live; recover health after the delay since the last hit.
+static void PlayerRegenTick(player_t *player, cr_player_state_t *state)
+{
+    if (player->health <= 0 || player->health >= CR_HEALTH_MAX)
+    {
+        state->health_regen_accumulator = 0;
+        return;
+    }
+
+    if (leveltime - state->last_damage_tic < CR_HEALTH_REGEN_DELAY_TICS)
+    {
+        state->health_regen_accumulator = 0;
+        return;
+    }
+
+    if (++state->health_regen_accumulator >= CR_HEALTH_REGEN_STEP_TICS)
+    {
+        state->health_regen_accumulator = 0;
+        player->health++;
+
+        // Keep player and mobj health in agreement.
+        if (player->mo != NULL)
+        {
+            player->mo->health = player->health;
+        }
+    }
+}
+
 void CR_PlayerClearCommands(void)
 {
     int i;
@@ -144,4 +192,7 @@ void CR_PlayerThink(player_t *player)
                (unsigned int) state->buttons_released,
                state->sprinting, state->ads);
     }
+
+    // [crysis] Health regeneration (Phase 3). One owner, live players only.
+    PlayerRegenTick(player, state);
 }

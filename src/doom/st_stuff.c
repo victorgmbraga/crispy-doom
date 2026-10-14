@@ -64,6 +64,9 @@
 
 #include "v_trans.h" // [crispy] colored cheat messages
 
+#include "cr_game.h" // [crysis]
+#include "cr_hud.h"
+
 extern int screenblocks; // [crispy] for the Crispy HUD
 extern boolean inhelpscreens; // [crispy] prevent palette changes
 
@@ -1977,6 +1980,12 @@ void ST_Drawer (boolean fullscreen, boolean refresh)
     else ST_diffDraw();
 
     dp_translucent = false;
+
+    // [crysis] Crysis HUD replaces the vanilla status display visually.
+    if (CR_IsActive())
+    {
+        CR_HUDDraw(fullscreen);
+    }
 }
 
 typedef void (*load_callback_t)(const char *lumpname, patch_t **variable);

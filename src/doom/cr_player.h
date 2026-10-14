@@ -27,11 +27,19 @@ typedef struct
 
 extern cr_player_state_t cr_players[MAXPLAYERS];
 
+// Health regeneration balance (Phase 3).
+#define CR_HEALTH_MAX               100
+#define CR_HEALTH_REGEN_DELAY_TICS  (5 * TICRATE)
+#define CR_HEALTH_REGEN_STEP_TICS   4
+
 cr_player_state_t *CR_PlayerState(player_t *player);
 const cr_player_state_t *CR_PlayerStateConst(const player_t *player);
 void CR_PlayerReset(player_t *player);
 void CR_PlayerClearCommands(void);
 void CR_PlayerThink(player_t *player);
+
+// Transient timers that never survive a level transition.
+void CR_PlayerLevelStart(player_t *player);
 
 // Called once per damaging hit on a live player.
 void CR_PlayerNoteDamage(player_t *player);
