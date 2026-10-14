@@ -87,6 +87,15 @@ void S_StartSoundAtVolume(void *origin, int sound_id, int volume)
     (void) volume;
 }
 
+/* Perception boundary: noise dispatch is inert in this fixture. */
+void CR_AIDispatchNoise(const cr_noise_event_t *event) { (void) event; }
+
+/* Render module boundary: FOV requests are inert in this fixture. */
+void CR_RenderUpdate(const player_t *player) { (void) player; }
+void CR_RenderReset(void) {}
+int CR_RenderFOV(void) { return 2048; }
+boolean CR_RenderScopeActive(const player_t *player) { (void) player; return false; }
+
 #define CHECK(test) do { ++assertions; if (!(test)) { \
     fprintf(stderr, "FAIL line %d: %s\n", __LINE__, #test); exit(1); \
 } } while (0)

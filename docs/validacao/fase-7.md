@@ -5,7 +5,7 @@ Base: `eb42e3c7` + Fase 5 (implementada junto com a Fase 6).
 
 ## Arquivos
 
-- `src/doom/info.[ch]`: tipo `MT_CR_KPA` (DoomEd 3001) e estados
+- `src/doom/info.[ch]`: tipo `MT_CR_KPA` (DoomEd 30001) e estados
   `S_CR_KPA_*` na faixa reservada 3900–3915 (`S_CR_STATES_*`).
 - `src/doom/deh_ptr.c`: a faixa reservada sobrevive a `DEH_PointerInit`.
 - `src/doom/deh_thing.c`: drop de clip como o zombieman.
