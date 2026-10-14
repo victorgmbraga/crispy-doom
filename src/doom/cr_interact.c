@@ -67,6 +67,31 @@ static boolean TriggerObjective(player_t *player, int id)
     return true;
 }
 
+// Vanilla exit specials are allowed only after the main objectives.
+static boolean ExitSpecial(int special)
+{
+    return special == 11 || special == 51 || special == 52;
+}
+
+// Returns true when the caller must stop (blocked); false lets the vanilla
+// dispatch proceed (allowed exit or unrelated special).
+static boolean GateVanillaExit(player_t *player, int special)
+{
+    if (!ExitSpecial(special))
+    {
+        return false;
+    }
+
+    if (!CR_ObjectiveCanExit())
+    {
+        player->message = "MAIN OBJECTIVES INCOMPLETE";
+        return true;
+    }
+
+    CR_ObjectiveComplete(CR_OBJECTIVE_EXIT);
+    return false;
+}
+
 boolean CR_CrossSpecialLine(line_t *line, mobj_t *thing)
 {
     if (!CR_IsActive() || line == NULL || thing == NULL
@@ -77,12 +102,14 @@ boolean CR_CrossSpecialLine(line_t *line, mobj_t *thing)
 
     if (line->special == CR_SPECIAL_OBJECTIVE_TRIGGER)
     {
+        // Kept for retriggering: the table makes repeats idempotent, so the
+        // second crossing can complete what the first activated.
         TriggerObjective(thing->player, line->tag);
-        line->special = 0; // One-shot trigger.
         return true;
     }
 
-    return false;
+    // Walkover exits stay gated by the objectives.
+    return GateVanillaExit(thing->player, line->special);
 }
 
 boolean CR_UseSpecialLine(mobj_t *thing, line_t *line)
@@ -100,16 +127,21 @@ boolean CR_UseSpecialLine(mobj_t *thing, line_t *line)
     switch (line->special)
     {
         case CR_SPECIAL_OBJECTIVE_USE:
+            // Kept for reuse: ACTIVE then COMPLETE; repeats are no-ops.
             TriggerObjective(player, line->tag);
-            line->special = 0;
             return true;
 
         case CR_SPECIAL_JAMMER:
-            CR_ObjectiveComplete(CR_OBJECTIVE_JAMMER);
-            player->message = "JAMMER DISABLED";
-            S_StartSound(NULL, sfx_swtchn);
-            // Switch feedback, when the linedef maps to a switch pair.
-            P_ChangeSwitchTexture(line, 0);
+            if (CR_ObjectiveState(CR_OBJECTIVE_JAMMER) != CR_OBJ_COMPLETE)
+            {
+                CR_ObjectiveComplete(CR_OBJECTIVE_JAMMER);
+                player->message = "JAMMER DISABLED";
+                S_StartSound(NULL, sfx_swtchn);
+                // Switch feedback, when the linedef maps to a switch pair.
+                P_ChangeSwitchTexture(line, 0);
+            }
+
+            // One-shot by design; repeated use must not duplicate effects.
             line->special = 0;
             return true;
 
@@ -129,6 +161,7 @@ boolean CR_UseSpecialLine(mobj_t *thing, line_t *line)
             return true;
 
         default:
-            return false;
+            // Vanilla exit switches stay gated by the objectives.
+            return GateVanillaExit(player, line->special);
     }
 }

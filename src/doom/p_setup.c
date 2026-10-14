@@ -44,6 +44,7 @@
 
 #include "doomstat.h"
 #include "cr_game.h" // [crysis] Level lifetime follows zone allocations.
+#include "cr_interact.h"
 
 #include "p_extnodes.h" // [crispy] support extended node formats
 
@@ -581,7 +582,10 @@ void P_LoadLineDefs (int lump)
 	ld->flags = (unsigned short)SHORT(mld->flags); // [crispy] extended nodes
 	ld->special = SHORT(mld->special);
 	// [crispy] warn about unknown linedef types
-	if ((unsigned short) ld->special > 141 && ld->special != 271 && ld->special != 272)
+	if ((unsigned short) ld->special > 141 && ld->special != 271 && ld->special != 272
+	    // [crysis] project specials are known to the Crysis dispatch
+	    && (ld->special < CR_SPECIAL_OBJECTIVE_TRIGGER
+	        || ld->special > CR_SPECIAL_JAMMER))
 	{
 	    fprintf(stderr, "P_LoadLineDefs: Unknown special %d at line %d.\n", ld->special, i);
 	    warn++;
@@ -610,6 +614,10 @@ void P_LoadLineDefs (int lump)
 		case 51:	// s1 Secret exit
 		case 52:	// w1 Exit level
 		case 124:	// w1 Secret exit
+		case 300:	// [crysis] project specials need no tag
+		case 301:
+		case 302:
+		case 303:
 		    break;
 		default:
 		    fprintf(stderr, "P_LoadLineDefs: Special linedef %d without tag.\n", i);

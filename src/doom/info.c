@@ -4999,9 +4999,9 @@ mobjinfo_t mobjinfo[NUMMOBJTYPES] = {
 	S_NULL		// raisestate
     },
 
-    // [crysis] KPA soldier (Phase 7). DoomEd 3001.
+    // [crysis] KPA soldier (Phase 7). DoomEd 30001.
     [MT_CR_KPA] = {
-	3001,			// doomednum
+	30001,			// doomednum
 	S_CR_KPA_STND,		// spawnstate
 	100,			// spawnhealth
 	S_CR_KPA_RUN1,		// seestate
