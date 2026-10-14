@@ -1,0 +1,47 @@
+Breakpoint 1 at 0x1400720f0: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\cr_weapon.c, line 667.
+Breakpoint 2 at 0x140072840: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\cr_weapon.c, line 913.
+Breakpoint 3 at 0x140028e50: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\d_main.c, line 144.
+Breakpoint 4 at 0x1400350e0: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\g_game.c, line 1507.
+[New Thread 10980.0x7838]
+[New Thread 10980.0x9ec]
+[New Thread 10980.0x185c]
+[New Thread 10980.0x7258]
+F4_VANILLA cr_fires=0 cr_ticks=0 ammo_before=50 ammo_after=47
+[Thread 10980.0x7258 exited with code 0]
+                           Crispy Doom 7.1.0
+Z_Init: Init zone memory allocation daemon. 
+zone memory: 0000000002856040, 64 MiB allocated for zone
+V_Init: allocate screens.
+M_LoadDefaults: Load system defaults.
+	default file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase4/vanilla-weapon-isolated/default.cfg
+saving config in C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase4/vanilla-weapon-isolated/default.cfg
+        extra configuration file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase4/vanilla-weapon-isolated/crispy-doom.cfg
+W_Init: Init WADfiles.
+ adding C:/Users/victor.braga/crysis-crispy-doom/content/iwad/freedoom2.wad
+  loaded 0 DEHACKED lumps from PWAD files.
+Save directory changed to C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase4/vanilla-weapon-isolated\.
+===========================================================================
+                           Freedoom: Phase 2
+===========================================================================
+ Crispy Doom is free software, covered by the GNU General Public
+ License.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. You are welcome to change and distribute
+ copies under certain conditions. See the source for more information.
+===========================================================================
+I_Init: Setting up machine state.
+NET_Init: Init network subsystem.
+M_Init: Init miscellaneous info.
+R_Init: Init DOOM refresh daemon - ................................................
+P_Init: Init Playloop state.
+S_Init: Setting up sound.
+D_CheckNetGame: Checking network game status.
+startskill 2  deathmatch: 0  startmap: 1  startepisode: 1
+player 1 of 1 (1 nodes)
+Emulating the behavior of the 'Doom 1.9' executable.
+HU_Init: Setting up heads up display.
+ST_Init: Init status bar.
+CreateUpscaledTexture: Limited texture size to 0x0 (max 16000000 pixels, max texture size 0x0)
+[Thread 10980.0x185c exited with code 0]
+[Thread 10980.0x9ec exited with code 0]
+[Thread 10980.0x7838 exited with code 0]
+[Inferior 1 (process 10980) exited normally]

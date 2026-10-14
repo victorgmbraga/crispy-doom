@@ -1,0 +1,52 @@
+Breakpoint 1 at 0x140071290: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\cr_player.c, line 157.
+[New Thread 30480.0xa288]
+[New Thread 30480.0x673c]
+[New Thread 30480.0x8f2c]
+[New Thread 30480.0x3f74]
+F6_PERCEPTION state=4 suspicion=200 health=100 energy=25 registered=1
+[Thread 30480.0x3f74 exited with code 0]
+                           Crispy Doom 7.1.0
+[CRYSIS] mode enabled
+Z_Init: Init zone memory allocation daemon. 
+zone memory: 00000000027b7040, 64 MiB allocated for zone
+V_Init: allocate screens.
+M_LoadDefaults: Load system defaults.
+	default file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase6/perception-combat/default.cfg
+saving config in C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase6/perception-combat/default.cfg
+        extra configuration file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase6/perception-combat/crispy-doom.cfg
+W_Init: Init WADfiles.
+ adding C:/Users/victor.braga/crysis-crispy-doom/content/iwad/freedoom2.wad
+  loaded 0 DEHACKED lumps from PWAD files.
+Save directory changed to C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase6/perception-combat\.
+===========================================================================
+                           Freedoom: Phase 2
+===========================================================================
+ Crispy Doom is free software, covered by the GNU General Public
+ License.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. You are welcome to change and distribute
+ copies under certain conditions. See the source for more information.
+===========================================================================
+I_Init: Setting up machine state.
+M_Init: Init miscellaneous info.
+R_Init: Init DOOM refresh daemon - ................................................
+P_Init: Init Playloop state.
+S_Init: Setting up sound.
+D_CheckNetGame: Checking network game status.
+startskill 2  deathmatch: 0  startmap: 1  startepisode: 1
+player 1 of 1 (1 nodes)
+Emulating the behavior of the 'Doom 1.9' executable.
+HU_Init: Setting up heads up display.
+ST_Init: Init status bar.
+CreateUpscaledTexture: Limited texture size to 0x0 (max 16000000 pixels, max texture size 0x0)
+[CRYSIS] ai state=SUSPICIOUS suspicion=27 tic=13
+[CRYSIS] ai state=ALERT suspicion=111 tic=43
+[CRYSIS] ai state=COMBAT suspicion=167 tic=63
+[CRYSIS] noise type=1 x=-3407872 y=-12582912 radius=58982400 tic=83
+[CRYSIS] noise type=1 x=-3407872 y=-12582912 radius=58982400 tic=128
+[CRYSIS] noise type=1 x=-3407872 y=-12582912 radius=58982400 tic=173
+[CRYSIS] noise type=1 x=-3407872 y=-12582912 radius=58982400 tic=218
+[CRYSIS] noise type=1 x=-3407872 y=-12582912 radius=58982400 tic=263
+[Thread 30480.0x673c exited with code 0]
+[Thread 30480.0xa288 exited with code 0]
+[Thread 30480.0x8f2c exited with code 0]
+[Inferior 1 (process 30480) exited normally]

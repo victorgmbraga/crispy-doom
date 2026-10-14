@@ -1,0 +1,55 @@
+﻿{
+    "generated_at":  "2026-10-14T18:54:58.9672871-03:00",
+    "mode":  "All",
+    "executable_sha256":  "c4872b76ba3850a42d583566db5a9ef1000a7ca141de4bf96587fa9bf3adef7c",
+    "limitations":  [
+                        "Regeneracao e verificada por estado; o HUD e verificado pelo desenho executado e por captura, nao pixel a pixel.",
+                        "SDL dummy e -nosound; imagem perceptivel nao avaliada.",
+                        "A captura prova que o desenho rodou sem crash, nao a legibilidade visual exata."
+                    ],
+    "results":  [
+                    {
+                        "case":  "logic-compile",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "Real cr_player.c regeneration with engine boundary stubs; warnings are errors.",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase3\\logic-compile\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase3\\logic-compile\\stderr.log"
+                    },
+                    {
+                        "case":  "logic",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  {
+                                        "assertions":  15
+                                    },
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase3\\logic\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase3\\logic\\stderr.log"
+                    },
+                    {
+                        "case":  "engine-regen-hud",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  {
+                                        "regen":  "F3_REGEN after195=65 mobj=65",
+                                        "pause":  "F3_PAUSE health_before=67 frozen=1",
+                                        "hud":  "F3_HUD draws=296 energy=100 mode=0",
+                                        "screenshot":  "DOOM0000.pcx 267214"
+                                    },
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase3\\engine-regen-hud\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase3\\engine-regen-hud\\stderr.log"
+                    },
+                    {
+                        "case":  "vanilla-hud-isolated",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "F3_VANILLA ticks=60 hud_draws=0 crysis_thinks=0",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase3\\vanilla-hud-isolated\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase3\\vanilla-hud-isolated\\stderr.log"
+                    }
+                ]
+}

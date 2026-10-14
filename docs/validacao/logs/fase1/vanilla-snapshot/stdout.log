@@ -1,13 +1,13 @@
 Breakpoint 1 at 0x140001790: file C:\Users\victor.braga\crysis-crispy-doom\src\i_system.c, line 262.
-[New Thread 41372.0x73b8]
-[New Thread 41372.0x3e9c]
-[New Thread 41372.0x51ac]
-[New Thread 41372.0x371c]
+[New Thread 28928.0x7528]
+[New Thread 28928.0x3b20]
+[New Thread 28928.0x4b38]
+[New Thread 28928.0x32fc]
 SNAPSHOT map=1 gametic=175 leveltime=170 x=8718787 y=-12575414 z=-2097152 angle=1342177280 health=100 mobjhealth=100 bullets=46 rng=34 paused=0
-[Thread 41372.0x371c exited with code 0]
+[Thread 28928.0x32fc exited with code 0]
                            Crispy Doom 7.1.0
 Z_Init: Init zone memory allocation daemon. 
-zone memory: 0000000002779040, 64 MiB allocated for zone
+zone memory: 00000000027f9040, 64 MiB allocated for zone
 V_Init: allocate screens.
 M_LoadDefaults: Load system defaults.
 	default file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase1/vanilla-snapshot/default.cfg
@@ -41,7 +41,7 @@ Emulating the behavior of the 'Doom 1.9' executable.
 HU_Init: Setting up heads up display.
 ST_Init: Init status bar.
 CreateUpscaledTexture: Limited texture size to 0x0 (max 16000000 pixels, max texture size 0x0)
-[Thread 41372.0x73b8 exited with code 0]
-[Thread 41372.0x51ac exited with code 0]
-[Thread 41372.0x3e9c exited with code 0]
-[Inferior 1 (process 41372) exited normally]
+[Thread 28928.0x3b20 exited with code 0]
+[Thread 28928.0x4b38 exited with code 0]
+[Thread 28928.0x7528 exited with code 0]
+[Inferior 1 (process 28928) exited normally]

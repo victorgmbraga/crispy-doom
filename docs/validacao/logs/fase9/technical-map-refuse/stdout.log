@@ -1,0 +1,46 @@
+Breakpoint 1 at 0x1400350e0: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\g_game.c, line 1507.
+[New Thread 33656.0x66f0]
+[New Thread 33656.0x3e00]
+[New Thread 33656.0x7664]
+[New Thread 33656.0x4e10]
+$1 = 1
+F9_REFUSE map=1 o4=0 state=0
+[Thread 33656.0x4e10 exited with code 0]
+                           Crispy Doom 7.1.0
+[CRYSIS] mode enabled
+Z_Init: Init zone memory allocation daemon. 
+zone memory: 000000000277f040, 64 MiB allocated for zone
+V_Init: allocate screens.
+M_LoadDefaults: Load system defaults.
+	default file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase9/technical-map-refuse/default.cfg
+saving config in C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase9/technical-map-refuse/default.cfg
+        extra configuration file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase9/technical-map-refuse/crispy-doom.cfg
+W_Init: Init WADfiles.
+ adding C:/Users/victor.braga/crysis-crispy-doom/content/iwad/freedoom2.wad
+ merging C:/Users/victor.braga/crysis-crispy-doom/content/pwad/crysis-technical.wad !
+  loaded 0 DEHACKED lumps from PWAD files.
+Save directory changed to C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase9/technical-map-refuse\.
+===========================================================================
+                           Freedoom: Phase 2
+===========================================================================
+ Crispy Doom is free software, covered by the GNU General Public
+ License.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. You are welcome to change and distribute
+ copies under certain conditions. See the source for more information.
+===========================================================================
+I_Init: Setting up machine state.
+M_Init: Init miscellaneous info.
+R_Init: Init DOOM refresh daemon - ................................................
+P_Init: Init Playloop state.
+S_Init: Setting up sound.
+D_CheckNetGame: Checking network game status.
+startskill 2  deathmatch: 0  startmap: 1  startepisode: 1
+player 1 of 1 (1 nodes)
+Emulating the behavior of the 'Doom 1.9' executable.
+HU_Init: Setting up heads up display.
+ST_Init: Init status bar.
+CreateUpscaledTexture: Limited texture size to 0x0 (max 16000000 pixels, max texture size 0x0)
+[Thread 33656.0x7664 exited with code 0]
+[Thread 33656.0x3e00 exited with code 0]
+[Thread 33656.0x66f0 exited with code 0]
+[Inferior 1 (process 33656) exited normally]

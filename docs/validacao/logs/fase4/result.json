@@ -1,0 +1,50 @@
+﻿{
+    "generated_at":  "2026-10-14T18:59:26.7887767-03:00",
+    "mode":  "All",
+    "executable_sha256":  "c4872b76ba3850a42d583566db5a9ef1000a7ca141de4bf96587fa9bf3adef7c",
+    "limitations":  [
+                        "MuniÃ§Ã£o, cadÃªncia e reload sao verificados por estado e contagem de P_LineAttack.",
+                        "A precisao do spread nao e medida em alvos reais neste harness.",
+                        "SDL dummy e -nosound; audio nao avaliado."
+                    ],
+    "results":  [
+                    {
+                        "case":  "logic-compile",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "Real cr_weapon.c with engine boundary stubs; warnings are errors.",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase4\\logic-compile\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase4\\logic-compile\\stderr.log"
+                    },
+                    {
+                        "case":  "logic",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  {
+                                        "assertions":  75
+                                    },
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase4\\logic\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase4\\logic\\stderr.log"
+                    },
+                    {
+                        "case":  "engine-weapon",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "F4_ENGINE shots_mag=28 attacks=2 vanilla_before=50 vanilla_after=50 reload_mag=30 reload_reserve=103 reloading=0",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase4\\engine-weapon\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase4\\engine-weapon\\stderr.log"
+                    },
+                    {
+                        "case":  "vanilla-weapon-isolated",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "F4_VANILLA cr_fires=0 cr_ticks=0 ammo_before=50 ammo_after=47",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase4\\vanilla-weapon-isolated\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase4\\vanilla-weapon-isolated\\stderr.log"
+                    }
+                ]
+}

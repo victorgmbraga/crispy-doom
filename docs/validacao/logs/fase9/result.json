@@ -1,0 +1,34 @@
+﻿{
+    "generated_at":  "2026-10-14T19:00:12.5946434-03:00",
+    "pwad_sha256":  "68bf883b1944f211098f5f8c6a64153d78597e3dd50f3daf01697a0a46fa4c6f",
+    "executable_sha256":  "c4872b76ba3850a42d583566db5a9ef1000a7ca141de4bf96587fa9bf3adef7c",
+    "limitations":  [
+                        "Mapa tecnico derivado do MAP01 do Freedoom (geometria intacta); nao e o slice Contact da F9.",
+                        "Objetivos concluidos por chamadas P_UseSpecialLine; o percurso jogavel completo depende de playtest.",
+                        "Teste headless (SDL dummy, -nosound)."
+                    ],
+    "results":  [
+                    {
+                        "case":  "technical-map",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  {
+                                        "screenshot":  "captured",
+                                        "map":  "F9_MAP kpa=3 o1=2 o2=2 o3=2 canexit=1 exitline_special=302",
+                                        "exit":  "F9_EXIT map=2 o4=2 state=0"
+                                    },
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase9\\technical-map\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase9\\technical-map\\stderr.log"
+                    },
+                    {
+                        "case":  "technical-map-refuse",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "F9_REFUSE map=1 o4=0 state=0",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase9\\technical-map-refuse\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase9\\technical-map-refuse\\stderr.log"
+                    }
+                ]
+}

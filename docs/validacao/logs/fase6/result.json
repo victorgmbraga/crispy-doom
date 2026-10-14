@@ -1,0 +1,75 @@
+﻿{
+    "generated_at":  "2026-10-14T18:57:55.3068405-03:00",
+    "mode":  "All",
+    "executable_sha256":  "c4872b76ba3850a42d583566db5a9ef1000a7ca141de4bf96587fa9bf3adef7c",
+    "limitations":  [
+                        "Atores sao criados por GDB porque o mapa tecnico ainda nao existe (F2.8/F9).",
+                        "Quebra de LOS e busca nao foram exercitadas por falta de geometria dedicada.",
+                        "Teste headless (SDL dummy, -nosound); sem playtest humano."
+                    ],
+    "results":  [
+                    {
+                        "case":  "perception-combat",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "F6_PERCEPTION state=4 suspicion=200 health=100 energy=25 registered=1",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase6\\perception-combat\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase6\\perception-combat\\stderr.log"
+                    },
+                    {
+                        "case":  "noise-unsuppressed",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "F6_NOISE before=0 after=2 suspicion=0 noises=1",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase6\\noise-unsuppressed\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase6\\noise-unsuppressed\\stderr.log"
+                    },
+                    {
+                        "case":  "noise-suppressed",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "F6_NOISE before=0 after=0 suspicion=0 noises=1",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase6\\noise-suppressed\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase6\\noise-suppressed\\stderr.log"
+                    },
+                    {
+                        "case":  "cloak-delays-detection",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "F6_CLOAK state=0 suspicion=19 health=100 energy=76",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase6\\cloak-delays-detection\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase6\\cloak-delays-detection\\stderr.log"
+                    },
+                    {
+                        "case":  "kill-and-remove",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "F6_REMOVE registered=0 alive=0",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase6\\kill-and-remove\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase6\\kill-and-remove\\stderr.log"
+                    },
+                    {
+                        "case":  "loss-of-contact",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "F6_LOSS combat_seen=1 state=3 suspicion=122",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase6\\loss-of-contact\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase6\\loss-of-contact\\stderr.log"
+                    },
+                    {
+                        "case":  "vanilla-ai-isolated",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "F6_VANILLA ticks=60 spawns=0 thinks=0 registered=0",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase6\\vanilla-ai-isolated\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase6\\vanilla-ai-isolated\\stderr.log"
+                    }
+                ]
+}

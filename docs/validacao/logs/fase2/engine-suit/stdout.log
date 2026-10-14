@@ -1,0 +1,54 @@
+Breakpoint 1 at 0x140071290: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\cr_player.c, line 157.
+[New Thread 2576.0x7fc8]
+[New Thread 2576.0x7b04]
+[New Thread 2576.0x942c]
+[New Thread 2576.0x7c54]
+F2_CLOAK start=100 after15=95 mode=3
+F2_FIRE mode=0 energy=0 visible=1
+F2_SPEED start=100 after15=95
+F2_RECHARGE before=50 after=60 block=89 leveltime=99
+F2_JUMP normal=393216 strength=622592 cost=10
+F2_ENGINE cloak_broken=1
+[Thread 2576.0x7c54 exited with code 0]
+                           Crispy Doom 7.1.0
+[CRYSIS] mode enabled
+Z_Init: Init zone memory allocation daemon. 
+zone memory: 00000000027a9040, 64 MiB allocated for zone
+V_Init: allocate screens.
+M_LoadDefaults: Load system defaults.
+	default file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase2/engine-suit/default.cfg
+saving config in C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase2/engine-suit/default.cfg
+        extra configuration file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase2/engine-suit/crispy-doom.cfg
+W_Init: Init WADfiles.
+ adding C:/Users/victor.braga/crysis-crispy-doom/content/iwad/freedoom2.wad
+  loaded 0 DEHACKED lumps from PWAD files.
+Save directory changed to C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase2/engine-suit\.
+===========================================================================
+                           Freedoom: Phase 2
+===========================================================================
+ Crispy Doom is free software, covered by the GNU General Public
+ License.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. You are welcome to change and distribute
+ copies under certain conditions. See the source for more information.
+===========================================================================
+I_Init: Setting up machine state.
+M_Init: Init miscellaneous info.
+R_Init: Init DOOM refresh daemon - ................................................
+P_Init: Init Playloop state.
+S_Init: Setting up sound.
+D_CheckNetGame: Checking network game status.
+startskill 2  deathmatch: 0  startmap: 1  startepisode: 1
+player 1 of 1 (1 nodes)
+Emulating the behavior of the 'Doom 1.9' executable.
+HU_Init: Setting up heads up display.
+ST_Init: Init status bar.
+CreateUpscaledTexture: Limited texture size to 0x0 (max 16000000 pixels, max texture size 0x0)
+[CRYSIS] noise type=1 x=-6881086 y=-12580861 radius=65536000 tic=24
+[CRYSIS] cloak broken by weapon fire
+[CRYSIS] shot weapon=SOCOM mag=11 reserve=48 tic=24
+[CRYSIS] input player=0 tic=34 down=01 pressed=01 released=00 sprint=1 ads=0
+[CRYSIS] input player=0 tic=49 down=00 pressed=00 released=01 sprint=0 ads=0
+[Thread 2576.0x7fc8 exited with code 0]
+[Thread 2576.0x7b04 exited with code 0]
+[Thread 2576.0x942c exited with code 0]
+[Inferior 1 (process 2576) exited normally]

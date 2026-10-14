@@ -1,0 +1,53 @@
+﻿{
+    "generated_at":  "2026-10-14T18:59:40.8269294-03:00",
+    "mode":  "All",
+    "executable_sha256":  "c4872b76ba3850a42d583566db5a9ef1000a7ca141de4bf96587fa9bf3adef7c",
+    "limitations":  [
+                        "Som do suppressor verificado apenas por volume reduzido (sem assets de audio proprios).",
+                        "FOV real nao implementado nesta fase, por decisao do plano (Etapa A do ADS).",
+                        "SDL dummy e -nosound; imagem verificada apenas por captura."
+                    ],
+    "results":  [
+                    {
+                        "case":  "logic-compile",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "Real ADS/overlay logic with engine boundary stubs; warnings are errors.",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase5\\logic-compile\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase5\\logic-compile\\stderr.log"
+                    },
+                    {
+                        "case":  "logic",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  {
+                                        "assertions":  35
+                                    },
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase5\\logic\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase5\\logic\\stderr.log"
+                    },
+                    {
+                        "case":  "engine-ads-overlay",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  {
+                                        "engine":  "F5_ENGINE overlay=1 suppressor=1 ads=1 sx=65536 sy=2097152",
+                                        "screenshot":  "DOOM0000.pcx"
+                                    },
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase5\\engine-ads-overlay\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase5\\engine-ads-overlay\\stderr.log"
+                    },
+                    {
+                        "case":  "vanilla-ads-isolated",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "F5_VANILLA ticks=40 weapon_ticks=0 overlay=0",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase5\\vanilla-ads-isolated\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase5\\vanilla-ads-isolated\\stderr.log"
+                    }
+                ]
+}

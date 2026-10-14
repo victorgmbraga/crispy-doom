@@ -3,16 +3,16 @@ Breakpoint 2 at 0x140034190: file C:\Users\victor.braga\crysis-crispy-doom\src\d
 Breakpoint 3 at 0x140034bc0: G_DoPlayDemo. (3 locations)
 Breakpoint 4 at 0x140029d10: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\d_main.c, line 706.
 Breakpoint 5 at 0x1400350e0: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\g_game.c, line 1507.
-[New Thread 21324.0x5fbc]
-[New Thread 21324.0x855c]
-[New Thread 21324.0x7540]
-[New Thread 21324.0x1438]
+[New Thread 7716.0x96bc]
+[New Thread 7716.0x2878]
+[New Thread 7716.0x8578]
+[New Thread 7716.0x61b0]
 F1_TITLE ticks=20 pages=20 demo_attempts=0 state=3 active=0 menu_opened=1
-[Thread 21324.0x1438 exited with code 0]
+[Thread 7716.0x61b0 exited with code 0]
                            Crispy Doom 7.1.0
 [CRYSIS] mode enabled
 Z_Init: Init zone memory allocation daemon. 
-zone memory: 000000000277a040, 64 MiB allocated for zone
+zone memory: 0000000002750040, 64 MiB allocated for zone
 V_Init: allocate screens.
 M_LoadDefaults: Load system defaults.
 	default file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase1/title/default.cfg
@@ -42,7 +42,7 @@ Emulating the behavior of the 'Doom 1.9' executable.
 HU_Init: Setting up heads up display.
 ST_Init: Init status bar.
 CreateUpscaledTexture: Limited texture size to 0x0 (max 16000000 pixels, max texture size 0x0)
-[Thread 21324.0x855c exited with code 0]
-[Thread 21324.0x5fbc exited with code 0]
-[Thread 21324.0x7540 exited with code 0]
-[Inferior 1 (process 21324) exited normally]
+[Thread 7716.0x8578 exited with code 0]
+[Thread 7716.0x96bc exited with code 0]
+[Thread 7716.0x2878 exited with code 0]
+[Inferior 1 (process 7716) exited normally]

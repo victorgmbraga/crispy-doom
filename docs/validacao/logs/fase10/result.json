@@ -1,0 +1,33 @@
+﻿{
+    "generated_at":  "2026-10-14T18:58:04.6381841-03:00",
+    "mode":  "All",
+    "executable_sha256":  "c4872b76ba3850a42d583566db5a9ef1000a7ca141de4bf96587fa9bf3adef7c",
+    "limitations":  [
+                        "F10 parcial: apenas FOV/scope. Performance, playtest e ajustes de conteudo seguem pendentes.",
+                        "Transicao de FOV e instantanea, como permite o plano.",
+                        "Teste headless (SDL dummy, -nosound)."
+                    ],
+    "results":  [
+                    {
+                        "case":  "ads-fov",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  {
+                                        "screenshot":  "DOOM0000.pcx",
+                                        "fov":  "F10_FOV ads=1024 scope=768 off=2048"
+                                    },
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase10\\ads-fov\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase10\\ads-fov\\stderr.log"
+                    },
+                    {
+                        "case":  "vanilla-fov-isolated",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "F10_VANILLA fov=2048",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase10\\vanilla-fov-isolated\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase10\\vanilla-fov-isolated\\stderr.log"
+                    }
+                ]
+}

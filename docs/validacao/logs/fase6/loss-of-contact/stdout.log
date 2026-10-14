@@ -1,0 +1,100 @@
+Breakpoint 1 at 0x140071290: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\cr_player.c, line 157.
+[New Thread 18712.0x603c]
+[New Thread 18712.0x8824]
+[New Thread 18712.0xec8]
+[New Thread 18712.0x8be8]
+                           Crispy Doom 7.1.0
+[CRYSIS] mode enabled
+Z_Init: Init zone memory allocation daemon. 
+zone memory: 0000000002733040, 64 MiB allocated for zone
+V_Init: allocate screens.
+M_LoadDefaults: Load system defaults.
+	default file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase6/loss-of-contact/default.cfg
+saving config in C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase6/loss-of-contact/default.cfg
+        extra configuration file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase6/loss-of-contact/crispy-doom.cfg
+W_Init: Init WADfiles.
+ adding C:/Users/victor.braga/crysis-crispy-doom/content/iwad/freedoom2.wad
+  loaded 0 DEHACKED lumps from PWAD files.
+Save directory changed to C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase6/loss-of-contact\.
+===========================================================================
+                           Freedoom: Phase 2
+===========================================================================
+ Crispy Doom is free software, covered by the GNU General Public
+ License.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. You are welcome to change and distribute
+ copies under certain conditions. See the source for more information.
+===========================================================================
+I_Init: Setting up machine state.
+M_Init: Init miscellaneous info.
+R_Init: Init DOOM refresh daemon - ................................................
+P_Init: Init Playloop state.
+S_Init: Setting up sound.
+D_CheckNetGame: Checking network game status.
+startskill 2  deathmatch: 0  startmap: 1  startepisode: 1
+player 1 of 1 (1 nodes)
+Emulating the behavior of the 'Doom 1.9' executable.
+HU_Init: Setting up heads up display.
+ST_Init: Init status bar.
+CreateUpscaledTexture: Limited texture size to 0x0 (max 16000000 pixels, max texture size 0x0)
+[CRYSIS] ai state=SUSPICIOUS suspicion=27 tic=13
+[CRYSIS] ai state=ALERT suspicion=111 tic=43
+[CRYSIS] ai state=COMBAT suspicion=167 tic=63
+[CRYSIS] noise type=1 x=-3407872 y=-12582912 radius=58982400 tic=83
+[CRYSIS] ai state=SEARCH suspicion=200 tic=191
+[CRYSIS] ai state=ALERT suspicion=197 tic=195
+[CRYSIS] ai state=SEARCH suspicion=197 tic=207
+[CRYSIS] ai state=ALERT suspicion=194 tic=211
+[CRYSIS] ai state=SEARCH suspicion=194 tic=223
+[CRYSIS] ai state=ALERT suspicion=191 tic=227
+[CRYSIS] ai state=SEARCH suspicion=191 tic=239
+[CRYSIS] ai state=ALERT suspicion=188 tic=243
+[CRYSIS] ai state=SEARCH suspicion=188 tic=255
+[CRYSIS] ai state=ALERT suspicion=185 tic=259
+[CRYSIS] ai state=SEARCH suspicion=185 tic=271
+[CRYSIS] ai state=ALERT suspicion=182 tic=275
+[CRYSIS] ai state=SEARCH suspicion=182 tic=287
+[CRYSIS] ai state=ALERT suspicion=179 tic=291
+[CRYSIS] ai state=SEARCH suspicion=179 tic=303
+[CRYSIS] ai state=ALERT suspicion=176 tic=307
+[CRYSIS] ai state=SEARCH suspicion=176 tic=319
+[CRYSIS] ai state=ALERT suspicion=173 tic=323
+[CRYSIS] ai state=SEARCH suspicion=173 tic=335
+[CRYSIS] ai state=ALERT suspicion=170 tic=339
+[CRYSIS] ai state=SEARCH suspicion=170 tic=351
+[CRYSIS] ai state=ALERT suspicion=167 tic=355
+[CRYSIS] ai state=SEARCH suspicion=167 tic=367
+[CRYSIS] ai state=ALERT suspicion=164 tic=371
+[CRYSIS] ai state=SEARCH suspicion=164 tic=383
+[CRYSIS] ai state=ALERT suspicion=161 tic=387
+[CRYSIS] ai state=SEARCH suspicion=161 tic=399
+[CRYSIS] ai state=ALERT suspicion=158 tic=403
+[CRYSIS] ai state=SEARCH suspicion=158 tic=415
+[CRYSIS] ai state=ALERT suspicion=155 tic=419
+[CRYSIS] ai state=SEARCH suspicion=155 tic=431
+[CRYSIS] ai state=ALERT suspicion=152 tic=435
+[CRYSIS] ai state=SEARCH suspicion=152 tic=447
+[CRYSIS] ai state=ALERT suspicion=149 tic=451
+[CRYSIS] ai state=SEARCH suspicion=149 tic=463
+[CRYSIS] ai state=ALERT suspicion=146 tic=467
+[CRYSIS] ai state=SEARCH suspicion=146 tic=479
+[CRYSIS] ai state=ALERT suspicion=143 tic=483
+[CRYSIS] ai state=SEARCH suspicion=143 tic=495
+[CRYSIS] ai state=ALERT suspicion=140 tic=499
+[CRYSIS] ai state=SEARCH suspicion=140 tic=511
+[CRYSIS] ai state=ALERT suspicion=137 tic=51F6_LOSS combat_seen=1 state=3 suspicion=122
+[Thread 18712.0x8be8 exited with code 0]
+5
+[CRYSIS] ai state=SEARCH suspicion=137 tic=527
+[CRYSIS] ai state=ALERT suspicion=134 tic=531
+[CRYSIS] ai state=SEARCH suspicion=134 tic=543
+[CRYSIS] ai state=ALERT suspicion=131 tic=547
+[CRYSIS] ai state=SEARCH suspicion=131 tic=559
+[CRYSIS] ai state=ALERT suspicion=128 tic=563
+[CRYSIS] ai state=SEARCH suspicion=128 tic=575
+[CRYSIS] ai state=ALERT suspicion=125 tic=579
+[CRYSIS] ai state=SEARCH suspicion=125 tic=591
+[CRYSIS] ai state=ALERT suspicion=122 tic=595
+[Thread 18712.0x8824 exited with code 0]
+[Thread 18712.0x603c exited with code 0]
+[Thread 18712.0xec8 exited with code 0]
+[Inferior 1 (process 18712) exited normally]

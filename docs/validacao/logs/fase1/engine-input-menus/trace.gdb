@@ -58,7 +58,7 @@ printf "F1_PRODUCER forward=%d side=%d angle=%d jump=%d look=%d use=%d autorun=%
 end
 end
 if $polls == 19
-set $menu_clear = (cmd->forwardmove == 0 && cmd->sidemove == 0 && !(cmd->buttons & 2) && !cr_keys[key_up] && !cr_keys[key_cr_interact] && !cr_keys[key_cr_sprint] && !cr_players[0].buttons_down && mouse_button_state == 0)
+set $menu_clear = (cmd->forwardmove == 0 && cmd->sidemove == 0 && !(cmd->buttons & 2) && !cr_keys[key_up] && !cr_keys[key_alt_up] && !cr_keys[key_cr_interact] && !cr_keys[key_cr_sprint] && !cr_players[0].buttons_down && mouse_button_state == 0)
 end
 if $polls == 15
 set $producer_no_autorun = (cmd->forwardmove == 25 && cmd->sidemove == 0 && joybspeed == 2)
@@ -76,6 +76,7 @@ set variable crispy->freelook = 1
 set variable crispy->mouselook = 1
 set variable joybspeed = 20
 queue_key key_up
+queue_key key_alt_up
 queue_key key_cr_sprint
 queue_key key_cr_reload
 queue_key key_jump
@@ -86,12 +87,13 @@ if $polls == 12
 queue_focus 0
 end
 if $polls == 13
-set $focus_clear = (cr_players[0].buttons_down == 0 && !cr_players[0].sprinting && !cr_players[0].ads && !gamekeydown[key_up] && !gamekeydown[key_speed] && !gamekeydown[key_jump] && mouse_button_state == 0)
+set $focus_clear = (cr_players[0].buttons_down == 0 && !cr_players[0].sprinting && !cr_players[0].ads && !gamekeydown[key_up] && !gamekeydown[key_alt_up] && !gamekeydown[key_speed] && !gamekeydown[key_jump] && mouse_button_state == 0)
 end
 if $polls == 15
 set variable joybspeed = 2
 queue_focus 1
 queue_key key_up
+queue_key key_alt_up
 queue_key key_cr_interact
 queue_key key_cr_sprint
 queue_mouse 2
@@ -101,6 +103,7 @@ queue_key key_menu_activate
 end
 if $polls == 17
 queue_key_up key_up
+queue_key_up key_alt_up
 queue_key_up key_cr_interact
 queue_key_up key_cr_sprint
 end

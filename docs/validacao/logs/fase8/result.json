@@ -1,0 +1,55 @@
+﻿{
+    "generated_at":  "2026-10-14T19:00:00.7445743-03:00",
+    "mode":  "All",
+    "executable_sha256":  "c4872b76ba3850a42d583566db5a9ef1000a7ca141de4bf96587fa9bf3adef7c",
+    "limitations":  [
+                        "Linhas de mapa reais foram reaproveitadas no teste; o mapa tecnico com os specials ainda nao existe.",
+                        "SSaida validada ate MAP02 do IWAD; o fluxo completo depende do slice (F9).",
+                        "Teste headless (SDL dummy, -nosound)."
+                    ],
+    "results":  [
+                    {
+                        "case":  "logic-compile",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "Real cr_objective.c; warnings are errors.",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase8\\logic-compile\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase8\\logic-compile\\stderr.log"
+                    },
+                    {
+                        "case":  "logic",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  {
+                                        "assertions":  30
+                                    },
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase8\\logic\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase8\\logic\\stderr.log"
+                    },
+                    {
+                        "case":  "mission-objectives",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  {
+                                        "states":  "F8_STATES o1=2 o2=2 o3=2 o4=0 canexit=1 map=1",
+                                        "screenshot":  "DOOM0000.pcx",
+                                        "objective_message":  "no",
+                                        "exit":  "F8_EXIT refuse_map=1 o4=2 map=2 state=0"
+                                    },
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase8\\mission-objectives\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase8\\mission-objectives\\stderr.log"
+                    },
+                    {
+                        "case":  "vanilla-objectives-isolated",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "F8_VANILLA o1=0 o3=0 map=1",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase8\\vanilla-objectives-isolated\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase8\\vanilla-objectives-isolated\\stderr.log"
+                    }
+                ]
+}

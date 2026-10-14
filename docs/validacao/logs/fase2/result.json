@@ -1,0 +1,70 @@
+﻿{
+    "generated_at":  "2026-10-14T18:54:34.5838819-03:00",
+    "mode":  "All",
+    "executable_sha256":  "c4872b76ba3850a42d583566db5a9ef1000a7ca141de4bf96587fa9bf3adef7c",
+    "limitations":  [
+                        "Harness usa modulos reais e stubs nas fronteiras; nao valida SDL/teclado fisico.",
+                        "GDB muta apenas variaveis de estado; o tick real do motor executa as transicoes.",
+                        "SDL dummy e -nosound; imagem e audio perceptiveis nao verificados.",
+                        "Absorcao de dano e verificada em logica; o caminho P_DamageMobj nao e chamado no probe de engine."
+                    ],
+    "results":  [
+                    {
+                        "case":  "logic-compile",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "Real cr_nanosuit.c/cr_player.c/cr_input.c with engine boundary stubs; warnings are errors.",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase2\\logic-compile\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase2\\logic-compile\\stderr.log"
+                    },
+                    {
+                        "case":  "logic",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  {
+                                        "assertions":  70
+                                    },
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase2\\logic\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase2\\logic\\stderr.log"
+                    },
+                    {
+                        "case":  "engine-suit",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  {
+                                        "fire":  "F2_FIRE mode=0 energy=0 visible=1",
+                                        "jump":  "F2_JUMP normal=393216 strength=622592 cost=10",
+                                        "recharge":  "F2_RECHARGE before=50 after=60 block=89",
+                                        "cloak":  "F2_CLOAK start=100 after15=95 mode=3",
+                                        "cloak_broken":  true,
+                                        "speed":  "F2_SPEED start=100 after15=95"
+                                    },
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase2\\engine-suit\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase2\\engine-suit\\stderr.log"
+                    },
+                    {
+                        "case":  "vanilla-suit-isolated",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  "F2_VANILLA ticks=60 suit_ticks=0 crysis_thinks=0",
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase2\\vanilla-suit-isolated\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase2\\vanilla-suit-isolated\\stderr.log"
+                    },
+                    {
+                        "case":  "vanilla-snapshot",
+                        "passed":  true,
+                        "completed":  true,
+                        "exit_code":  0,
+                        "details":  {
+                                        "actual_snapshot":  "SNAPSHOT map=1 gametic=175 leveltime=170 x=8718787 y=-12575414 z=-2097152 angle=1342177280 health=100 mobjhealth=100 bullets=46 rng=34 paused=0",
+                                        "baseline_snapshot":  "SNAPSHOT map=1 gametic=175 leveltime=170 x=8718787 y=-12575414 z=-2097152 angle=1342177280 health=100 mobjhealth=100 bullets=46 rng=34 paused=0"
+                                    },
+                        "stdout":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase2\\vanilla-snapshot\\stdout.log",
+                        "stderr":  "C:\\Users\\victor.braga\\crysis-crispy-doom\\docs\\validacao\\logs\\fase2\\vanilla-snapshot\\stderr.log"
+                    }
+                ]
+}

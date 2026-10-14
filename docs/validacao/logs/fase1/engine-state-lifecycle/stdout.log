@@ -1,22 +1,22 @@
 Breakpoint 1 at 0x1400338a0: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\g_game.c, line 2852.
-Breakpoint 2 at 0x140052640: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\p_setup.c, line 1069.
-Breakpoint 3 at 0x14006e070: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\cr_game.c, line 131.
-Breakpoint 4 at 0x14007e810
+Breakpoint 2 at 0x140052820: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\p_setup.c, line 1077.
+Breakpoint 3 at 0x14006f540: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\cr_game.c, line 145.
+Breakpoint 4 at 0x140082a90
 Breakpoint 5 at 0x1400350e0: file C:\Users\victor.braga\crysis-crispy-doom\src\doom\g_game.c, line 1507.
-[New Thread 22176.0x9cb8]
-[New Thread 22176.0x32d4]
-[New Thread 22176.0x859c]
-[New Thread 22176.0x48c0]
+[New Thread 13068.0x2e00]
+[New Thread 13068.0x8620]
+[New Thread 13068.0x690c]
+[New Thread 13068.0x4240]
 F1_ENGINE first down=255 pressed=255 released=0 sprint=1 ads=1 crouch=1
 F1_ENGINE held down=255 pressed=0 released=0
 F1_ENGINE release down=0 pressed=0 released=255
 F1_ENGINE repress down=255 pressed=255 released=0
 F1_LIFECYCLE map=2 ticks=150 newgames=2 levels=4 resets=3 menu_frozen=1 pause_frozen=1 active=0 demo=0 recording=0 action=0
-[Thread 22176.0x48c0 exited with code 0]
+[Thread 13068.0x4240 exited with code 0]
                            Crispy Doom 7.1.0
 [CRYSIS] mode enabled
 Z_Init: Init zone memory allocation daemon. 
-zone memory: 0000000002737040, 64 MiB allocated for zone
+zone memory: 00000000027a3040, 64 MiB allocated for zone
 V_Init: allocate screens.
 M_LoadDefaults: Load system defaults.
 	default file: C:/Users/victor.braga/crysis-crispy-doom/docs/validacao/logs/fase1/engine-state-lifecycle/default.cfg
@@ -47,13 +47,22 @@ HU_Init: Setting up heads up display.
 ST_Init: Init status bar.
 CreateUpscaledTexture: Limited texture size to 0x0 (max 16000000 pixels, max texture size 0x0)
 [CRYSIS] input player=0 tic=0 down=ff pressed=ff released=00 sprint=1 ads=1
+[CRYSIS] suit mode=STRENGTH energy=100
+[CRYSIS] fov=1024
+[CRYSIS] attachment overlay open=1
+[CRYSIS] attachment weapon=SOCOM mask=01 installed=1
 [CRYSIS] input player=0 tic=2 down=00 pressed=00 released=ff sprint=0 ads=0
+[CRYSIS] fov=2048
 [CRYSIS] input player=0 tic=3 down=ff pressed=ff released=00 sprint=1 ads=1
+[CRYSIS] suit mode=SPEED energy=100
+[CRYSIS] fov=1024
+[CRYSIS] attachment overlay open=0
 [CRYSIS] input player=0 tic=4 down=00 pressed=00 released=ff sprint=0 ads=0
+[CRYSIS] fov=2048
 CRYSIS: save/load indisponivel nesta fase.
 CRYSIS: save/load indisponivel nesta fase.
 CRYSIS: demos indisponivel nesta fase.
-[Thread 22176.0x859c exited with code 0]
-[Thread 22176.0x32d4 exited with code 0]
-[Thread 22176.0x9cb8 exited with code 0]
-[Inferior 1 (process 22176) exited normally]
+[Thread 13068.0x2e00 exited with code 0]
+[Thread 13068.0x8620 exited with code 0]
+[Thread 13068.0x690c exited with code 0]
+[Inferior 1 (process 13068) exited normally]
