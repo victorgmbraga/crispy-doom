@@ -33,6 +33,7 @@
 #include "cr_player.h"
 #include "cr_weapon.h"
 #include "crispy.h"
+#include "r_main.h"
 
 #define CR_HUD_FULL_HEIGHT 24 // Floating strip height in original units.
 
@@ -142,11 +143,53 @@ void CR_HUDDraw(boolean fullscreen)
     {
         const cr_weapon_def_t *def = CR_WeaponCurrentDef(player);
 
-        snprintf(buffer, sizeof(buffer), "%s %d/%d %s%s", def->name,
+        snprintf(buffer, sizeof(buffer), "%s %d/%d %s%s%s", def->name,
                  CR_WeaponMagazine(player), CR_WeaponReserve(player),
                  CR_WeaponFireModeName(CR_WeaponFireMode(player)),
-                 CR_WeaponIsReloading(player) ? " RELOAD" : "");
+                 CR_WeaponIsReloading(player) ? " RELOAD" : "",
+                 (state->ads && !CR_WeaponIsMelee(player)) ? " ADS" : "");
         CR_HUDText(x, y1, buffer,
                    CR_WeaponIsReloading(player) ? cr[CR_RED] : cr[CR_GRAY]);
+    }
+}
+
+void CR_HUDOverlayDraw(void)
+{
+    const player_t *player = &players[displayplayer];
+    const cr_player_state_t *state = CR_PlayerStateConst(player);
+    const boolean fullscreen = (viewheight == SCREENHEIGHT);
+    const int origtop = fullscreen ? ORIGHEIGHT - CR_HUD_FULL_HEIGHT
+                                   : ORIGHEIGHT - ST_HEIGHT;
+    char buffer[64];
+
+    if (!CR_IsActive() || state == NULL || gamestate != GS_LEVEL
+        || !CR_WeaponOverlayActive(player))
+    {
+        return;
+    }
+
+    // Attachment overlay: slot list above the strip, after the world render.
+    {
+        int count = CR_WeaponOverlaySlotCount(player);
+        int selected = CR_WeaponOverlaySlotIndex(player);
+        int i;
+        int y = origtop - (count + 1) * 10;
+
+        CR_HUDText(8, y, "ATTACHMENTS  X CLOSE  E TOGGLE", cr[CR_GOLD]);
+        y += 10;
+
+        for (i = 0; i < count; ++i)
+        {
+            unsigned int mask = CR_WeaponOverlaySlotMask(player, i);
+            boolean on = CR_WeaponAttachmentInstalled(player, mask);
+
+            snprintf(buffer, sizeof(buffer), "%s%s %s",
+                     i == selected ? "> " : "  ",
+                     CR_WeaponAttachmentName(mask), on ? "[ON]" : "[OFF]");
+            CR_HUDText(8, y, buffer,
+                       i == selected ? cr[CR_GOLD]
+                                     : (on ? cr[CR_GREEN] : cr[CR_GRAY]));
+            y += 9;
+        }
     }
 }

@@ -23,4 +23,7 @@
 // used when the vanilla status bar has no reserved area.
 void CR_HUDDraw(boolean fullscreen);
 
+// Overlays that must appear after the world is rendered (attachment list).
+void CR_HUDOverlayDraw(void);
+
 #endif

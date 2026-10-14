@@ -693,7 +693,21 @@ static int Clamp(int x)
     return x;
 }
 
+// [crysis] Shared body; forced_volume < 0 uses the user's SFX volume.
+static void S_StartSoundVolume(void *origin_p, int sfx_id, int forced_volume);
+
 void S_StartSound(void *origin_p, int sfx_id)
+{
+    S_StartSoundVolume(origin_p, sfx_id, -1);
+}
+
+// [crysis] Explicit source volume; distance attenuation still applies.
+void S_StartSoundAtVolume(void *origin_p, int sfx_id, int volume)
+{
+    S_StartSoundVolume(origin_p, sfx_id, volume);
+}
+
+static void S_StartSoundVolume(void *origin_p, int sfx_id, int forced_volume)
 {
     sfxinfo_t *sfx;
     mobj_t *origin;
@@ -704,7 +718,7 @@ void S_StartSound(void *origin_p, int sfx_id)
     int volume;
 
     origin = (mobj_t *) origin_p;
-    volume = snd_SfxVolume;
+    volume = forced_volume >= 0 ? forced_volume : snd_SfxVolume;
 
     // [crispy] make non-fatal, consider zero volume
     if (sfx_id == sfx_None || !snd_SfxVolume || (nodrawers && singletics))

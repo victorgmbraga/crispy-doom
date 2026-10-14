@@ -37,6 +37,9 @@
 #include "w_wad.h"
 #include "m_argv.h" // [crispy] M_ParmExists()
 #include "st_stuff.h" // [crispy] ST_HEIGHT, ST_WIDESCREENDELTA
+
+#include "cr_game.h" // [crysis] overlay HUD after the world render
+#include "cr_hud.h"
 #include "p_setup.h" // maplumpinfo
 #include "d_pwad.h" // [crispy] kex masterlevels
 
@@ -973,6 +976,12 @@ void HU_Drawer(void)
     if (demoplayback && crispy->demobar)
     {
 	HU_DemoProgressBar();
+    }
+
+    // [crysis] Simulation overlays draw after the world render (Phase 5).
+    if (CR_IsActive())
+    {
+	CR_HUDOverlayDraw();
     }
 }
 

@@ -392,7 +392,7 @@ fixed_t CR_SuitMoveFactor(const player_t *player)
         return CR_MOVE_ADS;
     }
 
-    if (!state->sprinting || CR_SuitSprintBlocked(player))
+    if (!state->sprinting || CR_SuitSprintBlocked(player) || state->reloading)
     {
         return FRACUNIT;
     }

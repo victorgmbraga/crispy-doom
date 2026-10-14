@@ -53,6 +53,7 @@ void S_Start(void);
 
 void S_StartSound(void *origin, int sound_id);
 void S_StartSoundOnce(void *origin, int sound_id);
+void S_StartSoundAtVolume(void *origin, int sound_id, int volume); // [crysis]
 
 // Stop sound for thing at <origin>
 void S_StopSound(mobj_t *origin);

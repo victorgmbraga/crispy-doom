@@ -17,6 +17,7 @@
 #include "cr_defs.h"
 #include "cr_game.h"
 #include "cr_input.h"
+#include "cr_weapon.h"
 #include "doomkeys.h"
 #include "doomstat.h"
 #include "i_input.h"
@@ -254,4 +255,7 @@ void CR_BuildTiccmd(ticcmd_t *cmd)
     {
         cmd->buttons |= BT_USE;
     }
+
+    // [crysis] An open attachment overlay consumes navigation and fire.
+    CR_WeaponOverlayCommand(&players[consoleplayer], cmd);
 }

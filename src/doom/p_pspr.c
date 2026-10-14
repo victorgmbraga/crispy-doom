@@ -419,6 +419,12 @@ A_WeaponReady
     psp->sx = FRACUNIT + FixedMul (player->bob, finecosine[angle]);
     angle &= FINEANGLES/2-1;
     psp->sy = WEAPONTOP + FixedMul (player->bob, finesine[angle]);
+
+    // [crysis] ADS centers the weapon psprite (Phase 5).
+    if (CR_IsActive())
+    {
+        CR_WeaponAdjustPsprite(player, psp);
+    }
 }
 
 

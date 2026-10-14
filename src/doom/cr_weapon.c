@@ -381,6 +381,218 @@ fixed_t CR_WeaponCurrentNoiseRadius(const player_t *player)
     return radius;
 }
 
+// Attachment slot order is fixed; the compatibility mask filters it.
+static const unsigned int cr_attachment_order[] =
+{
+    CR_ATTACH_SUPPRESSOR,
+    CR_ATTACH_REFLEX,
+    CR_ATTACH_SCOPE
+};
+
+static int AttachmentSlotCount(const cr_weapon_def_t *def)
+{
+    unsigned int i;
+    int count = 0;
+
+    if (def == NULL)
+    {
+        return 0;
+    }
+
+    for (i = 0; i < arrlen(cr_attachment_order); ++i)
+    {
+        if (def->attachment_mask & cr_attachment_order[i])
+        {
+            ++count;
+        }
+    }
+
+    return count;
+}
+
+unsigned int CR_WeaponOverlaySlotMask(const player_t *player, int slot)
+{
+    const cr_weapon_def_t *def = CR_WeaponCurrentDef(player);
+    unsigned int i;
+    int index = 0;
+
+    if (def == NULL || slot < 0)
+    {
+        return 0;
+    }
+
+    for (i = 0; i < arrlen(cr_attachment_order); ++i)
+    {
+        if (def->attachment_mask & cr_attachment_order[i])
+        {
+            if (index == slot)
+            {
+                return cr_attachment_order[i];
+            }
+
+            ++index;
+        }
+    }
+
+    return 0;
+}
+
+const char *CR_WeaponAttachmentName(unsigned int mask)
+{
+    switch (mask)
+    {
+        case CR_ATTACH_SUPPRESSOR:
+            return "SUPPRESSOR";
+        case CR_ATTACH_REFLEX:
+            return "REFLEX";
+        case CR_ATTACH_SCOPE:
+            return "SCOPE";
+        case CR_ATTACH_LASER:
+            return "LASER";
+        default:
+            return "?";
+    }
+}
+
+boolean CR_WeaponAttachmentInstalled(const player_t *player, unsigned int mask)
+{
+    const cr_player_state_t *state = CR_PlayerStateConst(player);
+    const cr_weapon_id_t id = CR_WeaponIdForPlayer(player);
+
+    return state != NULL && (state->weapon.attachments[id] & mask) != 0;
+}
+
+boolean CR_WeaponOverlayActive(const player_t *player)
+{
+    const cr_player_state_t *state = CR_PlayerStateConst(player);
+
+    return state != NULL && state->weapon.overlay_open;
+}
+
+int CR_WeaponOverlaySlotCount(const player_t *player)
+{
+    return AttachmentSlotCount(CR_WeaponCurrentDef(player));
+}
+
+int CR_WeaponOverlaySlotIndex(const player_t *player)
+{
+    const cr_player_state_t *state = CR_PlayerStateConst(player);
+
+    return state == NULL ? 0 : state->weapon.overlay_slot;
+}
+
+void CR_WeaponOverlayCommand(player_t *player, ticcmd_t *cmd)
+{
+    cr_player_state_t *state = StateForPlayer(player);
+    cr_weapon_state_t *weapon;
+    int count;
+
+    if (state == NULL || cmd == NULL)
+    {
+        return;
+    }
+
+    weapon = &state->weapon;
+
+    if (!weapon->overlay_open)
+    {
+        return;
+    }
+
+    count = AttachmentSlotCount(CR_WeaponCurrentDef(player));
+
+    if (count > 0)
+    {
+        if (cmd->forwardmove > 0)
+        {
+            weapon->overlay_slot = (weapon->overlay_slot + count - 1) % count;
+        }
+        else if (cmd->forwardmove < 0)
+        {
+            weapon->overlay_slot = (weapon->overlay_slot + 1) % count;
+        }
+
+        if (weapon->overlay_slot >= count)
+        {
+            weapon->overlay_slot = 0;
+        }
+    }
+
+    // The overlay consumes movement, turning and the trigger.
+    cmd->forwardmove = 0;
+    cmd->sidemove = 0;
+    cmd->angleturn = 0;
+    cmd->buttons &= ~(BT_ATTACK | BT_USE);
+}
+
+static const char *AttachmentMessage(unsigned int mask, boolean installed)
+{
+    switch (mask)
+    {
+        case CR_ATTACH_SUPPRESSOR:
+            return installed ? "SUPPRESSOR ON" : "SUPPRESSOR OFF";
+        case CR_ATTACH_REFLEX:
+            return installed ? "REFLEX ON" : "REFLEX OFF";
+        case CR_ATTACH_SCOPE:
+            return installed ? "SCOPE ON" : "SCOPE OFF";
+        default:
+            return "ATTACHMENT";
+    }
+}
+
+static void ToggleAttachment(player_t *player, cr_weapon_state_t *weapon,
+                             cr_weapon_id_t id, const cr_weapon_def_t *def)
+{
+    unsigned int mask = CR_WeaponOverlaySlotMask(player,
+                                                 weapon->overlay_slot);
+
+    if (mask == 0)
+    {
+        return;
+    }
+
+    if (weapon->attachments[id] & mask)
+    {
+        weapon->attachments[id] &= ~mask;
+        player->message = AttachmentMessage(mask, false);
+    }
+    else
+    {
+        // Reflex and scope are mutually exclusive.
+        if (mask & (CR_ATTACH_REFLEX | CR_ATTACH_SCOPE))
+        {
+            weapon->attachments[id] &= ~(CR_ATTACH_REFLEX | CR_ATTACH_SCOPE);
+        }
+
+        weapon->attachments[id] |= mask;
+        player->message = AttachmentMessage(mask, true);
+    }
+
+    S_StartSound(player->so, sfx_swtchn);
+
+    if (CR_DebugEnabled())
+    {
+        printf(CR_LOG_PREFIX " attachment weapon=%s mask=%02x installed=%d\n",
+               def->name, mask,
+               (weapon->attachments[id] & mask) != 0);
+    }
+}
+
+void CR_WeaponAdjustPsprite(const player_t *player, pspdef_t *psp)
+{
+    const cr_player_state_t *state = CR_PlayerStateConst(player);
+
+    if (state == NULL || psp == NULL || !state->ads
+        || CR_WeaponIsMelee(player))
+    {
+        return;
+    }
+
+    // ADS suppresses bob and centers the weapon sprite.
+    psp->sx = FRACUNIT;
+    psp->sy = 32 * FRACUNIT; // WEAPONTOP
+}
+
 static void CR_WeaponShoot(player_t *player, cr_weapon_state_t *weapon,
                            cr_weapon_id_t id, const cr_weapon_def_t *def)
 {
@@ -424,14 +636,19 @@ static void CR_WeaponShoot(player_t *player, cr_weapon_state_t *weapon,
 
     weapon->next_fire_tic = leveltime + tics_per_shot;
 
-    // Audio placeholder per transport slot.
-    if (id == CR_WEAPON_FY71)
+    // Audio placeholder per transport slot; suppressed shots are quieter.
     {
-        S_StartSound(player->so, sfx_plasma);
-    }
-    else
-    {
-        S_StartSound(player->so, sfx_pistol);
+        int sound = (id == CR_WEAPON_FY71) ? sfx_plasma : sfx_pistol;
+
+        if (state != NULL
+            && (state->weapon.attachments[id] & CR_ATTACH_SUPPRESSOR))
+        {
+            S_StartSoundAtVolume(player->so, sound, 72);
+        }
+        else
+        {
+            S_StartSound(player->so, sound);
+        }
     }
 
     // Noise event with the position captured now.
@@ -699,7 +916,7 @@ void CR_WeaponTick(player_t *player)
     const cr_weapon_def_t *def;
     boolean attack;
 
-    if (state == NULL)
+    if (!CR_IsActive() || state == NULL)
     {
         return;
     }
@@ -731,6 +948,29 @@ void CR_WeaponTick(player_t *player)
     if (state->buttons_pressed & CR_BT2_FIREMODE)
     {
         CR_WeaponNextFireMode(player);
+    }
+
+    // Phase 5: X toggles the attachment overlay; E toggles the slot.
+    if (player->playerstate != PST_LIVE)
+    {
+        weapon->overlay_open = false;
+    }
+    else if (state->buttons_pressed & CR_BT2_ATTACHMENT)
+    {
+        weapon->overlay_open = !weapon->overlay_open;
+        weapon->overlay_slot = 0;
+        S_StartSound(player->so, sfx_swtchn);
+
+        if (CR_DebugEnabled())
+        {
+            printf(CR_LOG_PREFIX " attachment overlay open=%d\n",
+                   weapon->overlay_open);
+        }
+    }
+
+    if (weapon->overlay_open && (state->buttons_pressed & CR_BT2_INTERACT))
+    {
+        ToggleAttachment(player, weapon, id, def);
     }
 
     if (!weapon->reloading)

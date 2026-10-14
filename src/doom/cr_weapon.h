@@ -100,6 +100,16 @@ void CR_WeaponStartReload(player_t *player);
 void CR_WeaponCancelReload(player_t *player);
 void CR_WeaponNextFireMode(player_t *player);
 
+// Phase 5: ADS psprite placement and the attachment overlay.
+void CR_WeaponAdjustPsprite(const player_t *player, pspdef_t *psp);
+boolean CR_WeaponOverlayActive(const player_t *player);
+void CR_WeaponOverlayCommand(player_t *player, ticcmd_t *cmd);
+int CR_WeaponOverlaySlotCount(const player_t *player);
+int CR_WeaponOverlaySlotIndex(const player_t *player);
+unsigned int CR_WeaponOverlaySlotMask(const player_t *player, int slot);
+const char *CR_WeaponAttachmentName(unsigned int mask);
+boolean CR_WeaponAttachmentInstalled(const player_t *player, unsigned int mask);
+
 // Queries for HUD, perception and the suit.
 cr_weapon_id_t CR_WeaponIdForPlayer(const player_t *player);
 const cr_weapon_def_t *CR_WeaponDef(cr_weapon_id_t id);
