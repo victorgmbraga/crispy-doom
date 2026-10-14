@@ -8,6 +8,7 @@
 #include "cr_game.h"
 #include "cr_nanosuit.h"
 #include "cr_player.h"
+#include "cr_weapon.h"
 #include "doomstat.h"
 
 cr_player_state_t cr_players[MAXPLAYERS];
@@ -63,6 +64,7 @@ void CR_PlayerReset(player_t *player)
     memset(state, 0, sizeof(*state));
     state->initialized = true;
     CR_SuitInit(&state->suit);
+    CR_WeaponReset(player);
     player->cmd.buttons2 = 0;
 }
 
@@ -104,6 +106,7 @@ void CR_PlayerLevelStart(player_t *player)
 
     state->last_damage_tic = 0;
     state->health_regen_accumulator = 0;
+    CR_WeaponLevelStart(player);
 }
 
 // Player is live; recover health after the delay since the last hit.

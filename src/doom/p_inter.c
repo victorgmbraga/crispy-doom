@@ -42,6 +42,7 @@
 #include "cr_game.h" // [crysis]
 #include "cr_nanosuit.h"
 #include "cr_player.h"
+#include "cr_weapon.h"
 
 
 #define BONUSADD	6
@@ -74,6 +75,12 @@ P_GiveAmmo
   boolean	dropped ) // [NS] Dropped ammo/weapons give half as much.
 {
     int		oldammo;
+
+    // [crysis] Reserve pools own ammo in Crysis mode.
+    if (CR_IsActive())
+    {
+        return CR_WeaponGiveAmmo(player, ammo, num, dropped);
+    }
 	
     if (ammo == am_noammo)
 	return false;
@@ -192,6 +199,12 @@ P_GiveWeapon
 {
     boolean	gaveammo;
     boolean	gaveweapon;
+
+    // [crysis] Loadout owns the mapped weapons; pickups grant reserve ammo.
+    if (CR_IsActive())
+    {
+        return CR_WeaponGiveWeapon(player, weapon, dropped);
+    }
 	
     if (netgame
 	&& (deathmatch!=2)

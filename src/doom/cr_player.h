@@ -7,6 +7,7 @@
 #include "doomdef.h"
 #include "d_player.h"
 #include "cr_nanosuit.h"
+#include "cr_weapon.h"
 
 typedef struct
 {
@@ -22,7 +23,11 @@ typedef struct
     int last_damage_tic;
     int health_regen_accumulator;
 
+    // Mirrors cr_weapon_state_t.reloading for the movement rules.
+    boolean reloading;
+
     cr_nanosuit_t suit;
+    cr_weapon_state_t weapon;
 } cr_player_state_t;
 
 extern cr_player_state_t cr_players[MAXPLAYERS];

@@ -31,6 +31,7 @@
 #include "cr_hud.h"
 #include "cr_nanosuit.h"
 #include "cr_player.h"
+#include "cr_weapon.h"
 #include "crispy.h"
 
 #define CR_HUD_FULL_HEIGHT 24 // Floating strip height in original units.
@@ -129,6 +130,23 @@ void CR_HUDDraw(boolean fullscreen)
     snprintf(buffer, sizeof(buffer), "SUIT %s", CR_SuitModeName(suit->mode));
     CR_HUDText(x, y1, buffer, cr[CR_GOLD]);
 
-    // Second row is owned by later phases (weapon, objective).
-    (void) buffer;
+    // Row 2: weapon, magazine, reserve and fire mode.
+    y1 = origtop + 15;
+    x = 8;
+
+    if (CR_WeaponIsMelee(player))
+    {
+        CR_HUDText(x, y1, "MELEE", cr[CR_GRAY]);
+    }
+    else
+    {
+        const cr_weapon_def_t *def = CR_WeaponCurrentDef(player);
+
+        snprintf(buffer, sizeof(buffer), "%s %d/%d %s%s", def->name,
+                 CR_WeaponMagazine(player), CR_WeaponReserve(player),
+                 CR_WeaponFireModeName(CR_WeaponFireMode(player)),
+                 CR_WeaponIsReloading(player) ? " RELOAD" : "");
+        CR_HUDText(x, y1, buffer,
+                   CR_WeaponIsReloading(player) ? cr[CR_RED] : cr[CR_GRAY]);
+    }
 }

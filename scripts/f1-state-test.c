@@ -30,6 +30,10 @@ static int binding_count;
 boolean CR_IsActive(void) { return active; }
 boolean CR_DebugEnabled(void) { return false; }
 
+/* Weapon module boundary: the player module resets loadout here. */
+void CR_WeaponReset(player_t *player) { (void) player; }
+void CR_WeaponLevelStart(player_t *player) { (void) player; }
+
 void M_BindIntVariable(const char *name, int *value)
 {
     if (binding_count >= 32) { fputs("too many bindings\n", stderr); exit(2); }

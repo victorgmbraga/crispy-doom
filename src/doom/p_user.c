@@ -32,6 +32,7 @@
 #include "cr_game.h" // [crysis] Isolated command state.
 #include "cr_nanosuit.h"
 #include "cr_player.h"
+#include "cr_weapon.h"
 
 #include "s_sound.h" // [NS] Jump sound etc.
 
@@ -300,6 +301,7 @@ void P_PlayerThink (player_t* player)
     {
         CR_PlayerThink(player);
         CR_SuitTick(player);
+        CR_WeaponTick(player);
     }
 	
     // [AM] Assume we can interpolate at the beginning

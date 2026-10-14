@@ -38,6 +38,28 @@
 
 #include "cr_game.h" // [crysis]
 #include "cr_nanosuit.h"
+#include "cr_weapon.h"
+
+// [crysis] Defined below; the dispatcher must recognize them to skip the
+// vanilla shot actions while CR_WeaponFire owns shooting.
+void A_FireMissile(mobj_t *, player_t *, pspdef_t *);
+void A_FireBFG(mobj_t *, player_t *, pspdef_t *);
+void A_FirePlasma(mobj_t *, player_t *, pspdef_t *);
+void A_FirePistol(mobj_t *, player_t *, pspdef_t *);
+void A_FireShotgun(mobj_t *, player_t *, pspdef_t *);
+void A_FireShotgun2(mobj_t *, player_t *, pspdef_t *);
+void A_FireCGun(mobj_t *, player_t *, pspdef_t *);
+
+static boolean CR_VanillaFireAction(const actionf_t action)
+{
+    return action.acp3 == (actionf_p3) A_FireMissile
+        || action.acp3 == (actionf_p3) A_FireBFG
+        || action.acp3 == (actionf_p3) A_FirePlasma
+        || action.acp3 == (actionf_p3) A_FirePistol
+        || action.acp3 == (actionf_p3) A_FireShotgun
+        || action.acp3 == (actionf_p3) A_FireShotgun2
+        || action.acp3 == (actionf_p3) A_FireCGun;
+}
 
 #define LOWERSPEED		FRACUNIT*6
 #define RAISESPEED		FRACUNIT*6
@@ -116,7 +138,11 @@ P_SetPsprite
 	// Modified handling.
 	if (state->action.acp3)
 	{
-	    state->action.acp3(player->mo, player, psp); // [crispy] let mobj action pointers get called from pspr states
+	    // [crysis] The vanilla shot actions are replaced by CR_WeaponFire.
+	    if (!(CR_IsActive() && CR_VanillaFireAction(state->action)))
+	    {
+	        state->action.acp3(player->mo, player, psp); // [crispy] let mobj action pointers get called from pspr states
+	    }
 	    if (!psp->state)
 		break;
 	}
@@ -200,6 +226,12 @@ boolean P_CheckAmmo (player_t* player)
 {
     ammotype_t		ammo;
     int			count;
+
+    // [crysis] Magazine/reserve own the ammo decision.
+    if (CR_IsActive())
+    {
+        return CR_WeaponCheckAmmo(player);
+    }
 
     ammo = weaponinfo[player->readyweapon].ammo;
 
@@ -293,6 +325,13 @@ boolean P_CheckAmmo (player_t* player)
 void P_FireWeapon (player_t* player)
 {
     statenum_t	newstate;
+
+    // [crysis] One Crysis firing path owns damage, cadence and ammo.
+    if (CR_IsActive())
+    {
+        CR_WeaponFire(player);
+        return;
+    }
 	
     if (!P_CheckAmmo (player))
 	return;
@@ -300,13 +339,6 @@ void P_FireWeapon (player_t* player)
     P_SetMobjState (player->mo, S_PLAY_ATK1);
     newstate = weaponinfo[player->readyweapon].atkstate;
     P_SetPsprite (player, ps_weapon, newstate);
-
-    // [crysis] A real shot breaks Cloak and delays recharge.
-    if (CR_IsActive())
-    {
-        CR_SuitOnWeaponFired(player);
-    }
-
     P_NoiseAlert (player->mo, player->mo);
 }
 
