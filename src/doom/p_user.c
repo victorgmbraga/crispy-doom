@@ -30,6 +30,7 @@
 #include "doomstat.h"
 #include "a11y.h" // [crispy] A11Y
 #include "cr_game.h" // [crysis] Isolated command state.
+#include "cr_nanosuit.h"
 #include "cr_player.h"
 
 #include "s_sound.h" // [NS] Jump sound etc.
@@ -154,6 +155,7 @@ void P_MovePlayer (player_t* player)
 {
     ticcmd_t*		cmd;
     int		look;
+    fixed_t	movefactor = FRACUNIT; // [crysis]
 	
     cmd = &player->cmd;
 	
@@ -164,6 +166,12 @@ void P_MovePlayer (player_t* player)
     onground = (player->mo->z <= player->mo->floorz);
     // [crispy] give full control in no-clipping mode
     onground |= (player->mo->flags & MF_NOCLIP);
+
+    // [crysis] Suit/ADS movement factor, applied before the thrust.
+    if (CR_IsActive())
+    {
+        movefactor = CR_SuitMoveFactor(player);
+    }
 	
     // [crispy] fast polling
     if (player == &players[consoleplayer])
@@ -173,14 +181,16 @@ void P_MovePlayer (player_t* player)
     }
 
     if (cmd->forwardmove && onground)
-	P_Thrust (player, player->mo->angle, cmd->forwardmove*2048);
+	P_Thrust (player, player->mo->angle,
+	          FixedMul(cmd->forwardmove*2048, movefactor));
     else
     // [crispy] in-air movement is only possible with jumping enabled
     if (cmd->forwardmove && critical->jump)
         P_Thrust (player, player->mo->angle, FRACUNIT >> 8);
     
     if (cmd->sidemove && onground)
-	P_Thrust (player, player->mo->angle-ANG90, cmd->sidemove*2048);
+	P_Thrust (player, player->mo->angle-ANG90,
+	          FixedMul(cmd->sidemove*2048, movefactor));
     else
     // [crispy] in-air movement is only possible with jumping enabled
     if (cmd->sidemove && critical->jump)
@@ -289,6 +299,7 @@ void P_PlayerThink (player_t* player)
     if (CR_IsActive())
     {
         CR_PlayerThink(player);
+        CR_SuitTick(player);
     }
 	
     // [AM] Assume we can interpolate at the beginning
@@ -400,8 +411,16 @@ void P_PlayerThink (player_t* player)
             player->viewz < player->mo->ceilingz-16*FRACUNIT &&
             !player->jumpTics)
         {
+            fixed_t momz = (7 + critical->jump) * FRACUNIT;
+
+            // [crysis] Strength only replaces the impulse value.
+            if (CR_IsActive())
+            {
+                momz = CR_SuitJumpMomentum(player, momz);
+            }
+
             // [crispy] Hexen sets 9; Strife adds 8
-            player->mo->momz = (7 + critical->jump) * FRACUNIT;
+            player->mo->momz = momz;
             player->jumpTics = 18;
             // [NS] Jump sound.
             S_StartSoundOptional(player->mo, sfx_pljump, -1);

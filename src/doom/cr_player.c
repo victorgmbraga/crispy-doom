@@ -6,6 +6,7 @@
 
 #include "cr_defs.h"
 #include "cr_game.h"
+#include "cr_nanosuit.h"
 #include "cr_player.h"
 #include "doomstat.h"
 
@@ -61,7 +62,28 @@ void CR_PlayerReset(player_t *player)
 
     memset(state, 0, sizeof(*state));
     state->initialized = true;
+    CR_SuitInit(&state->suit);
     player->cmd.buttons2 = 0;
+}
+
+void CR_PlayerNoteDamage(player_t *player)
+{
+    cr_player_state_t *state;
+
+    if (!CR_IsActive())
+    {
+        return;
+    }
+
+    state = CR_PlayerState(player);
+
+    if (state == NULL)
+    {
+        return;
+    }
+
+    state->last_damage_tic = leveltime;
+    state->health_regen_accumulator = 0;
 }
 
 void CR_PlayerClearCommands(void)

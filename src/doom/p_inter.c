@@ -39,6 +39,10 @@
 
 #include "p_inter.h"
 
+#include "cr_game.h" // [crysis]
+#include "cr_nanosuit.h"
+#include "cr_player.h"
+
 
 #define BONUSADD	6
 
@@ -928,7 +932,14 @@ P_DamageMobj
 	    return;
 	}
 	
-	if (player->armortype)
+	// [crysis] Nanosuit Armor replaces vanilla armor absorption.
+	if (CR_IsActive())
+	{
+	    damage = CR_SuitAbsorbDamage(player, damage);
+	    player->armorpoints = 0; // [crysis] unused while the suit owns armor
+	    player->armortype = 0;
+	}
+	else if (player->armortype)
 	{
 	    if (player->armortype == 1)
 		saved = damage/3;

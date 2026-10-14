@@ -112,7 +112,9 @@ if ($Mode -in @('All', 'Logic')) {
     $sdlHeader = Join-Path $projectRoot '.deps\SDL2-2.32.10\x86_64-w64-mingw32\include\SDL2'
     $compileArguments = @('-std=c99', '-Wall', '-Wextra', '-Werror', '-I', (Join-Path $projectRoot 'src'),
         '-I', (Join-Path $projectRoot 'src\doom'), '-I', (Join-Path $projectRoot 'build'), '-I', $sdlHeader,
-        (Join-Path $PSScriptRoot 'f1-state-test.c'), (Join-Path $projectRoot 'src\doom\cr_input.c'),
+        (Join-Path $PSScriptRoot 'f1-state-test.c'), (Join-Path $projectRoot 'src\m_fixed.c'),
+        (Join-Path $projectRoot 'src\doom\cr_input.c'),
+        (Join-Path $projectRoot 'src\doom\cr_nanosuit.c'),
         (Join-Path $projectRoot 'src\doom\cr_player.c'), '-o', $fixturePath)
     $compile = Invoke-ProcessProbe 'logic-compile' $compilerPath $compileArguments
     Add-Result $compile ($compile.completed -and $compile.exit_code -eq 0) 'Real cr_input.c/cr_player.c with engine boundary stubs; warnings are errors.'

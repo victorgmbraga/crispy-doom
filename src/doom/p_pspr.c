@@ -36,6 +36,9 @@
 #include "p_pspr.h"
 #include "a11y.h" // [crispy] A11Y
 
+#include "cr_game.h" // [crysis]
+#include "cr_nanosuit.h"
+
 #define LOWERSPEED		FRACUNIT*6
 #define RAISESPEED		FRACUNIT*6
 
@@ -61,6 +64,13 @@ void A_Recoil (player_t* player)
 	if (player && crispy->pitch)
 	{
 		player->recoilpitch = recoil_values[player->readyweapon];
+
+		// [crysis] Strength scales functional recoil.
+		if (CR_IsActive())
+		{
+			player->recoilpitch = FixedMul(player->recoilpitch,
+			                               CR_SuitRecoilScale(player));
+		}
 	}
 }
 
@@ -290,6 +300,13 @@ void P_FireWeapon (player_t* player)
     P_SetMobjState (player->mo, S_PLAY_ATK1);
     newstate = weaponinfo[player->readyweapon].atkstate;
     P_SetPsprite (player, ps_weapon, newstate);
+
+    // [crysis] A real shot breaks Cloak and delays recharge.
+    if (CR_IsActive())
+    {
+        CR_SuitOnWeaponFired(player);
+    }
+
     P_NoiseAlert (player->mo, player->mo);
 }
 
@@ -529,6 +546,12 @@ A_Punch
     if (player->powers[pw_strength])	
 	damage *= 10;
 
+    // [crysis] Strength mode multiplies melee damage.
+    if (CR_IsActive())
+    {
+        damage = CR_SuitMeleeDamage(player, damage);
+    }
+
     angle = player->mo->angle;
     angle += P_SubRandom() << 18;
     slope = P_AimLineAttack (player->mo, angle, MELEERANGE);
@@ -561,6 +584,13 @@ A_Saw
 
     if (!player) return; // [crispy] let pspr action pointers get called from mobj states
     damage = 2*(P_Random ()%10+1);
+
+    // [crysis] Strength mode multiplies melee damage.
+    if (CR_IsActive())
+    {
+        damage = CR_SuitMeleeDamage(player, damage);
+    }
+
     angle = player->mo->angle;
     angle += P_SubRandom() << 18;
     

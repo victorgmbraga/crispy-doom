@@ -6,8 +6,8 @@
 
 #include "doomdef.h"
 #include "d_player.h"
+#include "cr_nanosuit.h"
 
-// Input state only in F1; suit/weapon state belongs to subsequent phases.
 typedef struct
 {
     boolean initialized;
@@ -17,6 +17,12 @@ typedef struct
     boolean sprinting;
     boolean ads;
     boolean crouching; // Request only: F1 does not change stance/collision.
+
+    // Health regeneration (Phase 3); damage notes arrive from the suit hook.
+    int last_damage_tic;
+    int health_regen_accumulator;
+
+    cr_nanosuit_t suit;
 } cr_player_state_t;
 
 extern cr_player_state_t cr_players[MAXPLAYERS];
@@ -26,5 +32,8 @@ const cr_player_state_t *CR_PlayerStateConst(const player_t *player);
 void CR_PlayerReset(player_t *player);
 void CR_PlayerClearCommands(void);
 void CR_PlayerThink(player_t *player);
+
+// Called once per damaging hit on a live player.
+void CR_PlayerNoteDamage(player_t *player);
 
 #endif
