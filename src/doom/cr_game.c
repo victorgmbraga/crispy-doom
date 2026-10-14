@@ -20,6 +20,7 @@
 #include "cr_defs.h"
 #include "cr_game.h"
 #include "cr_input.h"
+#include "cr_objective.h"
 #include "cr_player.h"
 #include "cr_sound.h"
 #include "doomstat.h"
@@ -88,6 +89,7 @@ void CR_NewGame(void)
     CR_LevelEnd();
     CR_SoundReset();
     CR_AIReset();
+    CR_ObjectivesReset();
     CR_ClearInput();
     for (i = 0; i < MAXPLAYERS; ++i)
     {

@@ -40,6 +40,9 @@
 #include "r_local.h"
 #include "p_local.h"
 
+#include "cr_game.h" // [crysis]
+#include "cr_interact.h"
+
 #include "g_game.h"
 
 #include "s_sound.h"
@@ -649,6 +652,12 @@ P_CrossSpecialLinePtr
     }
 
     
+    // [crysis] Mission triggers are handled before vanilla dispatch.
+    if (CR_IsActive() && CR_CrossSpecialLine(line, thing))
+    {
+        return;
+    }
+
     // Note: could use some const's here.
     switch (line->special)
     {

@@ -30,6 +30,7 @@
 #include "cr_game.h"
 #include "cr_hud.h"
 #include "cr_nanosuit.h"
+#include "cr_objective.h"
 #include "cr_player.h"
 #include "cr_weapon.h"
 #include "crispy.h"
@@ -157,13 +158,28 @@ void CR_HUDOverlayDraw(void)
 {
     const player_t *player = &players[displayplayer];
     const cr_player_state_t *state = CR_PlayerStateConst(player);
+    const cr_objective_t *objective = CR_ObjectiveCurrent();
     const boolean fullscreen = (viewheight == SCREENHEIGHT);
     const int origtop = fullscreen ? ORIGHEIGHT - CR_HUD_FULL_HEIGHT
                                    : ORIGHEIGHT - ST_HEIGHT;
     char buffer[64];
 
-    if (!CR_IsActive() || state == NULL || gamestate != GS_LEVEL
-        || !CR_WeaponOverlayActive(player))
+    if (!CR_IsActive() || state == NULL || gamestate != GS_LEVEL)
+    {
+        return;
+    }
+
+    // Current objective, top-right.
+    if (objective != NULL)
+    {
+        int width;
+
+        snprintf(buffer, sizeof(buffer), "OBJECTIVE: %s", objective->title);
+        width = CR_HUDTextWidth(buffer);
+        CR_HUDText(ORIGWIDTH - 8 - width, 4, buffer, cr[CR_GOLD]);
+    }
+
+    if (!CR_WeaponOverlayActive(player))
     {
         return;
     }

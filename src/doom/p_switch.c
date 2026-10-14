@@ -38,6 +38,9 @@
 #include "doomstat.h"
 #include "r_state.h"
 
+#include "cr_game.h" // [crysis]
+#include "cr_interact.h"
+
 
 //
 // CHANGE THE TEXTURE OF A WALL SWITCH TO ITS OPPOSITE
@@ -349,6 +352,12 @@ P_UseSpecialLine
   line_t*	line,
   int		side )
 {               
+
+    // [crysis] Project use-specials take precedence over vanilla dispatch.
+    if (CR_IsActive() && CR_UseSpecialLine(thing, line))
+    {
+        return true;
+    }
 
     // Err...
     // Use the back sides of VERY SPECIAL lines...
