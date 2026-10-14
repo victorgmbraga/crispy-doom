@@ -55,6 +55,14 @@ static void DEH_PointerInit(void)
     // [BH] Initialize extra dehacked states
     for (; i < NUMSTATES; i++)
     {
+	// [crysis] States in the project-reserved range are kept as defined,
+	// including entries without an action pointer (Phase 7).
+	if (i >= S_CR_STATES_BEGIN && i < S_CR_STATES_END)
+	{
+	    codeptrs[i] = states[i].action;
+	    continue;
+	}
+
 	states[i].sprite = SPR_TNT1;
 	states[i].frame = 0;
 	states[i].tics = -1;

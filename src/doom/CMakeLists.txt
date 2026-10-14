@@ -1,5 +1,6 @@
 add_library(doom STATIC
             am_map.c        am_map.h
+            cr_ai.c         cr_ai.h
             cr_game.c       cr_game.h
             cr_hud.c        cr_hud.h
             cr_input.c      cr_input.h

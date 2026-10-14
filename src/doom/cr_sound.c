@@ -23,6 +23,7 @@
 #include "doomstat.h"
 
 #include "cr_defs.h"
+#include "cr_ai.h"
 #include "cr_game.h"
 #include "cr_sound.h"
 
@@ -50,6 +51,9 @@ void CR_EmitNoise(mobj_t *source, fixed_t x, fixed_t y, fixed_t radius,
         printf(CR_LOG_PREFIX " noise type=%d x=%d y=%d radius=%d tic=%d\n",
                (int) type, x, y, radius, leveltime);
     }
+
+    // Sparse dispatch: perception reacts when the event happens.
+    CR_AIDispatchNoise(&cr_last_noise);
 }
 
 void CR_SoundReset(void)

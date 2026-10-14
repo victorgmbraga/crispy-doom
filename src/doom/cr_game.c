@@ -16,6 +16,7 @@
 
 #include <stdio.h>
 
+#include "cr_ai.h"
 #include "cr_defs.h"
 #include "cr_game.h"
 #include "cr_input.h"
@@ -86,6 +87,7 @@ void CR_NewGame(void)
     // Discard the old level before vanilla resets the player array.
     CR_LevelEnd();
     CR_SoundReset();
+    CR_AIReset();
     CR_ClearInput();
     for (i = 0; i < MAXPLAYERS; ++i)
     {
@@ -130,6 +132,7 @@ void CR_LevelEnd(void)
     CR_ClearInput();
     CR_PlayerClearCommands();
     CR_SoundLevelEnd();
+    CR_AILevelEnd();
     cr_level_started = false;
 }
 

@@ -97,6 +97,8 @@ void A_Chase();
 void A_FaceTarget();
 void A_PosAttack();
 void A_Scream();
+void A_CRKPAThink();  // [crysis]
+void A_CRKPAFire();   // [crysis]
 void A_SPosAttack();
 void A_VileChase();
 void A_VileStart();
@@ -1201,6 +1203,23 @@ state_t	states[NUMSTATES] = {
     {SPR_SKUL,15,5,{A_Fall},S_BSKUL_DIE8,0,0},	// S_BSKUL_DIE7
     {SPR_SKUL,16,5,{A_Stop},S_BSKUL_DIE8,0,0},	// S_BSKUL_DIE8
     {SPR_MISL,32769,8,{A_Mushroom},S_EXPLODE2,0,0},	// S_MUSHROOM
+    // [crysis] KPA soldier states (Phase 7). Reuse freed POSS sprites.
+    [S_CR_KPA_STND] = {SPR_POSS,0,10,{A_CRKPAThink},S_CR_KPA_STND2,0,0},
+    [S_CR_KPA_STND2] = {SPR_POSS,1,10,{A_CRKPAThink},S_CR_KPA_STND,0,0},
+    [S_CR_KPA_RUN1] = {SPR_POSS,0,4,{A_CRKPAThink},S_CR_KPA_RUN2,0,0},
+    [S_CR_KPA_RUN2] = {SPR_POSS,1,4,{A_CRKPAThink},S_CR_KPA_RUN3,0,0},
+    [S_CR_KPA_RUN3] = {SPR_POSS,2,4,{A_CRKPAThink},S_CR_KPA_RUN4,0,0},
+    [S_CR_KPA_RUN4] = {SPR_POSS,3,4,{A_CRKPAThink},S_CR_KPA_RUN1,0,0},
+    [S_CR_KPA_ATK1] = {SPR_POSS,4,10,{A_FaceTarget},S_CR_KPA_ATK2,0,0},
+    [S_CR_KPA_ATK2] = {SPR_POSS,5|0x8000,7,{A_CRKPAFire},S_CR_KPA_ATK3,0,0},
+    [S_CR_KPA_ATK3] = {SPR_POSS,4,8,{NULL},S_CR_KPA_RUN1,0,0},
+    [S_CR_KPA_PAIN] = {SPR_POSS,6,3,{NULL},S_CR_KPA_PAIN2,0,0},
+    [S_CR_KPA_PAIN2] = {SPR_POSS,6,3,{A_Pain},S_CR_KPA_RUN1,0,0},
+    [S_CR_KPA_DIE1] = {SPR_POSS,7,5,{NULL},S_CR_KPA_DIE2,0,0},
+    [S_CR_KPA_DIE2] = {SPR_POSS,8,5,{A_Scream},S_CR_KPA_DIE3,0,0},
+    [S_CR_KPA_DIE3] = {SPR_POSS,9,5,{A_Fall},S_CR_KPA_DIE4,0,0},
+    [S_CR_KPA_DIE4] = {SPR_POSS,10,5,{NULL},S_CR_KPA_DIE5,0,0},
+    [S_CR_KPA_DIE5] = {SPR_POSS,11,-1,{NULL},S_NULL,0,0},
 };
 
 
@@ -4978,6 +4997,33 @@ mobjinfo_t mobjinfo[NUMMOBJTYPES] = {
 	sfx_None,		// activesound
 	MF_NOBLOCKMAP,		// flags
 	S_NULL		// raisestate
+    },
+
+    // [crysis] KPA soldier (Phase 7). DoomEd 3001.
+    [MT_CR_KPA] = {
+	3001,			// doomednum
+	S_CR_KPA_STND,		// spawnstate
+	100,			// spawnhealth
+	S_CR_KPA_RUN1,		// seestate
+	sfx_None,		// seesound
+	12,			// reactiontime
+	sfx_None,		// attacksound
+	S_CR_KPA_PAIN,		// painstate
+	120,			// painchance
+	sfx_popain,		// painsound
+	S_NULL,			// meleestate
+	S_CR_KPA_ATK1,		// missilestate
+	S_CR_KPA_DIE1,		// deathstate
+	S_NULL,			// xdeathstate
+	sfx_podth1,		// deathsound
+	8,			// speed
+	20*FRACUNIT,		// radius
+	56*FRACUNIT,		// height
+	100,			// mass
+	0,			// damage
+	sfx_None,		// activesound
+	MF_SOLID|MF_SHOOTABLE|MF_COUNTKILL|MF_FLIPPABLE,	// flags
+	S_NULL			// raisestate
     },
 };
 

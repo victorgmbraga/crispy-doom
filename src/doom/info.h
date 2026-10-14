@@ -1229,6 +1229,27 @@ typedef enum
     S_MUSHROOM,
     // [BH] extra dehacked states
     EXTRASTATES = 1089,
+
+    // [crysis] KPA soldier states, kept inside the reserved range (Phase 7).
+    S_CR_STATES_BEGIN = 3900,
+    S_CR_KPA_STND = S_CR_STATES_BEGIN,
+    S_CR_KPA_STND2,
+    S_CR_KPA_RUN1,
+    S_CR_KPA_RUN2,
+    S_CR_KPA_RUN3,
+    S_CR_KPA_RUN4,
+    S_CR_KPA_ATK1,
+    S_CR_KPA_ATK2,
+    S_CR_KPA_ATK3,
+    S_CR_KPA_PAIN,
+    S_CR_KPA_PAIN2,
+    S_CR_KPA_DIE1,
+    S_CR_KPA_DIE2,
+    S_CR_KPA_DIE3,
+    S_CR_KPA_DIE4,
+    S_CR_KPA_DIE5,
+    S_CR_STATES_END,
+
     NUMSTATES = 4000
 } statenum_t;
 
@@ -1418,6 +1439,8 @@ typedef enum {
     MT_EXTRA85, MT_EXTRA86, MT_EXTRA87, MT_EXTRA88, MT_EXTRA89,
     MT_EXTRA90, MT_EXTRA91, MT_EXTRA92, MT_EXTRA93, MT_EXTRA94,
     MT_EXTRA95, MT_EXTRA96, MT_EXTRA97, MT_EXTRA98, MT_EXTRA99,
+    // [crysis] KPA soldier (Phase 7).
+    MT_CR_KPA,
     NUMMOBJTYPES
 
 } mobjtype_t;

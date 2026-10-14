@@ -123,6 +123,7 @@ static void DEH_InitThingProperties (void)
 		{
 			case MT_WOLFSS:
 			case MT_POSSESSED:
+			case MT_CR_KPA: // [crysis] drop a clip like the zombieman
 			mobjinfo[i].droppeditem = MT_CLIP;
 			break;
 

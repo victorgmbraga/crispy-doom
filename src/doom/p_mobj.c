@@ -37,6 +37,9 @@
 
 #include "doomstat.h"
 
+#include "cr_ai.h" // [crysis]
+#include "cr_game.h"
+
 
 void G_PlayerReborn (int player);
 void P_SpawnMapThing (mapthing_t*	mthing);
@@ -738,6 +741,12 @@ P_SpawnMobjSafe
 	
     P_AddThinker (&mobj->thinker);
 
+    // [crysis] Crysis actors register for perception at spawn.
+    if (CR_IsActive())
+    {
+        CR_AIOnSpawn(mobj);
+    }
+
     return mobj;
 }
 
@@ -762,6 +771,12 @@ int		iquetail;
 
 void P_RemoveMobj (mobj_t* mobj)
 {
+    // [crysis] Drop perception state before the mobj is freed.
+    if (CR_IsActive())
+    {
+        CR_AIOnRemove(mobj);
+    }
+
     if ((mobj->flags & MF_SPECIAL)
 	&& !(mobj->flags & MF_DROPPED)
 	&& (mobj->type != MT_INV)
