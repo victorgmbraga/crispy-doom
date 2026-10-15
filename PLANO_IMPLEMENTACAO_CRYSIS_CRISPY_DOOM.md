@@ -4,7 +4,7 @@ Data: 2026-10-05.
 
 Base: [CODEX_IMPLEMENTACAO_CRYSIS_CRISPY_DOOM.md](CODEX_IMPLEMENTACAO_CRYSIS_CRISPY_DOOM.md), seções 0–40.
 
-Status: planejamento. Nenhuma fase de implementação foi executada. As decisões propostas abaixo complementam a especificação e devem ser confrontadas com o checkout escolhido antes de editar código.
+Status atualizado em 2026-10-15: sistemas das Fases 0–8 implementados, com pendências de correção e aceite; Fase 9 parcial (mapa técnico) e Fase 10 parcial (ADS/FOV/scope). O vertical slice completo ainda não está aprovado. A [revisão da implementação](docs/validacao/revisao-2026-10-15.md) registra os defeitos encontrados, as validações atuais e as próximas prioridades. O backlog abaixo conserva os requisitos de aceite, não constitui uma declaração de conclusão.
 
 ## 1. Resultado esperado e situação atual
 
@@ -12,7 +12,19 @@ Entregar um vertical slice single-player que reproduza o ciclo de observar, esco
 
 O slice deve oferecer praia, encontro narrativo, patrulha, floresta, mirante, vila com múltiplas rotas, jammer opcional e saída. Deve ser completável por combate frontal, stealth/cloak e rota lateral com jammer.
 
-Constatações locais:
+### Situação do checkout em 2026-10-15
+
+- Fork baseado no Crispy Doom 7.1; fontes em `src/doom/cr_*` e hooks pequenos no motor.
+- Build Windows x64 reproduzido com o toolchain portátil de `scripts/setup-build.ps1`.
+- Nanosuit, saúde, armas, attachments, percepção/KPA, objetivos e interação implementados; testes automatizados não substituem o aceite interativo nem cobrem todos os defeitos encontrados.
+- PWAD técnico versionado em `content/pwad/crysis-technical.wad`, derivado do MAP01 do Freedoom; não é o mapa Contact completo.
+- ADS/FOV/scope implementados parcialmente, com inconsistência de projeção confirmada na revisão.
+- Execução pelo Zed em `.zed/tasks.json`, incluindo cenário técnico e comparação vanilla; instruções em `README_CRYSIS.md`.
+- Pendências prioritárias: corrigir o fatal da investigação da IA, timers entre níveis, direção real de tiro e projeção; depois concluir mapa, playtests das três abordagens e profiling.
+
+### Registro histórico do planejamento inicial (2026-10-05)
+
+As constatações a seguir descrevem a pasta antes da integração do upstream, não a situação atual:
 
 - A pasta contém somente a especificação original antes da criação deste plano.
 - Não existem checkout do motor, `src/`, `CMakeLists.txt` ou `.git` na pasta.
@@ -20,7 +32,7 @@ Constatações locais:
 - Não foram encontrados `AGENTS.md` na pasta ou nos diretórios ancestrais consultados.
 - Não foi possível estabelecer baseline de compilação porque o código-fonte ainda não está presente. Compilador, dependências e IWAD ainda precisam ser inventariados.
 
-A primeira execução de implementação fica limitada à Fase 0, como determina a seção 36 da especificação. Este documento planeja o projeto completo; o prompt operacional daquela seção não constitui uma implementação já autorizada nesta tarefa de planejamento.
+Na tarefa inicial, a primeira execução foi limitada à Fase 0, como determina a seção 36 da especificação. Esse recorte histórico não exige reintegrar o upstream nem repetir a Fase 0 no checkout atual.
 
 ## 2. Escopo e decisões de entrega
 
@@ -326,7 +338,7 @@ Preparação do checkout + baseline
 | Conteúdo, F9 | Três abordagens concluídas no slice |
 | Entrega, F10 | Regressão aprovada, performance medida, conteúdo distribuível e pacote reproduzível |
 
-Não há cronograma em dias validado: faltam checkout, baseline e pipeline de conteúdo. Estimar a Fase 1 após concluir a Fase 0; revisar estimativas ao terminar armas, IA e graybox. Armas/psprites, IA e FOV concentram risco técnico; produção e tuning do mapa concentram esforço de conteúdo.
+Não há cronograma em dias validado. Checkout, baseline e sistemas já existem; permanecem correções, pipeline do mapa final e aceite interativo. Estimar os próximos passos após resolver os defeitos prioritários e revisar as estimativas ao concluir o graybox. Armas/psprites, IA e FOV concentram risco técnico; produção e tuning do mapa concentram esforço de conteúdo.
 
 ## 7. Estratégia de testes e evidências
 
@@ -431,6 +443,8 @@ Savegames versionados entram em uma tarefa posterior: serializar campos individu
 
 ## 11. Primeira tarefa executável
 
+Registro histórico do prompt inicial, já executado. Não reaplicar a obtenção do upstream sobre a árvore atual; consultar a revisão de 2026-10-15 para as próximas tarefas.
+
 ```text
 Leia a especificação original e este plano.
 Execute somente a Fase 0.
@@ -452,7 +466,7 @@ Encerre após o relatório da Fase 0, sem avançar à Fase 1.
 
 ## 12. Conferência técnica externa e limites
 
-Como não existe checkout local, foram consultadas referências primárias do upstream para orientar riscos, sem fixar números de linha ou declarar equivalência com a futura revisão-base:
+Durante o planejamento inicial, ainda sem checkout local, foram consultadas referências primárias do upstream para orientar riscos, sem fixar números de linha ou declarar equivalência com a futura revisão-base:
 
 - [`src/d_ticcmd.h`](https://raw.githubusercontent.com/fabiangreffrath/crispy-doom/master/src/d_ticcmd.h): a estrutura consultada contém `buttons2`, `arti`, `lookfly` e `lookdir`; ainda será necessário auditar seus consumidores no checkout.
 - [`src/doom/p_user.c`](https://raw.githubusercontent.com/fabiangreffrath/crispy-doom/master/src/doom/p_user.c): o salto consultado usa `arti`/`AFLAG_JUMP`; o movimento aplica thrust a partir de forwardmove/sidemove. Isso orienta preservar o transporte existente de salto e modificar o fator de movimento no ponto adequado.

@@ -1,5 +1,30 @@
 [
   {
+    "label": "Crysis: preparar e executar (mapa tecnico)",
+    "command": "powershell.exe",
+    "env": {"PSModulePath": ""},
+    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "$ZED_WORKTREE_ROOT/scripts/run-game.ps1", "-Mode", "Crysis", "-Scenario", "Technical", "-Build"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "shell": {"program": "powershell.exe"},
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "save": "all"
+  },
+  {
+    "label": "Crysis: executar sem recompilar (mapa tecnico)",
+    "command": "powershell.exe",
+    "env": {"PSModulePath": ""},
+    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "$ZED_WORKTREE_ROOT/scripts/run-game.ps1", "-Mode", "Crysis", "-Scenario", "Technical"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "shell": {"program": "powershell.exe"},
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
     "label": "Crysis: preparar e executar (MAP01)",
     "command": "powershell.exe",
     "env": {"PSModulePath": ""},
@@ -75,10 +100,49 @@
     "hide": "never"
   },
   {
-    "label": "Crysis: diagnosticar controles F1 (MAP01)",
+    "label": "Crysis: diagnosticar controles (mapa tecnico)",
     "command": "powershell.exe",
     "env": {"PSModulePath": ""},
-    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "$ZED_WORKTREE_ROOT/scripts/run-game.ps1", "-Mode", "Crysis", "-Build", "-DebugInput"],
+    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "$ZED_WORKTREE_ROOT/scripts/run-game.ps1", "-Mode", "Crysis", "-Scenario", "Technical", "-Build", "-DebugInput"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "shell": {"program": "powershell.exe"},
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "save": "all"
+  },
+  {
+    "label": "Crysis: validar IA e combate (F6-F7)",
+    "command": "powershell.exe",
+    "env": {"PSModulePath": ""},
+    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "$ZED_WORKTREE_ROOT/scripts/test-f6.ps1", "-LogDirectory", "$ZED_WORKTREE_ROOT/build/zed-f6"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "shell": {"program": "powershell.exe"},
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "save": "all"
+  },
+  {
+    "label": "Crysis: validar mapa tecnico (F9 parcial)",
+    "command": "powershell.exe",
+    "env": {"PSModulePath": ""},
+    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "$ZED_WORKTREE_ROOT/scripts/test-map.ps1", "-LogDirectory", "$ZED_WORKTREE_ROOT/build/zed-f9"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "shell": {"program": "powershell.exe"},
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "save": "all"
+  },
+  {
+    "label": "Crysis: validar ADS e FOV (F10 parcial)",
+    "command": "powershell.exe",
+    "env": {"PSModulePath": ""},
+    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "$ZED_WORKTREE_ROOT/scripts/test-f10-fov.ps1", "-LogDirectory", "$ZED_WORKTREE_ROOT/build/zed-f10"],
     "cwd": "$ZED_WORKTREE_ROOT",
     "shell": {"program": "powershell.exe"},
     "use_new_terminal": false,

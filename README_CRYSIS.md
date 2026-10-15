@@ -5,18 +5,57 @@ paralelo do jogador, Nanosuit com quatro modos, armas com carregador/reload,
 ADS com FOV real, attachments, ruído e percepção, soldado KPA com combate,
 objetivos, jammer e saída. Sem o parâmetro, o motor permanece vanilla.
 
-Estado: **slice jogável no mapa técnico**; o mapa Contact completo (praia →
-vila) e o playtest humano das três abordagens continuam pendentes.
-Relatórios por fase em `docs/validacao/fase-N.md`.
+Estado: **sistemas implementados e execução no mapa técnico**, ainda sem
+aceite final. O mapa Contact completo (praia → vila), as três abordagens e
+correções de IA, mira e projeção continuam pendentes. Veja a
+[revisão de 2026-10-15](docs/validacao/revisao-2026-10-15.md), com prioridades,
+testes executados e limites. Relatórios históricos por fase em
+`docs/validacao/fase-N.md`.
 
 ## Executar no Windows x64
 
-No VS Code, aceite a extensão recomendada **C/C++** e use **F5** com o perfil
-**Crysis: Fase 1 (Freedoom MAP01)**. A primeira execução baixa o toolchain
-portátil e o IWAD livre, confere hashes e compila. O perfil
-**Vanilla: Freedoom MAP01** abre o mesmo motor sem `-crysis`.
+### Zed
 
-Pelo PowerShell, na raiz do projeto:
+Abra a paleta de comandos e execute **task: spawn**. As tarefas locais estão
+em `.zed/tasks.json`:
+
+- **Crysis: preparar e executar (mapa tecnico)**: prepara IWAD/toolchain,
+  compila e abre o PWAD com KPA, objetivos, jammer e saída.
+- **Crysis: executar sem recompilar (mapa tecnico)**: reutiliza o executável.
+- **Crysis: preparar e executar (MAP01)**: modo Crysis no Freedoom original,
+  sem o PWAD técnico.
+- **Vanilla: preparar e executar (MAP01)**: comparação sem `-crysis` e sem PWAD.
+- **Crysis: diagnosticar controles (mapa tecnico)**: execução com `-crdebug`.
+- Tarefas **validar F1**, **validar IA e combate (F6-F7)**,
+  **validar mapa tecnico (F9 parcial)** e **validar ADS e FOV (F10 parcial)**:
+  usam o build existente; execute **Crysis: compilar** antes se necessário.
+  Os resultados ficam em `build/zed-f*`, sem substituir evidências históricas.
+
+Na primeira preparação podem ocorrer downloads do GitHub, com versões e
+hashes fixados nos scripts. O PWAD técnico já é versionado; Python 3 só é
+necessário para regenerá-lo. As tarefas usam Windows PowerShell sem perfil e
+limpam `PSModulePath` no processo filho para não herdar módulos incompatíveis
+do PowerShell 7. Não alteram a configuração global do editor ou do sistema.
+
+### VS Code
+
+Aceite a extensão recomendada **C/C++** e use **F5** com o perfil
+**Crysis: mapa tecnico (PWAD)**, **Crysis: modo Crysis (Freedoom MAP01)** ou
+**Vanilla: Freedoom MAP01**.
+
+### PowerShell
+
+Na raiz do projeto:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run-game.ps1 -Mode Crysis -Scenario Technical -Build
+# Comparação vanilla, reutilizando o build:
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run-game.ps1 -Mode Vanilla
+```
+
+`-Scenario` usa `Freedoom` por padrão para preservar o fluxo anterior.
+`Technical` exige `-Mode Crysis` e recusa o lançamento com mensagem clara
+se o PWAD estiver ausente. Para preparação manual e regeneração opcional:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/setup-iwad.ps1

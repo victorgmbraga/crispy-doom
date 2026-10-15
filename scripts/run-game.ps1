@@ -1,6 +1,8 @@
 param(
     [ValidateSet('Crysis', 'Vanilla')]
     [string]$Mode = 'Crysis',
+    [ValidateSet('Freedoom', 'Technical')]
+    [string]$Scenario = 'Freedoom',
     [switch]$Build,
     [switch]$DebugInput,
     [string[]]$GameArguments = @()
@@ -10,6 +12,7 @@ $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $executablePath = Join-Path $projectRoot 'build\src\crispy-doom.exe'
 $iwadPath = Join-Path $projectRoot 'content\iwad\freedoom2.wad'
+$pwadPath = Join-Path $projectRoot 'content\pwad\crysis-technical.wad'
 $runDirectory = Join-Path $projectRoot 'build\run'
 
 function ConvertTo-NativeArgument([string]$Argument) {
@@ -23,6 +26,15 @@ function ConvertTo-NativeArgument([string]$Argument) {
 
 Push-Location -LiteralPath $projectRoot
 try {
+    if ($Scenario -eq 'Technical') {
+        if ($Mode -ne 'Crysis') {
+            throw 'O mapa tecnico requer -Mode Crysis; use -Scenario Freedoom para comparar com o vanilla.'
+        }
+        if (!(Test-Path -LiteralPath $pwadPath)) {
+            throw 'PWAD tecnico ausente: content/pwad/crysis-technical.wad. Restaure o arquivo versionado ou regenere com scripts/make-technical-pwad.py (Python 3).'
+        }
+    }
+
     if (!$Build -and !(Test-Path -LiteralPath $executablePath)) {
         throw 'Executavel ausente. Use a task "Crysis: preparar e executar (MAP01)" ou scripts/run-game.ps1 -Build.'
     }
@@ -42,6 +54,7 @@ try {
         '-extraconfig', (Join-Path $runDirectory 'crispy-doom.cfg'),
         '-savedir', $runDirectory
     )
+    if ($Scenario -eq 'Technical') { $engineArguments += @('-file', $pwadPath) }
     if ($Mode -eq 'Crysis') { $engineArguments += '-crysis' }
     if ($Mode -eq 'Crysis' -and $DebugInput) { $engineArguments += '-crdebug' }
     # Doom reads the first occurrence of an option, so explicit overrides
